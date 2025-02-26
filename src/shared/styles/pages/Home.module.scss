@@ -1,0 +1,23 @@
+@use "../abstracts/mixins/mixins" as *;
+@use "../base/colors/colors" as color;
+@use "../base/globals/globals" as size;
+
+.home {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 3.125rem;
+    @include resizeContainer;
+}
+
+@media (max-width: 56.5625rem) {
+    .headerMainHeading {
+        line-height: 4.3125rem;
+    }
+}
+
+@media (max-width: 35.625rem) {
+    .home {
+        padding-inline: 0.8rem;
+    }
+}

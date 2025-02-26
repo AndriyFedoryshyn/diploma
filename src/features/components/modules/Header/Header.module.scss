@@ -1,0 +1,234 @@
+@use "../../../../shared/styles/abstracts/mixins/mixins" as *;
+@use "../../../../shared/styles/base/colors/colors" as color;
+@use "../../../../shared/styles/base/globals/globals" as size;
+
+.header {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+    gap: 5rem;
+    background: url("/images/header_background.png") no-repeat center center;
+    background-size: 100% 100%;
+    background-position: top center;
+    padding-inline: 1.5rem;
+    height: 100%;
+
+    &Container {
+        position: relative;
+        align-items: flex-start;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-block-start: 1.5625rem;
+
+        &Row {
+            @include resizeContainer;
+            padding-inline: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    &Logo {
+        display: flex;
+        gap: 1rem;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out 0s;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &LogoIcon {
+        max-width: 100%;
+        object-fit: cover;
+    }
+
+    &LogoHeadings {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 0.5rem;
+    }
+
+    &LogoHeading {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: color.$color-black-heading;
+        min-height: 1.4rem;
+    }
+
+    &LogoSubheading {
+        font-size: 1rem;
+        color: color.$color-black-heading;
+    }
+
+    &LocationThemeBlock {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    &Location {
+        max-width: fit-content;
+        background: color.$color-location-background;
+        border-radius: 0.5rem;
+        height: 2.0625rem;
+        width: 100%;
+        padding: 0.375rem 0.625rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.3rem;
+
+        &Mark {
+            font-size: 1rem;
+            color: color.$color-black-heading;
+        }
+    }
+
+    &LocationIcon {
+        max-width: 100%;
+        object-fit: cover;
+    }
+
+    &MainHeadingContainer {
+        width: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        gap: 2rem;
+        margin-block-start: 2rem;
+    }
+
+    &MainHeading {
+        @include mainHeading;
+    }
+
+    &Form {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-flow: column nowrap;
+        padding-block-end: 5rem;
+        gap: 2rem;
+    }
+
+    &FormSerachLabel {
+        font-size: 1.25rem;
+        line-height: 1.875rem;
+        color: color.$color-black-heading;
+    }
+
+    &FormSearch {
+        width: 60vw;
+        min-height: 3.75rem;
+        border-radius: 1rem;
+        border: 0.09375rem solid rgba(color.$color-black-heading, 0.7);
+        color: color.$color-black-heading;
+        font-size: 1.25rem;
+        caret-color: rgba(color.$color-black-heading, 0.7);
+        padding-inline: 3rem;
+
+        background: url("/icons/search_logo.svg") no-repeat 1rem;
+        transition: border 0.1s ease-in-out 0s;
+
+        &::placeholder {
+            color: rgba(color.$color-black-heading, 0.7);
+            font-size: 1.25rem;
+        }
+
+        &:focus {
+            border: 0.2rem solid color.$dark-button-bg;
+        }
+    }
+
+    & .suggestionsDropdown {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 60%;
+        gap: 0.5rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        background: color.$color-chart-button-background;
+
+        & > li {
+            width: 100%;
+            text-align: center;
+            padding: 0.5rem;
+            border-radius: 0.3rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.1s ease-in-out 0s;
+            &:hover {
+                background: color.$dark-border;
+            }
+        }
+    }
+
+    & .menuButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+    }
+
+    & .visibleButton {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-weight: 500;
+        font-size: 1.1rem;
+        background: transparent;
+        transition: transform 0.3s ease-in-out 0s;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
+@media (max-width: 64rem) {
+    .headerMainHeading {
+        text-align: center;
+        font-size: 3.125rem;
+    }
+
+    .menuButton {
+        margin-inline-start: 1.5rem;
+    }
+}
+
+@media (max-width: 56.5625rem) {
+    .headerMainHeading {
+        line-height: 4.3125rem;
+    }
+}
+
+@media (max-width: 35.625rem) {
+    .headerLocationThemeBlock {
+        flex-flow: column-reverse nowrap;
+    }
+
+    .headerMainHeading {
+        font-size: 2.8rem;
+        line-height: 3.125rem;
+    }
+
+    .header {
+        padding-inline: 0.8rem;
+    }
+
+    .headerFormSearch {
+        max-width: 80%;
+
+        &::placeholder {
+            font-size: 1.2rem;
+        }
+    }
+}

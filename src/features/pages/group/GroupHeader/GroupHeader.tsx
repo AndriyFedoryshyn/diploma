@@ -1,0 +1,61 @@
+"use client";
+
+import React, { type FC } from "react";
+
+import { useAppDispatch } from "@/shared/hooks/useAppDispatch";
+import { useAppSelector } from "@/shared/hooks/useAppSelector";
+import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
+
+import {
+  Div,
+  HeaderLogo,
+  HeaderLocation,
+  UIControls,
+  ControlButton,
+} from "@/index";
+
+
+import styles from "./GroupHeader.module.scss";
+import { toggleControlPanel } from "@/shared/store/slices/visibleControlsSlice";
+
+export const GroupHeader: FC = () => {
+  const dispatch = useAppDispatch();
+
+  const { isVisibleControls } = useAppSelector(
+    (state) => state.visibleControls
+  );
+
+  const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
+
+  const { speakText } = useSpeechSynthesis();
+
+  const handleMouseEnter = (event: React.MouseEvent) => {
+    if (isSpeechEnabled) {
+      const text = (event.target as HTMLElement).innerText.trim();
+      speakText(text);
+    }
+  };
+
+  const handleCloseControls = () => {
+    dispatch(toggleControlPanel());
+  };
+
+  return (
+    <header className={styles["groupHeader"]}>
+      <Div className={styles["groupHeaderContainer"]}>
+        <UIControls
+          isVisibleControls={isVisibleControls}
+          handleCloseControls={handleCloseControls}
+        />
+        <HeaderLogo />
+        <Div className={styles["groupControls"]}>
+          <ControlButton
+            handleCloseControls={handleCloseControls}
+            handleMouseEnter={handleMouseEnter}
+          />
+          <HeaderLocation />
+        </Div>
+      </Div>
+    </header>
+  );
+};

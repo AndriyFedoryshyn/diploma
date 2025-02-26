@@ -1,0 +1,93 @@
+@use "../base/reset/reset";
+@use "../base/colors/colors" as color;
+@use "../theme/theme" as grayscale;
+
+[data-font="small"] {
+    font-size: 0.75rem;
+}
+
+[data-font="medium"] {
+    font-size: 1rem;
+}
+
+[data-font="large"] {
+    font-size: 1.25rem;
+}
+
+[data-theme="grayscale"] {
+    filter: grayscale(100%);
+    color: grayscale.$color-black;
+    background-color: grayscale.$color-white;
+}
+
+[data-theme="grayscale"] p,
+[data-theme="grayscale"] h1,
+[data-theme="grayscale"] h2,
+[data-theme="grayscale"] h3,
+[data-theme="grayscale"] h4,
+[data-theme="grayscale"] h5,
+[data-theme="grayscale"] h6,
+[data-theme="grayscale"] span,
+[data-theme="grayscale"] a {
+    color: grayscale.$color-black;
+    font-family: Arial, sans-serif;
+}
+
+[data-theme="grayscale"] button,
+[data-theme="grayscale"] a {
+    color: grayscale.$color-black;
+    background-color: grayscale.$color-light-gray;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+[data-theme="grayscale"] button:hover,
+[data-theme="grayscale"] a:hover {
+    background-color: grayscale.$color-dark-gray;
+    cursor: pointer;
+}
+
+[data-theme="grayscale"] a {
+    color: grayscale.$color-link;
+}
+
+[data-theme="grayscale"] input,
+[data-theme="grayscale"] select,
+[data-theme="grayscale"] textarea {
+    background-color: grayscale.$color-white;
+    color: grayscale grayscale.$color-black;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+[data-theme="grayscale"] h1,
+[data-theme="grayscale"] h2,
+[data-theme="grayscale"] h3,
+[data-theme="grayscale"] h4,
+[data-theme="grayscale"] h5,
+[data-theme="grayscale"] h6 {
+    color: grayscale.$color-black;
+    font-weight: bold;
+}
+
+[data-theme="grayscale"] img {
+    filter: grayscale(100%) contrast(100%) brightness(100%);
+}
+
+[data-theme="grayscale"] ul,
+[data-theme="grayscale"] ol {
+    color: grayscale.$color-black;
+}
+
+@media (prefers-contrast: high) {
+    [data-theme="grayscale"] {
+        filter: grayscale(0%);
+        color: grayscale.$color-black;
+        background-color: grayscale.$color-white;
+    }
+    [data-theme="grayscale"] button,
+    [data-theme="grayscale"] a {
+        background-color: grayscale.$color-black;
+        color: grayscale.$color-white;
+    }
+}

@@ -1,0 +1,7 @@
+@use "../../../../shared/styles/abstracts/mixins/mixins" as *;
+@use "../../../../shared/styles/base/colors/colors" as color;
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}

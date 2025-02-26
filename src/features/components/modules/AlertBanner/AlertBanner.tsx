@@ -1,0 +1,104 @@
+"use client";
+
+import { useRef, useEffect, type FC } from "react";
+
+import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
+import { useAppSelector } from "@/shared/hooks/useAppSelector";
+
+import { Heading, Div } from "@/index";
+
+import { AlertRefT } from "@/shared/types/AlertBannerType";
+
+import Image from "next/image";
+import Link from "next/link";
+
+import styles from "./AlertBanner.module.scss";
+
+export const AlertBanner: FC = () => {
+  const alertRef = useRef<AlertRefT>(null);
+
+  const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
+
+  const { speakText } = useSpeechSynthesis();
+
+  const handleMouseEnter = (event: React.MouseEvent) => {
+    if (isSpeechEnabled) {
+      const text = (event.target as HTMLElement).innerText.trim();
+      speakText(text);
+    }
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (!isSpeechEnabled) return;
+
+    if (event.key === "Enter" || event.key === "") {
+      event.preventDefault();
+
+      const text = (event.target as HTMLElement).innerText.trim();
+      speakText(text);
+    }
+
+    if (event.key === "Escape") {
+      alertRef.current?.blur();
+    }
+  };
+
+  const handleImageMouseEnter = (event: React.MouseEvent) => {
+    if (isSpeechEnabled) {
+      const altText = (event.target as HTMLImageElement).alt.trim();
+      speakText(altText);
+    }
+  };
+
+  useEffect(() => {
+    alertRef.current?.focus();
+  }, []);
+
+  return (
+    <Div
+      className={styles["alertBanner"]}
+      ref={alertRef}
+      role='alert'
+      tabIndex={-1}
+      aria-live='assertive'
+      aria-labelledby='alertHeading'
+      onKeyDown={handleKeyDown}
+    >
+      <Image
+        className={styles["alertBannerIcon"]}
+        src={"/icons/alert_icon.svg"}
+        alt='Іконка знаку оклику'
+        priority
+        role='image'
+        aria-hidden={true}
+        width={8}
+        height={32}
+        onMouseEnter={handleImageMouseEnter}
+      />
+
+      <Heading
+        id='alertHeading'
+        level='h2'
+        className={styles["alertBannerHeading"]}
+        onMouseEnter={handleMouseEnter}
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+      >
+        УВАГА! Через ракетну атаку і пошкодження об&apos;єктів інфраструктури в
+        області застосовано аварійні та превентивні відключення. Актуальну
+        інформацію можна{" "}
+        <Link
+          target={"_blank"}
+          href={"https://t.me/+3KmvmkL0g39hYTgy"}
+          className={styles["alertBannerMoreLink"]}
+          tabIndex={0}
+          aria-label='Дізнатися актуальну інформацію тут'
+          onKeyDown={handleKeyDown}
+        >
+          дізнатися ТУТ
+        </Link>
+        .
+      </Heading>
+    </Div>
+  );
+};

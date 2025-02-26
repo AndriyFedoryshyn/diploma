@@ -1,0 +1,37 @@
+@use "../../../../shared/styles/abstracts/mixins/mixins" as *;
+@use "../../../../shared/styles/base/colors/colors" as color;
+@use "../../../../shared/styles/base/globals/globals" as size;
+
+.burger {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    &Container {
+        width: 100%;
+        height: 100%;
+        background: color.$dark-text;
+        padding: 1.5625rem;
+    }
+
+    &Nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &CloseButton {
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &RightBlock {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+}

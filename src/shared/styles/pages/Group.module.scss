@@ -1,0 +1,198 @@
+@use "../abstracts/mixins/mixins" as *;
+@use "../base/colors/colors" as color;
+@use "../base/globals/globals" as size;
+
+.group {
+    &Container {
+        @include resizeContainer;
+        padding-block-start: 1.25rem;
+        padding-block-end: 3rem;
+        display: flex;
+        flex-flow: column nowrap;
+
+        gap: 5rem;
+        width: 100%;
+        height: 100%;
+    }
+
+    &Intro {
+        width: 100%;
+        min-height: 100%;
+        background: url("/images/header_background.png") top no-repeat;
+        background-size: cover;
+    }
+
+    &Info {
+        width: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+    }
+
+    &MainHeading {
+        @include mainHeading;
+        line-height: 120%;
+    }
+
+    &MainButton {
+        margin-block: 0.875rem;
+        @include notificationButton;
+        & > a {
+            color: color.$dark-text;
+        }
+    }
+
+    &MainParagraph {
+        font-size: size.$alert-banner-size;
+        text-align: center;
+        line-height: 1.6125rem;
+    }
+
+    & .schedule {
+        @include resizeContainer;
+        padding: 0;
+        display: flex;
+        flex-flow: column nowrap;
+        width: 100%;
+
+        &Container {
+            width: 100%;
+        }
+
+        &Heading {
+            width: 100%;
+            padding-block: 5rem 2.75rem;
+            text-align: center;
+            font-size: size.$second-heading;
+            letter-spacing: 0.01em;
+            line-height: 3.64375rem;
+        }
+    }
+
+    & .scheduleHoursContainer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-block-end: 2.75rem;
+        padding-inline: 2rem;
+    }
+
+    & .scheduleItemTimes {
+        display: flex;
+        flex-flow: column nowrap;
+    }
+
+    & .scheduleItemHours {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+
+    & .scheduleItemHour {
+        color: color.$color-black-heading;
+    }
+
+    & .scheduleHoursList {
+        display: grid;
+        grid-template-columns: repeat(24, 1fr);
+        width: 100%;
+        gap: 0.3rem;
+    }
+
+    & .scheduleHoursListItem {
+        color: color.$color-black-heading;
+        letter-spacing: 0.01em;
+        line-height: 1.048125rem;
+    }
+
+    & .scheduleHoursBlock {
+        width: 100%;
+        background: color.$color-shedule-hour-background;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 2.5rem;
+        margin-block-start: 0.4rem;
+        position: relative;
+    }
+
+    .lightIndicator {
+        width: 0.5rem;
+        height: 0.5rem;
+        background-color: color.$color-shedule-indicator;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        bottom: 0.3125rem;
+        right: 0.3125rem;
+        animation: blink 1s infinite alternate;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .scheduleHoursBlock.active .lightIndicator {
+        opacity: 1;
+    }
+
+    .past {
+        opacity: 0.5;
+    }
+
+    .sheduleInfo {
+        width: 100%;
+        margin-block-end: 5rem;
+
+        &Container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding-inline: 2rem;
+            @include resizeContainer;
+        }
+    }
+
+    &LightInfo {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 2rem;
+        margin-block-end: 5rem;
+    }
+
+    &LightHeading {
+        @include defaultHeading;
+        text-align: center;
+        margin: 0 auto;
+        font-size: size.$second-heading;
+        margin-block: 3rem 2.75rem;
+    }
+}
+
+@media (max-width: 76.25rem) {
+    .group {
+        .scheduleHoursList {
+            grid-template-columns: repeat(12, 1fr);
+            row-gap: 1rem;
+        }
+    }
+}
+
+@media (max-width: 45.3125rem) {
+    .group {
+        .scheduleHoursList {
+            grid-template-columns: repeat(6, 1fr);
+        }
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}

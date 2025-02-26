@@ -1,0 +1,1 @@
+export type SelectedLetterT = string;
