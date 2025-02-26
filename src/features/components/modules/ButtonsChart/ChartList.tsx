@@ -2,13 +2,14 @@
 
 import { type FC } from "react";
 
+import Link from "next/link";
+
 import { useAppSelector } from "@/shared/hooks/useAppSelector";
 import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
 
 import { Button, Span } from "@/index";
 
 import { ButtonChartT, ButtonsChartT } from "@/shared/types/ButtonsChartType";
-import Link from "next/link";
 
 interface ChartListPropsI {
   classNames: {

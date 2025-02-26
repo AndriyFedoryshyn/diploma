@@ -8,6 +8,7 @@ import { UIControlsButtons } from "./UIControlsButtons";
 
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";
+import CloseIcon from "@mui/icons-material/Close";
 
 import { useAppDispatch } from "@/shared/hooks/useAppDispatch";
 import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
@@ -18,13 +19,12 @@ import { labels } from "@/shared/static/uiControls";
 
 import { LabelT, UIThemeControls } from "./UIThemeControls";
 
-import CloseIcon from "@mui/icons-material/Close";
-
-import styles from "./UIControls.module.scss";
-
 import { toggleSpeech } from "@/shared/store/slices/SpeechSynthesisSlice";
 import { initializeTheme, setTheme } from "@/shared/store/slices/ThemeSlice";
-import { useUIControls } from "@/FontSizeContext/FontSizeContext";
+
+import { useUIControls } from "@/shared/contexts/FontSizeContext/FontSizeContext";
+
+import styles from "./UIControls.module.scss";
 
 interface HeaderUIControlsPropsT {
   isVisibleControls: boolean;

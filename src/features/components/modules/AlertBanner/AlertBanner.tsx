@@ -2,15 +2,15 @@
 
 import { useRef, useEffect, type FC } from "react";
 
+import Image from "next/image";
+import Link from "next/link";
+
 import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
 import { useAppSelector } from "@/shared/hooks/useAppSelector";
 
 import { Heading, Div } from "@/index";
 
 import { AlertRefT } from "@/shared/types/AlertBannerType";
-
-import Image from "next/image";
-import Link from "next/link";
 
 import styles from "./AlertBanner.module.scss";
 

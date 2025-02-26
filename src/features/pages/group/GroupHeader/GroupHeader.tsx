@@ -14,9 +14,9 @@ import {
   ControlButton,
 } from "@/index";
 
+import { toggleControlPanel } from "@/shared/store/slices/visibleControlsSlice";
 
 import styles from "./GroupHeader.module.scss";
-import { toggleControlPanel } from "@/shared/store/slices/visibleControlsSlice";
 
 export const GroupHeader: FC = () => {
   const dispatch = useAppDispatch();
