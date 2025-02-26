@@ -38,6 +38,12 @@
         cursor: pointer;
         transition: transform 0.3s ease-in-out 0s;
 
+        &:focus {
+            outline: none;
+            border: 2px solid color.$color-notification-bg;
+            border-radius: 0.5rem;
+        }
+
         &:hover {
             transform: scale(1.1);
         }
@@ -46,6 +52,12 @@
     &LogoIcon {
         max-width: 100%;
         object-fit: cover;
+
+        &:focus {
+            outline: none;
+            border: 2px solid color.$color-notification-bg;
+            border-radius: 50%;
+        }
     }
 
     &LogoHeadings {
@@ -59,11 +71,23 @@
         font-weight: 700;
         color: color.$color-black-heading;
         min-height: 1.4rem;
+
+        &:focus {
+            outline: none;
+            border: 2px solid color.$color-notification-bg;
+            border-radius: 0.5rem;
+        }
     }
 
     &LogoSubheading {
         font-size: 1rem;
         color: color.$color-black-heading;
+
+        &:focus {
+            outline: none;
+            border: 2px solid color.$color-notification-bg;
+            border-radius: 0.5rem;
+        }
     }
 
     &LocationThemeBlock {
@@ -106,6 +130,12 @@
 
     &MainHeading {
         @include mainHeading;
+
+        &:focus {
+            outline: none;
+            border: 2px solid color.$color-notification-bg;
+            border-radius: 0.5rem;
+        }
     }
 
     &Form {
@@ -231,20 +261,4 @@
             font-size: 1.2rem;
         }
     }
-}
-
-.headerLogo:focus,
-.headerLogoHeading:focus,
-.headerLogoSubheading:focus,
-.headerMainHeading:focus,
-:global(label:focus) {
-    outline: none;
-    border: 2px solid color.$color-notification-bg;
-    border-radius: 0.5rem;
-}
-
-.headerLogoIcon:focus {
-    outline: none;
-    border: 2px solid color.$color-notification-bg;
-    border-radius: 50%;
 }
