@@ -110,13 +110,13 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
         {isResize && (
           <Button
             onClick={() => dispatch(toggleMenu())}
-            role='button'
             aria-label='Меню'
             aria-expanded={isVisibleMenu}
             className={styles["menuButton"]}
             tabIndex={0}
+            title='Кнопка відкриття меню'
           >
-            <MenuIcon fontSize='large' />
+            <MenuIcon fontSize='large' aria-hidden='true' />
           </Button>
         )}
       </Div>

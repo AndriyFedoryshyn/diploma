@@ -29,6 +29,7 @@ export const FooterInformation: FC = () => {
   return (
     <Div className={styles["footerInformation"]}>
       <Heading
+        id='footer-information-list'
         onMouseEnter={handleMouseEnter}
         level='h4'
         className={styles["footerInformationHeading"]}
