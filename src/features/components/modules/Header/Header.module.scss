@@ -237,7 +237,7 @@
 .headerLogoHeading:focus,
 .headerLogoSubheading:focus,
 .headerMainHeading:focus,
-label:focus {
+:global(label:focus) {
     outline: none;
     border: 2px solid color.$color-notification-bg;
     border-radius: 0.5rem;
