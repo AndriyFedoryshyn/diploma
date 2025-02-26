@@ -1,7 +1,6 @@
 "use client";
 
 import { type FC } from "react";
-
 import Link from "next/link";
 
 import { useAppSelector } from "@/shared/hooks/useAppSelector";
@@ -34,10 +33,14 @@ export const ChartList: FC<ChartListPropsI> = ({ classNames, list }) => {
     }
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent, group: string) => {
-    if (event.key === "Enter" || event.key === "") {
+  const handleKeyDown = (
+    event: React.KeyboardEvent<HTMLButtonElement>,
+    group: string
+  ) => {
+    if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      alert(`Navigating to group: ${group}`);
+      speakText(`Перехід до групи ${group}`);
+      window.location.href = `/group/${group}`;
     }
   };
 
@@ -47,23 +50,23 @@ export const ChartList: FC<ChartListPropsI> = ({ classNames, list }) => {
         <li key={listItem.id} className={classNames.listItem} role='listitem'>
           <Link href={`/group/${listItem.numberOfGroup}`} passHref>
             <Button
+              role='button'
               title={`Група ${listItem.numberOfGroup}`}
-              aria-label={`Перейти до графіка групи ${listItem.group}`}
+              aria-labelledby={`group-${listItem.numberOfGroup}`}
               className={classNames.button}
               onKeyDown={(event) => handleKeyDown(event, listItem.group)}
-              onBlur={(e) =>
-                (e.currentTarget.style.outline = "2px solid transparent")
-              }
-              onFocus={(e) =>
-                (e.currentTarget.style.outline = `2px solid ${FOCUS_COLOR}`)
-              }
               onMouseEnter={handleMouseEnter}
               tabIndex={0}
             >
-              {listItem.group}{" "}
+              <Span
+                id={`group-${listItem.numberOfGroup}`}
+                className={classNames.numberOfGroup}
+              >
+                {listItem.group}
+              </Span>
               <Span className={classNames.numberOfGroup} aria-hidden='true'>
                 {listItem.numberOfGroup}
-              </Span>{" "}
+              </Span>
             </Button>
           </Link>
         </li>

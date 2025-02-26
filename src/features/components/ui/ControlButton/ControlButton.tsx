@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, HTMLProps } from "react";
 
 import { Button, Heading } from "@/index";
 
@@ -6,7 +6,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 
 import styles from "./ControlButton.module.scss";
 
-interface UIControlButtonPropsI {
+interface UIControlButtonPropsI extends HTMLProps<HTMLButtonElement> {
   handleCloseControls: () => void;
   handleMouseEnter: (event: React.MouseEvent) => void;
 }

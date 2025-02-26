@@ -1,6 +1,6 @@
 "use client";
 
-import { type FC } from "react";
+import { useEffect, useRef, type FC } from "react";
 
 import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
 import { useAppSelector } from "@/shared/hooks/useAppSelector";
@@ -26,10 +26,17 @@ export const BurgerMenu: FC<BurgerMenuPropsI> = ({
 
   useBodyOverflow(isVisibleMenu);
 
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (isVisibleMenu) {
+      closeButtonRef.current?.focus();
+    }
+  }, [isVisibleMenu]);
+
   const handleMouseEnter = (event: React.MouseEvent) => {
     if (isSpeechEnabled) {
       const text = (event.target as HTMLElement).innerText.trim();
-
       speakText(text);
     }
   };
@@ -37,9 +44,34 @@ export const BurgerMenu: FC<BurgerMenuPropsI> = ({
   const handleMouseEnterTitle = (event: React.MouseEvent) => {
     if (isSpeechEnabled) {
       const text = event.currentTarget.getAttribute("aria-label") || "";
-
       if (text) {
         speakText(text);
+      }
+    }
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Escape") {
+      handleCloseBurgerMenu();
+    }
+    if (event.key === "Tab") {
+      const focusableElements = document
+        .querySelector(`.${styles["burger"]}`)
+        ?.querySelectorAll(
+          "button, a, input, select, textarea"
+        ) as NodeListOf<HTMLElement>;
+
+      if (focusableElements?.length) {
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
       }
     }
   };
@@ -50,8 +82,10 @@ export const BurgerMenu: FC<BurgerMenuPropsI> = ({
         <Div
           role='dialog'
           aria-labelledby='burgerMenuTitle'
+          aria-modal='true'
           className={styles["burger"]}
           aria-hidden={!isVisibleMenu}
+          onKeyDown={handleKeyDown}
         >
           <Div className={styles["burgerContainer"]}>
             <Div className={styles["burgerNav"]}>
@@ -66,6 +100,7 @@ export const BurgerMenu: FC<BurgerMenuPropsI> = ({
                   className={styles["burgerCloseButton"]}
                   onClick={handleCloseBurgerMenu}
                   onMouseEnter={handleMouseEnterTitle}
+                  ref={closeButtonRef}
                 >
                   <CloseIcon fontSize='large' />
                 </Button>

@@ -72,6 +72,18 @@
         color: color.$light-text;
     }
 
+    &InformationListItem:focus {
+        outline: none;
+        border: 2px solid #007bff;
+        background-color: #f0f8ff;
+    }
+
+    &SocialListItem img:focus {
+        outline: none;
+        border: 2px solid #007bff;
+        background-color: #f0f8ff;
+    }
+
     &SocialList {
         padding-block-start: 0.625rem;
         width: 100%;

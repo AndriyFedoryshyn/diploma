@@ -36,6 +36,13 @@ export const GroupHeader: FC = () => {
     }
   };
 
+  const handleFocus = (event: React.FocusEvent<HTMLElement>) => {
+    if (isSpeechEnabled) {
+      const text = (event.target as HTMLElement).innerText.trim();
+      speakText(text);
+    }
+  };
+
   const handleCloseControls = () => {
     dispatch(toggleControlPanel());
   };
@@ -53,7 +60,7 @@ export const GroupHeader: FC = () => {
             handleCloseControls={handleCloseControls}
             handleMouseEnter={handleMouseEnter}
           />
-          <HeaderLocation />
+          <HeaderLocation handleFocus={handleFocus} />
         </Div>
       </Div>
     </header>

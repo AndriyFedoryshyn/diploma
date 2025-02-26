@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 
 import { PATHS } from "@/shared/enums/paths";
 
-import { Heading, Div } from "@/index";
+import { Div } from "@/index";
 
 import styles from "./Header.module.scss";
 
@@ -18,13 +18,26 @@ export const HeaderLogo: FC = () => {
   const router = useRouter();
 
   const { speakText } = useSpeechSynthesis();
-
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
 
   const handleMouseEnter = (event: React.MouseEvent) => {
     if (isSpeechEnabled) {
       const text = (event.target as HTMLElement).innerText.trim();
       speakText(text);
+    }
+  };
+
+  const handleFocus = (event: React.FocusEvent<HTMLElement>) => {
+    if (isSpeechEnabled) {
+      const text = (event.target as HTMLElement).innerText.trim();
+      speakText(text);
+    }
+  };
+
+  const handleImageFocus = (event: React.FocusEvent<HTMLImageElement>) => {
+    if (isSpeechEnabled) {
+      const altText = (event.target as HTMLImageElement).alt.trim();
+      speakText(altText);
     }
   };
 
@@ -36,6 +49,7 @@ export const HeaderLogo: FC = () => {
   };
 
   const handleGoHomePage = () => router.push(PATHS.HOME);
+
   return (
     <Div
       className={styles["headerLogo"]}
@@ -44,6 +58,8 @@ export const HeaderLogo: FC = () => {
       data-role='Header Logo'
       tabIndex={0}
       onClick={handleGoHomePage}
+      onFocus={handleFocus}
+      onBlur={(e) => e.currentTarget.classList.remove(styles.focused)}
     >
       <Image
         className={styles["headerLogoIcon"]}
@@ -52,22 +68,26 @@ export const HeaderLogo: FC = () => {
         width={55}
         height={55}
         onMouseEnter={handleImageMouseEnter}
+        onFocus={handleImageFocus}
+        tabIndex={0}
       />
       <Div className={styles["headerLogoHeadings"]}>
-        <Heading
-          level='h4'
+        <h4
           className={styles["headerLogoHeading"]}
           onMouseEnter={handleMouseEnter}
+          onFocus={handleFocus}
+          tabIndex={0}
         >
           Energy-UA
-        </Heading>
-        <Heading
-          level='h5'
+        </h4>
+        <h5
           className={styles["headerLogoSubheading"]}
           onMouseEnter={handleMouseEnter}
+          onFocus={handleFocus}
+          tabIndex={0}
         >
           Графіки відключень
-        </Heading>
+        </h5>
       </Div>
     </Div>
   );

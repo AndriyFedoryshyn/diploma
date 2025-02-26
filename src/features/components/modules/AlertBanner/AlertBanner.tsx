@@ -16,9 +16,9 @@ import styles from "./AlertBanner.module.scss";
 
 export const AlertBanner: FC = () => {
   const alertRef = useRef<AlertRefT>(null);
+  const linkRef = useRef<HTMLAnchorElement>(null);
 
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
-
   const { speakText } = useSpeechSynthesis();
 
   const handleMouseEnter = (event: React.MouseEvent) => {
@@ -31,11 +31,15 @@ export const AlertBanner: FC = () => {
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (!isSpeechEnabled) return;
 
-    if (event.key === "Enter" || event.key === "") {
-      event.preventDefault();
+    const target = event.target as HTMLElement;
+    const text = target.innerText.trim();
 
-      const text = (event.target as HTMLElement).innerText.trim();
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
       speakText(text);
+      if (target.tagName === "A") {
+        (target as HTMLAnchorElement).click();
+      }
     }
 
     if (event.key === "Escape") {
@@ -62,6 +66,7 @@ export const AlertBanner: FC = () => {
       tabIndex={-1}
       aria-live='assertive'
       aria-labelledby='alertHeading'
+      aria-describedby='alertDescription'
       onKeyDown={handleKeyDown}
     >
       <Image
@@ -69,8 +74,7 @@ export const AlertBanner: FC = () => {
         src={"/icons/alert_icon.svg"}
         alt='Іконка знаку оклику'
         priority
-        role='image'
-        aria-hidden={true}
+        aria-hidden='true'
         width={8}
         height={32}
         onMouseEnter={handleImageMouseEnter}
@@ -88,10 +92,11 @@ export const AlertBanner: FC = () => {
         області застосовано аварійні та превентивні відключення. Актуальну
         інформацію можна{" "}
         <Link
-          target={"_blank"}
-          href={"https://t.me/+3KmvmkL0g39hYTgy"}
+          target='_blank'
+          href='https://t.me/+3KmvmkL0g39hYTgy'
           className={styles["alertBannerMoreLink"]}
           tabIndex={0}
+          ref={linkRef}
           aria-label='Дізнатися актуальну інформацію тут'
           onKeyDown={handleKeyDown}
         >

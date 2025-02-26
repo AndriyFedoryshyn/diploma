@@ -63,6 +63,19 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
     }
   }, [appDispatch, isSpeechEnabled]);
 
+  useEffect(() => {
+    const storedFontSize = localStorage.getItem("fontSize");
+    if (storedFontSize) {
+      setFontSize(storedFontSize as "small" | "medium" | "large");
+    }
+  }, [setFontSize]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      appDispatch(initializeTheme());
+    }
+  }, [appDispatch]);
+
   const handleMouseEnter = (event: React.MouseEvent) => {
     if (isSpeechEnabled) {
       const text = (event.target as HTMLElement).innerText.trim();
@@ -84,43 +97,13 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
     );
   };
 
-  useEffect(() => {
-    const sortedFontSize = localStorage.getItem("fontSize");
-    if (sortedFontSize) {
-      setFontSize(sortedFontSize as "small" | "medium" | "large");
-    }
-  }, [setFontSize]);
-
   const handleFontSizeSelect = (index: number) => {
-    let newFontSize: "small" | "medium" | "large";
-
-    if (index === 0) {
-      newFontSize = "small";
-    } else if (index === 1) {
-      newFontSize = "medium";
-    } else {
-      newFontSize = "large";
-    }
+    const sizes = ["small", "medium", "large"] as const;
+    const newFontSize = sizes[index];
 
     setFontSize(newFontSize);
     localStorage.setItem("fontSize", newFontSize);
   };
-
-  const handleCloseControlsPanel = () => {
-    handleCloseControls();
-  };
-
-  const handleSpeak = (text: string) => {
-    if (isSpeechEnabled) {
-      speakText(text);
-    }
-  };
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      appDispatch(initializeTheme());
-    }
-  }, [appDispatch]);
 
   const handleRestoreTheme = () => {
     appDispatch(setTheme("light"));
@@ -151,9 +134,7 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
           <UIControlsButtons
             labels={labels}
             onButtonSelect={handleFontSizeSelect}
-            selectedIndex={
-              fontSize === "small" ? 0 : fontSize === "medium" ? 1 : 2
-            }
+            selectedIndex={["small", "medium", "large"].indexOf(fontSize)}
             isActive={true}
           />
         </Div>
@@ -164,7 +145,7 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
             tabIndex={0}
             className={styles["controlsFontSizeHeading"]}
             onMouseEnter={handleMouseEnter}
-            onFocus={(event) => handleSpeak(event.currentTarget.innerText)}
+            onFocus={(event) => speakText(event.currentTarget.innerText)}
           >
             Колір сайту:
           </Heading>
@@ -189,7 +170,7 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
             type='button'
             role='button'
             onClick={handleVoiceReadingClick}
-            onFocus={(e) => handleSpeak(e.currentTarget.innerText)}
+            onFocus={(e) => speakText(e.currentTarget.innerText)}
           >
             <RecordVoiceOverIcon />
           </Button>
@@ -202,8 +183,8 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
             role='button'
             type='button'
             className={styles["close"]}
-            onClick={handleCloseControlsPanel}
-            onFocus={(e) => handleSpeak(e.currentTarget.title)}
+            onClick={handleCloseControls}
+            onFocus={(e) => speakText(e.currentTarget.title)}
           >
             <CloseIcon />
           </Button>

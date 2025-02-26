@@ -6,6 +6,7 @@ interface ButtonPropsI extends HTMLProps<HTMLButtonElement> {
   title?: string;
   onClick?: () => void;
   onMouseEnter?: (event: React.MouseEvent) => void;
+  onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;
   ariaLabel?: string;
 }
 
@@ -13,6 +14,7 @@ export const Button: FC<ButtonPropsI> = ({
   className,
   onClick,
   onMouseEnter,
+  onFocus,
   title,
   children,
   ariaLabel,
@@ -23,6 +25,7 @@ export const Button: FC<ButtonPropsI> = ({
       title={title}
       onMouseEnter={onMouseEnter}
       onClick={onClick}
+      onFocus={onFocus}
       className={className}
     >
       {children}

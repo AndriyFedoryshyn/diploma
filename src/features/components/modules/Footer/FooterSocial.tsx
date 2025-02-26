@@ -48,6 +48,7 @@ export const FooterSocial: FC = () => {
             tabIndex={0}
             onMouseEnter={(e) => handleSpeak(e.currentTarget.alt)}
             onFocus={(e) => handleSpeak(e.currentTarget.alt)}
+            className={styles["footerSocialImage"]}
           />
         </Link>
       )}

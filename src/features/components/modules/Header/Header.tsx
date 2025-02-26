@@ -10,7 +10,6 @@ import { useAppDispatch } from "@/shared/hooks/useAppDispatch";
 import {
   HeaderForm,
   Div,
-  Heading,
   Button,
   HeaderLogo,
   BurgerMenu,
@@ -63,6 +62,13 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
     }
   };
 
+  const handleFocus = (event: React.FocusEvent<HTMLElement>) => {
+    if (isSpeechEnabled) {
+      const text = (event.target as HTMLElement).innerText.trim();
+      speakText(text);
+    }
+  };
+
   useEffect(() => {
     const savedState = localStorage.getItem("burgerMenu");
     if (savedState !== null) {
@@ -84,10 +90,13 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
               <ControlButton
                 handleCloseControls={handleCloseControls}
                 handleMouseEnter={handleMouseEnter}
+                tabIndex={0}
               />
               <HeaderLocation
                 handleMouseEnter={handleMouseEnter}
                 handleImageMouseEnter={handleImageMouseEnter}
+                handleFocus={handleFocus}
+                tabIndex={0}
               />
             </Div>
           )}
@@ -105,6 +114,7 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
             aria-label='Меню'
             aria-expanded={isVisibleMenu}
             className={styles["menuButton"]}
+            tabIndex={0}
           >
             <MenuIcon fontSize='large' />
           </Button>
@@ -117,15 +127,15 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
       />
 
       <Div className={styles["headerMainHeadingContainer"]}>
-        <Heading
-          level='h1'
+        <h1
           className={styles["headerMainHeading"]}
           aria-live='polite'
           tabIndex={0}
           onMouseEnter={handleMouseEnter}
+          onFocus={handleFocus}
         >
           Графік відключення електроенергії у Львівській області
-        </Heading>
+        </h1>
 
         <HeaderForm onSearch={onSearch} settlements={settlements} />
       </Div>

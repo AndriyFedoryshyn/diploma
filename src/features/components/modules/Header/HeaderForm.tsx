@@ -68,6 +68,7 @@ export const HeaderForm: FC<HeaderFormProps> = ({ onSearch, settlements }) => {
         onMouseEnter={handleMouseEnter}
         htmlFor='searchInput'
         className={styles["headerFormSerachLabel"]}
+        tabIndex={0}
       >
         Введіть населений пункт для пошуку
       </label>

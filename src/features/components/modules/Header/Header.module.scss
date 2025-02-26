@@ -232,3 +232,19 @@
         }
     }
 }
+
+.headerLogo:focus,
+.headerLogoHeading:focus,
+.headerLogoSubheading:focus,
+.headerMainHeading:focus,
+label:focus {
+    outline: none;
+    border: 2px solid color.$colof-notification-bg;
+    border-radius: 0.5rem;
+}
+
+.headerLogoIcon:focus {
+    outline: none;
+    border: 2px solid color.$colof-notification-bg;
+    border-radius: 50%;
+}

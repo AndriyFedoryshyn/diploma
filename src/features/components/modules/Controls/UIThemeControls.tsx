@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useCallback } from "react";
+import { FC, useCallback, useMemo } from "react";
 
 import { setTheme } from "../../../../shared/store/slices/ThemeSlice";
 
@@ -27,35 +27,25 @@ export const UIThemeControls: FC<UIThemeControlsPropsT> = ({
   const dispatch = useAppDispatch();
   const { theme } = useAppSelector((state) => state.theme);
 
-  const getThemeIndex = useCallback(
-    (theme: string) => labels.findIndex((label) => label.theme === theme),
-    [labels]
+  const selectedIndex = useMemo(() => {
+    return labels.findIndex((label) => label.theme === theme);
+  }, [theme, labels]);
+
+  const handleButtonClick = useCallback(
+    (index: number, theme: "light" | "grayscale" | "dark") => {
+      dispatch(setTheme(theme));
+    },
+    [dispatch]
   );
-
-  const [selectedIndex, setSelectedIndex] = useState<number>(
-    getThemeIndex(theme)
-  );
-
-  useEffect(() => {
-    setSelectedIndex(getThemeIndex(theme));
-  }, [getThemeIndex, theme]);
-
-  const handleButtonClick = (
-    index: number,
-    theme: "light" | "grayscale" | "dark"
-  ) => {
-    setSelectedIndex(index);
-    dispatch(setTheme(theme));
-  };
 
   return (
-    <Div className={styles["controlsButtonsBlock"]}>
+    <Div className={styles["controlsButtonsBlock"]} aria-live='polite'>
       {labels.map((label, index) => (
         <Button
+          key={label.theme}
           aria-label={label.title}
           aria-pressed={selectedIndex === index}
           title={label.title}
-          key={index}
           role='button'
           className={`${styles["controlsButton"]} ${
             selectedIndex === index ? styles["active"] : ""
