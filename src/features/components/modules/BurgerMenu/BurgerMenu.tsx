@@ -76,6 +76,13 @@ export const BurgerMenu: FC<BurgerMenuPropsI> = ({
     }
   };
 
+  const handleFocus = (event: React.FocusEvent<HTMLElement>) => {
+    if (isSpeechEnabled) {
+      const text = (event.target as HTMLElement).innerText.trim();
+      speakText(text);
+    }
+  };
+
   return (
     <>
       {isVisibleMenu && (
@@ -91,7 +98,10 @@ export const BurgerMenu: FC<BurgerMenuPropsI> = ({
             <Div className={styles["burgerNav"]}>
               <HeaderLogo />
               <Div className={styles["burgerRightBlock"]}>
-                <HeaderLocation handleMouseEnter={handleMouseEnter} />
+                <HeaderLocation
+                  handleFocus={handleFocus}
+                  handleMouseEnter={handleMouseEnter}
+                />
                 <Button
                   ariaLabel='Закрити Меню'
                   title='Закрити Меню'
