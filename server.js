@@ -1,11 +1,7 @@
 import express from "express";
-
 import axios from "axios";
-
 import bodyParser from "body-parser";
-
 import cors from "cors";
-
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -18,12 +14,15 @@ app.use(bodyParser.json());
 
 const API_KEY = process.env.API_KEY;
 
+console.log("API_KEY:", process.env.API_KEY);
+
 app.post("/synthesize", async (req, res) => {
   const { text } = req.body;
 
   console.log("Received text:", text);
 
   if (!text || !text.trim()) {
+    console.log("Empty or invalid text received");
     return res.status(400).send("Text is required");
   }
 
@@ -42,9 +41,13 @@ app.post("/synthesize", async (req, res) => {
       }
     );
 
+    console.log("Google API response status:", response.status);
+    console.log("Google API response data:", response.data);
+
     if (response.data.audioContent) {
       res.json({ audioContent: response.data.audioContent });
     } else {
+      console.log("No audio content returned from API");
       res.status(500).send("No audio content returned from API");
     }
   } catch (error) {
