@@ -37,11 +37,7 @@ export const FooterInformation: FC = () => {
         Інформація та підтримка
       </Heading>
 
-      <ul
-        className={styles["footerInformationList"]}
-        role='list'
-        aria-labelledby='footer-information-list'
-      >
+      <ul className={styles["footerInformationList"]} role='list'>
         {informationList.map((listItem) => (
           <li
             key={listItem.id}

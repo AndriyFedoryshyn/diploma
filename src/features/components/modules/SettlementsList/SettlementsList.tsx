@@ -55,6 +55,7 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
         <Div className={styles["settlementsListInfo"]}>
           <Heading
             level='h2'
+            id='settlements-list'
             className={styles["settlementsListHeading"]}
             onMouseEnter={handleMouseEnter}
           >
@@ -94,11 +95,7 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
             {selectedLetter}
           </span>
           {filteredData?.map((area) => (
-            <li
-              key={area.id}
-              className={styles["settlementsListAreasItem"]}
-              role='listitem'
-            >
+            <li key={area.id} className={styles["settlementsListAreasItem"]}>
               <span onMouseEnter={handleMouseEnter}>{area.name.uk}</span>
             </li>
           ))}
