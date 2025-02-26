@@ -239,12 +239,12 @@
 .headerMainHeading:focus,
 label:focus {
     outline: none;
-    border: 2px solid color.$colof-notification-bg;
+    border: 2px solid color.$color-notification-bg;
     border-radius: 0.5rem;
 }
 
 .headerLogoIcon:focus {
     outline: none;
-    border: 2px solid color.$colof-notification-bg;
+    border: 2px solid color.$color-notification-bg;
     border-radius: 50%;
 }
