@@ -3,7 +3,7 @@
 import { useState, type FC } from 'react';
 import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
 
-import { Section, Div, Heading, Button } from '@/index';
+import { Section, Div, Heading, Button, List, Span } from '@/index';
 
 import { alphabet } from '@/shared/static/alphabet';
 
@@ -37,17 +37,33 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
     }
   };
 
+  const handleMousePointEnter = (event: React.MouseEvent) => {
+    if (isSpeechEnabled) {
+      const text = (event.target as HTMLElement).innerText.trim();
+      speakText(text);
+    }
+  };
+
+  const handleFocus = (event: React.FocusEvent<HTMLElement>) => {
+    if (isSpeechEnabled) {
+      const text = (event.target as HTMLElement).innerText.trim();
+      speakText(text);
+    }
+  };
+
   const filteredData = data
-    ?.filter((area) => {
-      const matchesLetter = area.name.uk
-        .toLowerCase()
-        .startsWith(selectedLetter.toLowerCase());
-      const matchesSearch = area.name.uk
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase());
-      return matchesLetter && matchesSearch;
-    })
-    .sort((a, b) => a.name.uk.localeCompare(b.name.uk));
+    ? data
+        .filter((area) => {
+          const matchesLetter = area.name?.uk
+            ?.toLowerCase()
+            .startsWith(selectedLetter.toLowerCase());
+          const matchesSearch = area.name?.uk
+            ?.toLowerCase()
+            .includes(searchQuery.toLowerCase());
+          return matchesLetter && matchesSearch;
+        })
+        .sort((a, b) => a.name.uk.localeCompare(b.name.uk))
+    : [];
 
   return (
     <Section className={styles['settlementsList']}>
@@ -57,7 +73,7 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
             level="h2"
             id="settlements-list"
             className={styles['settlementsListHeading']}
-            onMouseEnter={handleMouseEnter}
+            onMouseEnter={handleMousePointEnter}
           >
             Перелік населених пунктів
           </Heading>
@@ -82,24 +98,36 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
           </Div>
         </Div>
 
-        <ul
-          className={styles['settlementsListAreas']}
+        <Span
+          id="settlements-list"
+          className={styles['settlementsListAlphabetLetter']}
+          aria-live="polite"
+          tabIndex={0}
+          onFocus={handleFocus}
+        >
+          {selectedLetter}
+        </Span>
+
+        <List
           role="list"
           aria-labelledby="settlements-list"
-        >
-          <span
-            id="settlements-list"
-            className={styles['settlementsListAlphabetLetter']}
-            aria-live="polite"
-          >
-            {selectedLetter}
-          </span>
-          {filteredData?.map((area) => (
-            <li key={area.id} className={styles['settlementsListAreasItem']}>
-              <span onMouseEnter={handleMouseEnter}>{area.name.uk}</span>
-            </li>
-          ))}
-        </ul>
+          classNames={{
+            list: styles['settlementsListAreas'],
+            listItem: styles['settlementsListAreasItem'],
+          }}
+          renderList={filteredData}
+          renderItem={(area) => (
+            <Button
+              tabIndex={0}
+              key={area.id}
+              onMouseEnter={handleMousePointEnter}
+              onFocus={handleFocus}
+              className={styles['settlementsListAreasItemFocus']}
+            >
+              {area.name.uk}
+            </Button>
+          )}
+        />
       </Div>
     </Section>
   );

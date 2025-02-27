@@ -7,8 +7,14 @@ import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
 import { ukraineRegions } from '@/shared/static/regions';
 
-import { List, Div, Button, Heading, FooterInformation } from '@/index';
-import { Footer as FooterElement } from '../../ui/Footer/Footer';
+import {
+  List,
+  Div,
+  Button,
+  Heading,
+  FooterInformation,
+  FooterElement,
+} from '@/index';
 
 import styles from './Footer.module.scss';
 
@@ -48,6 +54,13 @@ export const Footer: FC = () => {
     []
   );
 
+  const handleMouseEnterSpeak = (event: React.MouseEvent) => {
+    if (isSpeechEnabled) {
+      const text = (event.target as HTMLElement).innerText.trim();
+      speakText(text);
+    }
+  };
+
   return (
     <FooterElement className={styles['footer']}>
       <Div className={styles['footerContainer']}>
@@ -56,6 +69,7 @@ export const Footer: FC = () => {
             level="h3"
             className={styles['regionsListHeading']}
             onFocus={(e) => handleSpeak(e.currentTarget.innerText)}
+            onMouseEnter={handleMouseEnterSpeak}
           >
             Інші області
           </Heading>

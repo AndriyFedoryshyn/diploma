@@ -39,7 +39,7 @@
     color: grayscale.$color-black;
     background-color: grayscale.$color-light-gray;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 0.25rem;
 }
 
 [data-theme="grayscale"] button:hover,
@@ -57,8 +57,8 @@
 [data-theme="grayscale"] textarea {
     background-color: grayscale.$color-white;
     color: grayscale grayscale.$color-black;
-    font-size: 16px;
-    border-radius: 4px;
+    font-size: 1rem;
+    border-radius: 1rem;
 }
 
 [data-theme="grayscale"] h1,
@@ -142,7 +142,7 @@ button:focus:not(:focus-visible) {
     color: dark.$color-theme-dark-white;
     background-color: dark.$color-theme-dark-gray;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 0.25rem;
 }
 
 [data-theme="dark"] button:hover,
@@ -162,7 +162,7 @@ button:focus:not(:focus-visible) {
     color: dark.$color-theme-dark-white;
     border: 1px solid dark.$color-theme-dark-white;
     border-radius: 1rem;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 [data-theme="dark"] input::placeholder {

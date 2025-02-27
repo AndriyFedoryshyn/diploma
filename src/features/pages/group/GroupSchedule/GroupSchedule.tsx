@@ -2,7 +2,10 @@
 
 import { type FC, useEffect, useState } from 'react';
 
-import { Div, Heading, List, Section, Span } from '@/index';
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+
+import { Div, List, Section, Span } from '@/index';
 
 import { scheduleHours } from '@/shared/static/schedule';
 import {
@@ -17,6 +20,9 @@ export const GroupSchedule: FC = () => {
     [0]
   );
   const [pastIndices, setPastIndices] = useState<PastIndices>([]);
+
+  const { speakText } = useSpeechSynthesis();
+  const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
 
   const getCurrentIndex = () => {
     const currentTime = new Date();
@@ -70,12 +76,22 @@ export const GroupSchedule: FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleSpeakText = (event: React.MouseEvent) => {
+    if (isSpeechEnabled) {
+      const text = (event.target as HTMLElement).innerText.trim();
+      speakText(text);
+    }
+  };
+
   return (
     <Section role="container" className={styles['schedule']}>
       <Div className={styles['scheduleContainer']}>
-        <Heading level="h2" className={styles['scheduleHeading']}>
+        <h2
+          className={styles['scheduleHeading']}
+          onMouseEnter={handleSpeakText}
+        >
           Відключення сьогодні
-        </Heading>
+        </h2>
       </Div>
       <Div className={styles['scheduleHoursContainer']}>
         <List

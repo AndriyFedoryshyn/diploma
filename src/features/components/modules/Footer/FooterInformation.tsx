@@ -37,21 +37,6 @@ export const FooterInformation: FC = () => {
         Інформація та підтримка
       </Heading>
 
-      <ul className={styles['footerInformationList']} role="list">
-        {informationList.map((listItem) => (
-          <li
-            key={listItem.id}
-            className={styles['footerInformationListItem']}
-            tabIndex={0}
-            role="listitem"
-            aria-label={listItem.title}
-            onMouseEnter={handleMouseEnter}
-          >
-            {listItem.title}
-          </li>
-        ))}
-      </ul>
-
       <List
         renderList={informationList}
         classNames={informationListClassNames}

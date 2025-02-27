@@ -33,7 +33,6 @@
 
     &MainHeading {
         @include mainHeading;
-        line-height: 120%;
     }
 
     &MainButton {
@@ -203,6 +202,14 @@
     .group {
         .scheduleHoursList {
             grid-template-columns: repeat(6, 1fr);
+        }
+    }
+}
+
+@media (max-width: 25rem) {
+    .group {
+        &Container {
+            padding-inline: 1rem;
         }
     }
 }

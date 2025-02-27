@@ -29,7 +29,7 @@ export const ChartList: FC<ChartListPropsI> = ({ classNames, list }) => {
   const handleMouseEnter = (event: React.MouseEvent) => {
     if (isSpeechEnabled) {
       const text = (event.target as HTMLElement).innerText.trim();
-      speakText(`Група номер ${text}`);
+      speakText(text);
     }
   };
 

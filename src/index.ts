@@ -35,6 +35,7 @@ export { GroupHeader } from '@/features/pages/group/GroupHeader/GroupHeader';
 export { GroupInfo } from '@/features/pages/group/GroupInfo/GroupInfo';
 export { GroupSchedule } from '@/features/pages/group/GroupSchedule/GroupSchedule';
 export { Header as HeaderElement } from '@/features/components/ui/Header/Header';
+export { Footer as FooterElement } from '@/features/components/ui/Footer/Footer';
 export { Form } from '@/features/components/ui/Form/Form';
 export { BurgerButton } from '@/features/components/ui/BurgerButton/BurgerButton';
 export { Nav } from '@/features/components/ui/Nav/Nav';

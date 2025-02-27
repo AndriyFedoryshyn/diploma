@@ -4,6 +4,7 @@ import { FC, useCallback, useMemo } from 'react';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
 
 import { setTheme } from '../../../../shared/store/slices/ThemeSlice';
 
@@ -23,7 +24,9 @@ export const UIThemeControls: FC<UIThemeControlsPropsT> = ({
   isActive,
 }) => {
   const dispatch = useAppDispatch();
+  const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
   const { theme } = useAppSelector((state) => state.theme);
+  const { speakText } = useSpeechSynthesis();
 
   const selectedIndex = useMemo(() => {
     return labels.findIndex((label) => label.theme === theme);
@@ -35,6 +38,16 @@ export const UIThemeControls: FC<UIThemeControlsPropsT> = ({
     },
     [dispatch]
   );
+
+  const handleSpeak = (event: React.MouseEvent) => {
+    if (isSpeechEnabled) {
+      const text =
+        (event.target as HTMLButtonElement).getAttribute('title')?.trim() || '';
+      if (text) {
+        speakText(text);
+      }
+    }
+  };
 
   return (
     <Div className={styles['controlsButtonsBlock']} aria-live="polite">
@@ -50,6 +63,7 @@ export const UIThemeControls: FC<UIThemeControlsPropsT> = ({
           }`}
           tabIndex={isActive ? 0 : -1}
           onClick={() => handleButtonClick(index, label.theme)}
+          onMouseEnter={handleSpeak}
         >
           {label.label}
         </Button>

@@ -49,6 +49,7 @@
         cursor: pointer;
 
         @include scaleElement;
+        @include elementFocus;
     }
 
     &AlphabetButton {
@@ -74,6 +75,11 @@
         cursor: pointer;
         &:hover {
             text-decoration: underline;
+        }
+
+        & > button {
+            background: transparent;
+            font-weight: 500;
         }
     }
 }
