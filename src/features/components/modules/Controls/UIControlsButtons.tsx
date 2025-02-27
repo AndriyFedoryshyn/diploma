@@ -5,8 +5,6 @@ import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
 import { Button, Div } from '@/index';
 
-import styles from './UIControls.module.scss';
-
 interface LabelT {
   label: string;
   title: string;
@@ -20,6 +18,7 @@ interface UIControlsButtonsPropsT {
   classNames: {
     block: string;
     button: string;
+    active: string;
   };
 }
 
@@ -67,7 +66,7 @@ export const UIControlsButtons: FC<UIControlsButtonsPropsT> = ({
           title={label.title}
           role="button"
           className={`${classNames.button} ${
-            selectedIndex === index ? styles['active'] : ''
+            selectedIndex === index ? classNames.active : ''
           }`}
           tabIndex={isActive ? 0 : -1}
           onClick={() => onButtonSelect(index)}

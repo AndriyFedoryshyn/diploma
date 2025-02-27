@@ -39,6 +39,7 @@ const uiControlsClassNames: ClassNamesT = {
   heading: styles['burgerUiControlsHeading'],
   buttonsBlock: styles['burgerUiControlsButtonsBlock'],
   button: styles['controlsButton'],
+  activeButton: styles['active'],
 };
 
 export const BurgerMenu: FC<BurgerMenuPropsI> = ({

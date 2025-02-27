@@ -73,14 +73,14 @@
         line-height: 1.5rem;
         font-weight: 500;
         cursor: pointer;
-        &:hover {
-            text-decoration: underline;
-        }
 
         & > button {
             background: transparent;
             font-weight: 500;
             font-size: 1rem;
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }

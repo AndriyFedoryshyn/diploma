@@ -1,13 +1,13 @@
-import { type FC } from "react";
+import { type FC } from 'react';
 
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
-import { Div, Heading, Paragpraph } from "@/index";
+import { Div, Heading, Paragpraph } from '@/index';
 
-import { formatedDate } from "@/shared/utils/formateDate";
+import { formatedDate } from '@/shared/utils/formateDate';
 
-import styles from "./GroupScheduleInfo.module.scss";
+import styles from './GroupScheduleInfo.module.scss';
 
 interface GroupScheduleInfoDatePropsI {
   firstPart: string | undefined;
@@ -30,18 +30,18 @@ export const GroupScheduleInfoDate: FC<GroupScheduleInfoDatePropsI> = ({
   };
 
   return (
-    <Div className={styles["groupScheduleInfoDate"]}>
-      <Div className={styles["groupScheduleInfoDateContainer"]}>
+    <Div className={styles['groupScheduleInfoDate']}>
+      <Div className={styles['groupScheduleInfoDateContainer']}>
         <Heading
           onMouseEnter={handleSpeakText}
-          level='h5'
-          className={styles["groupScheduleInfoDateHeading"]}
+          level="h5"
+          className={styles['groupScheduleInfoDateHeading']}
         >
           {firstPart} група ({secondPart} підгрупа)
         </Heading>
         <Paragpraph
           onMouseEnter={handleSpeakText}
-          className={styles["groupScheduleInfoDateParagraph"]}
+          className={styles['groupScheduleInfoDateParagraph']}
         >
           {formatedDate}
         </Paragpraph>

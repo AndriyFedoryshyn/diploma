@@ -23,17 +23,19 @@ import { useUIControls } from '@/shared/contexts/FontSizeContext/FontSizeContext
 import styles from './UIControls.module.scss';
 import { UIControlsFontSize } from './UIControlsFontSize/UIControlsFontSize';
 import { UIControlsThemes } from './UIControlsThemes/UIControlsThemes';
+import { ClassNamesT } from '@/shared/types/UIControlsType';
 
 interface HeaderUIControlsPropsT {
   isVisibleControls: boolean;
   handleCloseControls: () => void;
 }
 
-const uiControlsClassNames = {
+const uiControlsClassNames: ClassNamesT = {
   block: styles['controlsFontSizeBlock'],
   heading: styles['controlsFontSizeHeading'],
   buttonsBlock: styles['controlsButtonsBlock'],
   button: styles['controlsButton'],
+  activeButton: styles['active'],
 };
 
 export const UIControls: FC<HeaderUIControlsPropsT> = ({

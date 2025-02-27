@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { useMemo, type FC } from 'react';
 
 import { Div, Heading, UIControlsButtons } from '@/index';
 
@@ -19,6 +19,14 @@ export const UIControlsFontSize: FC<UIControlsFontSizePropsI> = ({
   labels,
   classNames,
 }) => {
+  const classNamesControlsButtons = useMemo(() => {
+    return {
+      button: classNames.button,
+      active: classNames.activeButton,
+      block: classNames.buttonsBlock,
+    };
+  }, [classNames.button, classNames.activeButton, classNames.buttonsBlock]);
+
   return (
     <Div className={classNames.block}>
       <Heading
@@ -32,10 +40,7 @@ export const UIControlsFontSize: FC<UIControlsFontSizePropsI> = ({
       </Heading>
 
       <UIControlsButtons
-        classNames={{
-          block: classNames.buttonsBlock,
-          button: classNames.button,
-        }}
+        classNames={classNamesControlsButtons}
         labels={labels}
         onButtonSelect={handleFontSizeSelect}
         selectedIndex={['small', 'medium', 'large'].indexOf(fontSize)}

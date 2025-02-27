@@ -17,4 +17,5 @@ export type ClassNamesT = {
   heading: string;
   buttonsBlock: string;
   button: string;
+  activeButton: string;
 };
