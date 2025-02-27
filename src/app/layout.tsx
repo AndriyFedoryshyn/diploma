@@ -4,11 +4,12 @@ import type { Metadata } from 'next';
 
 import { Roboto } from 'next/font/google';
 
-import { UIControlsProvider } from '@/shared/contexts/FontSizeContext/FontSizeContext';
+
 
 import { LayoutClientWrapper, Wrapper, Footer, Main } from '@/index';
 
 import '@/shared/styles/main/main.scss';
+import { UIControlsProvider } from '@/shared/contexts/FontSizeContext/FontSizeProvider';
 
 const robotoFont = Roboto({
   subsets: ['latin'],

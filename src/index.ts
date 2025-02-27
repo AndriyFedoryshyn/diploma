@@ -24,6 +24,8 @@ export { GroupScheduleStatistic } from '@/features/pages/group/GroupScheduleInfo
 export { UIThemeControls } from '@/features/components/modules/Controls/UIThemeControls';
 export { UIControlsFontSize } from '@/features/components/modules/Controls/UIControlsFontSize/UIControlsFontSize';
 export { UIControlsThemes } from '@/features/components/modules/Controls/UIControlsThemes/UIControlsThemes';
+export { BurgerHeader } from '@/features/components/modules/BurgerMenu/BurgerHeader';
+export { BurgerNav } from '@/features/components/modules/BurgerMenu/BurgerNav';
 
 export { Button } from '@/features/components/ui/Button/Button';
 export { Div } from '@/features/components/ui/Div/Div';

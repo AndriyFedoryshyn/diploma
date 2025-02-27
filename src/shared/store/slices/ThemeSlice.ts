@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ThemeT } from '@/shared/types/ThemesType';
 
-export type ThemeT = "light" | "dark" | "grayscale";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface ThemeStateI {
   theme: ThemeT;
@@ -8,26 +8,26 @@ interface ThemeStateI {
 }
 
 const initialState: ThemeStateI = {
-  theme: "light",
+  theme: 'light',
   isLoaded: false,
 };
 
 export const themeSlice = createSlice({
-  name: "theme",
+  name: 'theme',
   initialState,
   reducers: {
     setTheme: (state, action: PayloadAction<ThemeT>) => {
       state.theme = action.payload;
-      if (typeof window !== "undefined") {
-        localStorage.setItem("theme", action.payload);
-        document.documentElement.setAttribute("data-theme", action.payload);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('theme', action.payload);
+        document.documentElement.setAttribute('data-theme', action.payload);
       }
     },
     initializeTheme: (state) => {
-      if (typeof window !== "undefined") {
-        const savedTheme = (localStorage.getItem("theme") as ThemeT) || "light";
+      if (typeof window !== 'undefined') {
+        const savedTheme = (localStorage.getItem('theme') as ThemeT) || 'light';
         state.theme = savedTheme;
-        document.documentElement.setAttribute("data-theme", savedTheme);
+        document.documentElement.setAttribute('data-theme', savedTheme);
       }
       state.isLoaded = true;
     },

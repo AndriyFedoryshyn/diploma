@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 
 import Image from 'next/image';
 
@@ -48,7 +48,9 @@ export const HeaderLogo: FC = () => {
     }
   };
 
-  const handleGoHomePage = () => router.push(PATHS.HOME);
+  const handleGoHomePage = useMemo(() => {
+    return () => router.push(PATHS.HOME);
+  }, [router]);
 
   return (
     <Div

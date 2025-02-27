@@ -2,7 +2,7 @@
 
 import { FC, useEffect, useRef } from 'react';
 
-import { Div, Button } from '@/index';
+import { Div, Button, UIControlsFontSize, UIControlsThemes } from '@/index';
 
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
@@ -12,31 +12,23 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useScreenResize } from '@/shared/hooks/useScreenResize';
+import { useUIControls } from '@/shared/contexts/FontSizeContext/FontSizeContext';
 
-import { colorsLabels, labels } from '@/shared/static/uiControls';
+import {
+  colorsLabels,
+  labels,
+  uiControlsClassNames,
+} from '@/shared/static/uiControls';
 
 import { toggleSpeech } from '@/shared/store/slices/SpeechSynthesisSlice';
 import { initializeTheme, setTheme } from '@/shared/store/slices/ThemeSlice';
 
-import { useUIControls } from '@/shared/contexts/FontSizeContext/FontSizeContext';
-
 import styles from './UIControls.module.scss';
-import { UIControlsFontSize } from './UIControlsFontSize/UIControlsFontSize';
-import { UIControlsThemes } from './UIControlsThemes/UIControlsThemes';
-import { ClassNamesT } from '@/shared/types/UIControlsType';
 
 interface HeaderUIControlsPropsT {
   isVisibleControls: boolean;
   handleCloseControls: () => void;
 }
-
-const uiControlsClassNames: ClassNamesT = {
-  block: styles['controlsFontSizeBlock'],
-  heading: styles['controlsFontSizeHeading'],
-  buttonsBlock: styles['controlsButtonsBlock'],
-  button: styles['controlsButton'],
-  activeButton: styles['active'],
-};
 
 export const UIControls: FC<HeaderUIControlsPropsT> = ({
   isVisibleControls,
