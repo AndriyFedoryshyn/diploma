@@ -187,6 +187,18 @@
     }
 }
 
+@media (max-width: 64rem) {
+    .group {
+        .sheduleInfo {
+            &Container {
+                grid-template-columns: 1fr;
+                justify-items: start;
+                gap: 3rem;
+            }
+        }
+    }
+}
+
 @media (max-width: 45.3125rem) {
     .group {
         .scheduleHoursList {

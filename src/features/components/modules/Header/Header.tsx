@@ -10,12 +10,13 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import {
   HeaderForm,
   Div,
-  Button,
   HeaderLogo,
   BurgerMenu,
   HeaderLocation,
   HeaderElement,
   ControlButton,
+  BurgerButton,
+  Nav,
 } from '@/index';
 
 import { AreasT } from '@/shared/types/AreasType';
@@ -23,14 +24,13 @@ import { UIControls } from '../Controls/UIControls';
 
 import { SearchTermT } from '@/shared/types/HeaderType';
 
-import MenuIcon from '@mui/icons-material/Menu';
-
-import styles from './Header.module.scss';
 import {
   setMenuVisibility,
   toggleControlPanel,
   toggleMenu,
 } from '@/shared/store/slices/visibleControlsSlice';
+
+import styles from './Header.module.scss';
 
 interface HeaderProps {
   onSearch: (searchTerm: SearchTermT) => void;
@@ -83,7 +83,7 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
   return (
     <HeaderElement className={styles['header']} role="banner">
       <Div className={styles['headerContainer']}>
-        <Div className={styles['headerContainerRow']}>
+        <Nav className={styles['headerContainerRow']}>
           <HeaderLogo />
           {!isResize && (
             <Div className={styles['headerLocationThemeBlock']}>
@@ -100,25 +100,14 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
               />
             </Div>
           )}
-        </Div>
+        </Nav>
 
         <UIControls
           isVisibleControls={isVisibleControls}
           handleCloseControls={handleCloseControls}
         />
 
-        {isResize && (
-          <Button
-            onClick={() => dispatch(toggleMenu())}
-            aria-label="Меню"
-            aria-expanded={isVisibleMenu}
-            className={styles['menuButton']}
-            tabIndex={0}
-            title="Кнопка відкриття меню"
-          >
-            <MenuIcon fontSize="large" aria-hidden="true" />
-          </Button>
-        )}
+        <BurgerButton />
       </Div>
 
       <BurgerMenu

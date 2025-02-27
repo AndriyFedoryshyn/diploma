@@ -1,10 +1,11 @@
 'use client';
 
-import React, { type FC } from 'react';
+import React, { Fragment, type FC } from 'react';
 
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
+import { useScreenResize } from '@/shared/hooks/useScreenResize';
 
 import {
   Div,
@@ -13,22 +14,28 @@ import {
   UIControls,
   ControlButton,
   HeaderElement,
+  BurgerMenu,
+  Nav,
+  BurgerButton,
 } from '@/index';
 
-import { toggleControlPanel } from '@/shared/store/slices/visibleControlsSlice';
+import {
+  toggleControlPanel,
+  toggleMenu,
+} from '@/shared/store/slices/visibleControlsSlice';
 
 import styles from './GroupHeader.module.scss';
 
 export const GroupHeader: FC = () => {
   const dispatch = useAppDispatch();
 
-  const { isVisibleControls } = useAppSelector(
+  const { isVisibleControls, isVisibleMenu } = useAppSelector(
     (state) => state.visibleControls
   );
-
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
-
   const { speakText } = useSpeechSynthesis();
+
+  const { isResize } = useScreenResize(1024);
 
   const handleMouseEnter = (event: React.MouseEvent) => {
     if (isSpeechEnabled) {
@@ -50,20 +57,31 @@ export const GroupHeader: FC = () => {
 
   return (
     <HeaderElement className={styles['groupHeader']}>
-      <Div className={styles['groupHeaderContainer']}>
+      <Nav className={styles['groupHeaderContainer']}>
         <UIControls
           isVisibleControls={isVisibleControls}
           handleCloseControls={handleCloseControls}
         />
         <HeaderLogo />
         <Div className={styles['groupHeaderControls']}>
-          <ControlButton
-            handleCloseControls={handleCloseControls}
-            handleMouseEnter={handleMouseEnter}
+          {!isResize && (
+            <Fragment>
+              <ControlButton
+                handleCloseControls={handleCloseControls}
+                handleMouseEnter={handleMouseEnter}
+              />
+              <HeaderLocation handleFocus={handleFocus} />
+            </Fragment>
+          )}
+
+          <BurgerButton />
+
+          <BurgerMenu
+            isVisibleMenu={isVisibleMenu}
+            handleCloseBurgerMenu={() => dispatch(toggleMenu())}
           />
-          <HeaderLocation handleFocus={handleFocus} />
         </Div>
-      </Div>
+      </Nav>
     </HeaderElement>
   );
 };

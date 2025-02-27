@@ -3,7 +3,7 @@ import { type FC } from 'react';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
 
-import { Div, AlertBanner, Button, Heading, Paragpraph } from '@/index';
+import { AlertBanner, Button, Heading, Paragpraph, Section } from '@/index';
 
 import Link from 'next/link';
 
@@ -29,7 +29,7 @@ export const GroupInfo: FC<GroupInfo> = ({ firstPart, secondPart }) => {
   };
 
   return (
-    <Div className={styles['groupInfo']}>
+    <Section className={styles['groupInfo']}>
       <Heading
         onMouseEnter={handleSpeakText}
         level="h1"
@@ -63,6 +63,6 @@ export const GroupInfo: FC<GroupInfo> = ({ firstPart, secondPart }) => {
         - після підключення сповіщень орієнтуйтесь на неї!
       </Paragpraph>
       <AlertBanner />
-    </Div>
+    </Section>
   );
 };

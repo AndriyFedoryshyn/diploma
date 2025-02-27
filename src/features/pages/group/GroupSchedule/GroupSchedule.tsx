@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { type FC, useEffect, useState } from "react";
+import { type FC, useEffect, useState } from 'react';
 
-import { Div, Heading, List, Span } from "@/index";
+import { Div, Heading, List, Section, Span } from '@/index';
 
-import { scheduleHours } from "@/shared/static/schedule";
+import { scheduleHours } from '@/shared/static/schedule';
 import {
   PastIndices,
   VisibleIndicators,
-} from "@/shared/types/GroupScheduleType";
+} from '@/shared/types/GroupScheduleType';
 
-import styles from "@/shared/styles/pages/Group.module.scss";
+import styles from '@/shared/styles/pages/Group.module.scss';
 
 export const GroupSchedule: FC = () => {
   const [visibleIndicators, setVisibleIndicators] = useState<VisibleIndicators>(
@@ -24,8 +24,8 @@ export const GroupSchedule: FC = () => {
     let index = -1;
 
     scheduleHours.forEach((item, i) => {
-      const startHour = parseInt(item.hours[0].split(":")[0], 10);
-      const endHour = parseInt(item.hours[1].split(":")[0], 10);
+      const startHour = parseInt(item.hours[0].split(':')[0], 10);
+      const endHour = parseInt(item.hours[1].split(':')[0], 10);
 
       if (currentHour >= startHour && currentHour < endHour) {
         index = i;
@@ -41,7 +41,7 @@ export const GroupSchedule: FC = () => {
     const pastIndices: number[] = [];
 
     scheduleHours.forEach((item, i) => {
-      const endHour = parseInt(item.hours[1].split(":")[0], 10);
+      const endHour = parseInt(item.hours[1].split(':')[0], 10);
       if (currentHour >= endHour) {
         pastIndices.push(i);
       }
@@ -71,17 +71,17 @@ export const GroupSchedule: FC = () => {
   }, []);
 
   return (
-    <Div role='container' className={styles["schedule"]}>
-      <Div className={styles["scheduleContainer"]}>
-        <Heading level='h2' className={styles["scheduleHeading"]}>
+    <Section role="container" className={styles['schedule']}>
+      <Div className={styles['scheduleContainer']}>
+        <Heading level="h2" className={styles['scheduleHeading']}>
           Відключення сьогодні
         </Heading>
       </Div>
-      <Div className={styles["scheduleHoursContainer"]}>
+      <Div className={styles['scheduleHoursContainer']}>
         <List
           classNames={{
-            list: styles["scheduleHoursList"],
-            listItem: styles["scheduleHoursListItem"],
+            list: styles['scheduleHoursList'],
+            listItem: styles['scheduleHoursListItem'],
           }}
           renderItem={(item, index) => {
             const showIndicator = visibleIndicators.includes(index);
@@ -90,21 +90,21 @@ export const GroupSchedule: FC = () => {
             return (
               <Div
                 key={item.id}
-                className={`${styles["scheduleItemHours"]} ${
-                  showIndicator ? styles["active"] : ""
-                } ${isPast ? styles["past"] : ""}`}
+                className={`${styles['scheduleItemHours']} ${
+                  showIndicator ? styles['active'] : ''
+                } ${isPast ? styles['past'] : ''}`}
               >
-                <Div className={styles["scheduleItemTimes"]}>
-                  <em className={styles["scheduleItemHour"]}>
+                <Div className={styles['scheduleItemTimes']}>
+                  <em className={styles['scheduleItemHour']}>
                     {item.hours[0]}
                   </em>
-                  <em className={styles["scheduleItemHour"]}>
+                  <em className={styles['scheduleItemHour']}>
                     {item.hours[1]}
                   </em>
                 </Div>
-                <Span className={styles["scheduleHoursBlock"]}>
+                <Span className={styles['scheduleHoursBlock']}>
                   {showIndicator && (
-                    <span className={styles["lightIndicator"]}></span>
+                    <span className={styles['lightIndicator']}></span>
                   )}
                 </Span>
               </Div>
@@ -113,6 +113,6 @@ export const GroupSchedule: FC = () => {
           renderList={scheduleHours}
         />
       </Div>
-    </Div>
+    </Section>
   );
 };

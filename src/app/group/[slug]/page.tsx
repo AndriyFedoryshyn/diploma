@@ -12,6 +12,7 @@ import {
   GroupScheduleInfo,
   Heading,
   GroupPeriodsBanner,
+  Section,
 } from '@/index';
 
 import styles from '@/shared/styles/pages/Group.module.scss';
@@ -36,7 +37,7 @@ const Group = () => {
   const secondPart = slug!.slice(2, 3);
 
   return (
-    <Div className={styles['group']}>
+    <Section className={styles['group']}>
       <Div className={styles['groupIntro']}>
         <Div className={styles['groupContainer']}>
           <GroupHeader />
@@ -57,7 +58,7 @@ const Group = () => {
         </Heading>
         <GroupPeriodsBanner />
       </Div>
-    </Div>
+    </Section>
   );
 };
 

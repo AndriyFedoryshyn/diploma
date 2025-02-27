@@ -11,6 +11,7 @@ import { Div, HeaderLogo, Button, HeaderLocation } from '@/index';
 import CloseIcon from '@mui/icons-material/Close';
 
 import styles from './BurgerMenu.module.scss';
+import { Nav } from '../../ui/Nav/Nav';
 
 interface BurgerMenuPropsI {
   isVisibleMenu: boolean;
@@ -95,7 +96,7 @@ export const BurgerMenu: FC<BurgerMenuPropsI> = ({
           onKeyDown={handleKeyDown}
         >
           <Div className={styles['burgerContainer']}>
-            <Div className={styles['burgerNav']}>
+            <Nav className={styles['burgerNav']}>
               <HeaderLogo />
               <Div className={styles['burgerRightBlock']}>
                 <HeaderLocation
@@ -115,7 +116,7 @@ export const BurgerMenu: FC<BurgerMenuPropsI> = ({
                   <CloseIcon fontSize="large" />
                 </Button>
               </Div>
-            </Div>
+            </Nav>
           </Div>
         </Div>
       )}

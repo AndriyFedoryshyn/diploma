@@ -111,10 +111,48 @@
 }
 @media (max-width: 64rem) {
     .controlsFontSizeBlock {
-        max-width: 13rem !important;
+        max-width: 13rem;
     }
 
     .controlsButtonsBlock {
         justify-content: flex-end;
+    }
+}
+
+@media (max-width: 53.4375rem) {
+    .controls {
+        &Container {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        & .close {
+            top: 0.3rem;
+            right: 0.3rem;
+        }
+
+        & .controlsFontSizeBlock {
+            max-width: 20rem;
+        }
+    }
+}
+
+@media (max-width: 37.5rem) {
+    .controls {
+        &Container {
+            display: grid;
+            justify-content: start;
+            justify-items: start;
+        }
+
+        & .controlsVisibleButton {
+            justify-content: start;
+            max-width: 100%;
+        }
+
+        & .controlsVisibleBlock {
+            gap: 0;
+        }
     }
 }

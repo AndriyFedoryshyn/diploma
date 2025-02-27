@@ -63,7 +63,7 @@
 
     &Areas {
         display: grid;
-        grid-template-columns: repeat(7, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         gap: 1rem;
     }
 
@@ -78,7 +78,7 @@
     }
 }
 
-@media (max-width: 64rem) {
+@media (max-width: 75rem) {
     .settlementsListAlphabet {
         max-width: 80%;
     }
@@ -94,7 +94,7 @@
     }
 }
 
-@media (max-width: 35.625rem) {
+@media (max-width: 37.5rem) {
     .settlementsListAlphabet {
         max-width: 100%;
     }
@@ -102,9 +102,6 @@
         font-size: 2.5rem;
         text-align: center;
     }
-}
-
-@media (max-width: 28.125rem) {
     .settlementsListAreas {
         grid-template-columns: repeat(2, 1fr);
     }

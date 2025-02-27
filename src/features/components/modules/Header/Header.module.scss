@@ -114,6 +114,7 @@
     &MainHeading {
         @include mainHeading;
         @include elementFocus;
+        padding-inline: 1rem;
     }
 
     &Form {
@@ -134,7 +135,8 @@
     }
 
     &FormSearch {
-        width: 60vw;
+        width: 100%;
+        max-width: 60vw;
         min-height: 3.75rem;
         border-radius: 1rem;
         border: 0.09375rem solid rgba(color.$color-black-heading, 0.7);
@@ -199,13 +201,6 @@
         }
     }
 
-    & .menuButton {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: transparent;
-    }
-
     & .visibleButton {
         display: flex;
         align-items: center;
@@ -250,7 +245,7 @@
     }
 
     .headerFormSearch {
-        max-width: 80%;
+        max-width: 100vw;
 
         &::-webkit-input-placeholder {
             font-size: 1.2rem;
