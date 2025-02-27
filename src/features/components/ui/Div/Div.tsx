@@ -3,9 +3,13 @@ import { HTMLProps, ReactNode, type FC } from 'react';
 interface DivPropsT extends HTMLProps<HTMLDivElement> {
   children: ReactNode;
   className: string;
-  onKeyDown?: (event: React.KeyboardEvent) => void;
   onClick?: () => void;
-  onFocus?: (event: React.FocusEvent) => void;
+  onFocus?: (
+    event: React.FocusEvent<HTMLElement | HTMLDivElement | HTMLImageElement>
+  ) => void;
+  onBlur?: (
+    event: React.FocusEvent<HTMLElement | HTMLDivElement | HTMLImageElement>
+  ) => void;
 }
 
 export const Div: FC<DivPropsT> = ({
