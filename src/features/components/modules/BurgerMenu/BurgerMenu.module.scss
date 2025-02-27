@@ -34,4 +34,75 @@
         align-items: center;
         gap: 2rem;
     }
+
+    &Menu {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        gap: 2rem;
+        padding-block-start: 3rem;
+
+        &List {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &ListItem {
+            font-weight: 500;
+            font-size: size.$group-date-heading-szie;
+            @include scaleElement;
+
+            & > a {
+                color: color.$color-black-heading;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &UiControlsContainer {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 1.5rem;
+    }
+
+    &UiControlsBlock {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    &UiControlsHeading {
+        @include controlHeading;
+    }
+
+    &UiControlsButtonsBlock {
+        display: flex;
+        gap: 2rem;
+
+        & .controlsButton {
+            width: 2.5rem;
+            height: 2.5rem;
+            font-size: size.$alert-banner-size;
+            background: color.$color-control-button;
+            border-radius: 0.5rem;
+
+            &:nth-child(2) {
+                font-weight: 500;
+            }
+
+            &:nth-child(3) {
+                font-weight: 700;
+            }
+        }
+
+        & .active {
+            border: 0.2rem solid color.$color-black-heading;
+        }
+    }
 }

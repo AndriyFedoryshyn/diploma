@@ -17,11 +17,16 @@ import styles from './UIControls.module.scss';
 interface UIThemeControlsPropsT {
   labels: ColorLabelI[];
   isActive: boolean;
+  classNames: {
+    block: string;
+    button: string;
+  };
 }
 
 export const UIThemeControls: FC<UIThemeControlsPropsT> = ({
   labels,
   isActive,
+  classNames,
 }) => {
   const dispatch = useAppDispatch();
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
@@ -50,7 +55,7 @@ export const UIThemeControls: FC<UIThemeControlsPropsT> = ({
   };
 
   return (
-    <Div className={styles['controlsButtonsBlock']} aria-live="polite">
+    <Div className={classNames.block} aria-live="polite">
       {labels.map((label, index) => (
         <Button
           key={index}
@@ -58,7 +63,7 @@ export const UIThemeControls: FC<UIThemeControlsPropsT> = ({
           aria-pressed={selectedIndex === index}
           title={label.title}
           role="button"
-          className={`${styles['controlsButton']} ${
+          className={`${classNames.button} ${
             selectedIndex === index ? styles['active'] : ''
           }`}
           tabIndex={isActive ? 0 : -1}

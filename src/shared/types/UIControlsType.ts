@@ -10,3 +10,11 @@ export interface ColorLabelI {
 }
 
 export type LabelsT = LabelI[];
+export type ColorsI = ColorLabelI[];
+
+export type ClassNamesT = {
+  block: string;
+  heading: string;
+  buttonsBlock: string;
+  button: string;
+};

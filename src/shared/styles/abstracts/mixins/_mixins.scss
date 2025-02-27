@@ -71,6 +71,12 @@
     color: color.$color-black-heading;
 }
 
+@mixin controlHeading {
+    width: 100%;
+    font-weight: 500;
+    font-size: size.$alert-banner-size;
+}
+
 @mixin elementFocus {
     &:focus {
         outline-offset: 0.125rem;

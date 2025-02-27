@@ -17,13 +17,18 @@ interface UIControlsButtonsPropsT {
   isActive: boolean;
   onButtonSelect: (index: number) => void;
   selectedIndex: number;
+  classNames: {
+    block: string;
+    button: string;
+  };
 }
 
 export const UIControlsButtons: FC<UIControlsButtonsPropsT> = ({
+  onButtonSelect,
   labels,
   isActive,
-  onButtonSelect,
   selectedIndex,
+  classNames,
 }) => {
   const { speakText } = useSpeechSynthesis();
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
@@ -53,7 +58,7 @@ export const UIControlsButtons: FC<UIControlsButtonsPropsT> = ({
   );
 
   return (
-    <Div className={styles['controlsButtonsBlock']}>
+    <Div className={classNames.block}>
       {labels.map((label, index) => (
         <Button
           key={index}
@@ -61,7 +66,7 @@ export const UIControlsButtons: FC<UIControlsButtonsPropsT> = ({
           aria-pressed={selectedIndex === index}
           title={label.title}
           role="button"
-          className={`${styles['controlsButton']} ${
+          className={`${classNames.button} ${
             selectedIndex === index ? styles['active'] : ''
           }`}
           tabIndex={isActive ? 0 : -1}

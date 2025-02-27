@@ -2,9 +2,7 @@
 
 import { FC, useEffect, useRef } from 'react';
 
-import { Div, Heading, Button } from '@/index';
-
-import { UIControlsButtons } from './UIControlsButtons';
+import { Div, Button } from '@/index';
 
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
@@ -17,19 +15,26 @@ import { useScreenResize } from '@/shared/hooks/useScreenResize';
 
 import { colorsLabels, labels } from '@/shared/static/uiControls';
 
-import { UIThemeControls } from './UIThemeControls';
-
 import { toggleSpeech } from '@/shared/store/slices/SpeechSynthesisSlice';
 import { initializeTheme, setTheme } from '@/shared/store/slices/ThemeSlice';
 
 import { useUIControls } from '@/shared/contexts/FontSizeContext/FontSizeContext';
 
 import styles from './UIControls.module.scss';
+import { UIControlsFontSize } from './UIControlsFontSize/UIControlsFontSize';
+import { UIControlsThemes } from './UIControlsThemes/UIControlsThemes';
 
 interface HeaderUIControlsPropsT {
   isVisibleControls: boolean;
   handleCloseControls: () => void;
 }
+
+const uiControlsClassNames = {
+  block: styles['controlsFontSizeBlock'],
+  heading: styles['controlsFontSizeHeading'],
+  buttonsBlock: styles['controlsButtonsBlock'],
+  button: styles['controlsButton'],
+};
 
 export const UIControls: FC<HeaderUIControlsPropsT> = ({
   isVisibleControls,
@@ -115,38 +120,20 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
       className={styles['controls']}
     >
       <Div className={styles['controlsContainer']}>
-        <Div className={styles['controlsFontSizeBlock']}>
-          <Heading
-            id="uiControlsHeading"
-            tabIndex={0}
-            onMouseEnter={handleMouseEnter}
-            level="h4"
-            className={styles['controlsFontSizeHeading']}
-          >
-            Розмір шрифту:
-          </Heading>
+        <UIControlsFontSize
+          fontSize={fontSize}
+          handleFontSizeSelect={handleFontSizeSelect}
+          handleMouseEnter={handleMouseEnter}
+          labels={labels}
+          classNames={uiControlsClassNames}
+        />
 
-          <UIControlsButtons
-            labels={labels}
-            onButtonSelect={handleFontSizeSelect}
-            selectedIndex={['small', 'medium', 'large'].indexOf(fontSize)}
-            isActive={true}
-          />
-        </Div>
-
-        <Div className={styles['controlsFontSizeBlock']}>
-          <Heading
-            level="h4"
-            tabIndex={0}
-            className={styles['controlsFontSizeHeading']}
-            onMouseEnter={handleMouseEnter}
-            onFocus={(event) => speakText(event.currentTarget.innerText)}
-          >
-            Колір сайту:
-          </Heading>
-
-          <UIThemeControls isActive={true} labels={colorsLabels} />
-        </Div>
+        <UIControlsThemes
+          colorsLabels={colorsLabels}
+          handleMouseEnter={handleMouseEnter}
+          speakText={speakText}
+          classNames={uiControlsClassNames}
+        />
 
         <Div className={styles['controlsVisibleBlock']}>
           <Button
