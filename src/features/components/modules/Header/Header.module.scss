@@ -114,7 +114,6 @@
     &MainHeading {
         @include mainHeading;
         @include elementFocus;
-        padding-inline: 1rem;
     }
 
     &Form {
