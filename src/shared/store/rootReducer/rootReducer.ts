@@ -1,9 +1,8 @@
-import { combineReducers } from "@reduxjs/toolkit";
+import { combineReducers } from '@reduxjs/toolkit';
 
-import { speechSynthesisSlice } from "@/shared/store/slices/SpeechSynthesisSlice";
-
-import { themeSlice } from "@/shared/store/slices/ThemeSlice";
-import { visibleControlsSlice } from "../slices/visibleControlsSlice";
+import { themeSlice } from '@/shared/store/slices/ThemeSlice';
+import { visibleControlsSlice } from '../slices/visibleControlsSlice';
+import { speechSynthesisSlice } from '@/shared/store/slices/SpeechSynthesisSlice';
 
 export const rootReducer = combineReducers({
   speechSynthesis: speechSynthesisSlice.reducer,

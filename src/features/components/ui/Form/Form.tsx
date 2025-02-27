@@ -1,4 +1,4 @@
-import { HTMLProps, ReactNode, type FC } from "react";
+import { HTMLProps, ReactNode, type FC } from 'react';
 
 interface FormPropsI extends HTMLProps<HTMLFormElement> {
   children: ReactNode;

@@ -1,4 +1,4 @@
-import { HTMLProps, ReactNode } from "react";
+import { HTMLProps, ReactNode } from 'react';
 
 interface ListPropsI<T> extends HTMLProps<HTMLOListElement> {
   renderList: Array<T>;

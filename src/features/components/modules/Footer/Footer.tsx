@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { type FC, useCallback } from "react";
+import { type FC, useCallback } from 'react';
 
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
-import { ukraineRegions } from "@/shared/static/regions";
+import { ukraineRegions } from '@/shared/static/regions';
 
-import { List, Div, Button, Heading, FooterInformation } from "@/index";
-import { Footer as FooterElement } from "../../ui/Footer/Footer";
+import { List, Div, Button, Heading, FooterInformation } from '@/index';
+import { Footer as FooterElement } from '../../ui/Footer/Footer';
 
-import styles from "./Footer.module.scss";
+import styles from './Footer.module.scss';
 
 const regionsClassNames = {
-  list: styles["regionsList"],
-  listItem: styles["regionsListItem"],
+  list: styles['regionsList'],
+  listItem: styles['regionsListItem'],
 };
 
 export const Footer: FC = () => {
@@ -32,7 +32,7 @@ export const Footer: FC = () => {
     (event: React.MouseEvent) => {
       if (isSpeechEnabled) {
         const text = (event.target as HTMLElement).innerText.trim();
-        speakText(text === "Київ" ? text : `${text} область`);
+        speakText(text === 'Київ' ? text : `${text} область`);
       }
     },
     [isSpeechEnabled, speakText]
@@ -40,7 +40,7 @@ export const Footer: FC = () => {
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent, regionName: string) => {
-      if (event.key === "Enter" || event.key === " ") {
+      if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
         alert(`Navigating to region: ${regionName}`);
       }
@@ -49,12 +49,12 @@ export const Footer: FC = () => {
   );
 
   return (
-    <FooterElement className={styles["footer"]}>
-      <Div className={styles["footerContainer"]}>
-        <Div className={styles["footerRegionsList"]}>
+    <FooterElement className={styles['footer']}>
+      <Div className={styles['footerContainer']}>
+        <Div className={styles['footerRegionsList']}>
           <Heading
-            level='h3'
-            className={styles["regionsListHeading"]}
+            level="h3"
+            className={styles['regionsListHeading']}
             onFocus={(e) => handleSpeak(e.currentTarget.innerText)}
           >
             Інші області
@@ -66,8 +66,8 @@ export const Footer: FC = () => {
               <Button
                 key={region.name}
                 tabIndex={0}
-                role='button'
-                className={styles["regionsListButton"]}
+                role="button"
+                className={styles['regionsListButton']}
                 aria-label={`Перейти до області ${region.name}`}
                 onKeyDown={(event) => handleKeyDown(event, region.name)}
                 onMouseEnter={handleMouseEnterRegion}

@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { type FC } from "react";
-import Link from "next/link";
+import { type FC } from 'react';
+import Link from 'next/link';
 
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
 
-import { Button, Span } from "@/index";
+import { Button, Span } from '@/index';
 
-import { ButtonChartT, ButtonsChartT } from "@/shared/types/ButtonsChartType";
+import { ButtonChartT, ButtonsChartT } from '@/shared/types/ButtonsChartType';
 
 interface ChartListPropsI {
   classNames: {
@@ -20,7 +20,7 @@ interface ChartListPropsI {
   list: ButtonsChartT;
 }
 
-export const FOCUS_COLOR: string = "#007bff";
+export const FOCUS_COLOR: string = '#007bff';
 
 export const ChartList: FC<ChartListPropsI> = ({ classNames, list }) => {
   const { speakText } = useSpeechSynthesis();
@@ -37,7 +37,7 @@ export const ChartList: FC<ChartListPropsI> = ({ classNames, list }) => {
     event: React.KeyboardEvent<HTMLButtonElement>,
     group: string
   ) => {
-    if (event.key === "Enter" || event.key === " ") {
+    if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       speakText(`Перехід до групи ${group}`);
       window.location.href = `/group/${group}`;
@@ -45,12 +45,12 @@ export const ChartList: FC<ChartListPropsI> = ({ classNames, list }) => {
   };
 
   return (
-    <ul className={classNames.list} role='list'>
+    <ul className={classNames.list} role="list">
       {list.map((listItem: ButtonChartT) => (
-        <li key={listItem.id} className={classNames.listItem} role='listitem'>
+        <li key={listItem.id} className={classNames.listItem} role="listitem">
           <Link href={`/group/${listItem.numberOfGroup}`} passHref>
             <Button
-              role='button'
+              role="button"
               title={`Група ${listItem.numberOfGroup}`}
               aria-labelledby={`group-${listItem.numberOfGroup}`}
               className={classNames.button}
@@ -64,7 +64,7 @@ export const ChartList: FC<ChartListPropsI> = ({ classNames, list }) => {
               >
                 {listItem.group}
               </Span>
-              <Span className={classNames.numberOfGroup} aria-hidden='true'>
+              <Span className={classNames.numberOfGroup} aria-hidden="true">
                 {listItem.numberOfGroup}
               </Span>
             </Button>

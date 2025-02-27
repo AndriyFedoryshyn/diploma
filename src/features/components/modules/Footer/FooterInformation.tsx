@@ -1,17 +1,17 @@
-import { type FC } from "react";
+import { type FC } from 'react';
 
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
-import { List, Div, Heading, Span, FooterSocial } from "@/index";
+import { List, Div, Heading, Span, FooterSocial } from '@/index';
 
-import { informationList } from "@/shared/static/informationList";
+import { informationList } from '@/shared/static/informationList';
 
-import styles from "./Footer.module.scss";
+import styles from './Footer.module.scss';
 
 const informationListClassNames = {
-  list: styles["footerInformationList"],
-  listItem: styles["footerInformationListItem"],
+  list: styles['footerInformationList'],
+  listItem: styles['footerInformationListItem'],
 };
 
 export const FooterInformation: FC = () => {
@@ -27,23 +27,23 @@ export const FooterInformation: FC = () => {
   };
 
   return (
-    <Div className={styles["footerInformation"]}>
+    <Div className={styles['footerInformation']}>
       <Heading
-        id='footer-information-list'
+        id="footer-information-list"
         onMouseEnter={handleMouseEnter}
-        level='h4'
-        className={styles["footerInformationHeading"]}
+        level="h4"
+        className={styles['footerInformationHeading']}
       >
         Інформація та підтримка
       </Heading>
 
-      <ul className={styles["footerInformationList"]} role='list'>
+      <ul className={styles['footerInformationList']} role="list">
         {informationList.map((listItem) => (
           <li
             key={listItem.id}
-            className={styles["footerInformationListItem"]}
+            className={styles['footerInformationListItem']}
             tabIndex={0}
-            role='listitem'
+            role="listitem"
             aria-label={listItem.title}
             onMouseEnter={handleMouseEnter}
           >
@@ -59,9 +59,9 @@ export const FooterInformation: FC = () => {
           return (
             <Span
               key={listItem.id}
-              className={styles["footerInformationListItem"]}
+              className={styles['footerInformationListItem']}
               tabIndex={0}
-              role='listitem'
+              role="listitem"
               aria-label={listItem.title}
               onMouseEnter={handleMouseEnter}
             >

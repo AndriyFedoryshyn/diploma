@@ -1,21 +1,21 @@
-import { type FC } from "react";
+import { type FC } from 'react';
 
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { socialItems } from "@/shared/static/socialItems";
-import { SocialItemT } from "@/shared/types/FooterType";
+import { socialItems } from '@/shared/static/socialItems';
+import { SocialItemT } from '@/shared/types/FooterType';
 
-import { List } from "@/index";
+import { List } from '@/index';
 
-import styles from "./Footer.module.scss";
+import styles from './Footer.module.scss';
 
 const footerSocialListClassNames = {
-  list: styles["footerSocialList"],
-  listItem: styles["footerSocialListItem"],
+  list: styles['footerSocialList'],
+  listItem: styles['footerSocialListItem'],
 };
 
 export const FooterSocial: FC = () => {
@@ -28,16 +28,16 @@ export const FooterSocial: FC = () => {
 
   return (
     <List
-      role='list'
-      aria-label='Social media links'
+      role="list"
+      aria-label="Social media links"
       classNames={footerSocialListClassNames}
       renderList={socialItems}
       renderItem={(listItem: SocialItemT) => (
         <Link
           key={listItem.href}
           href={listItem.href}
-          target='_blank'
-          rel='noopener noreferrer'
+          target="_blank"
+          rel="noopener noreferrer"
           aria-label={`Перейти на сторінку ${listItem.alt}`}
         >
           <Image
@@ -48,7 +48,7 @@ export const FooterSocial: FC = () => {
             tabIndex={0}
             onMouseEnter={(e) => handleSpeak(e.currentTarget.alt)}
             onFocus={(e) => handleSpeak(e.currentTarget.alt)}
-            className={styles["footerSocialImage"]}
+            className={styles['footerSocialImage']}
           />
         </Link>
       )}

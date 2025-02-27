@@ -1,13 +1,13 @@
-import { type FC } from "react";
+import { type FC } from 'react';
 
-import { Div, Paragpraph } from "@/index";
+import { Div, Paragpraph } from '@/index';
 
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
-import ContentPasteOffIcon from "@mui/icons-material/ContentPasteOff";
+import ContentPasteOffIcon from '@mui/icons-material/ContentPasteOff';
 
-import styles from "../GroupScheduleInfo/GroupScheduleInfo.module.scss";
+import styles from '../GroupScheduleInfo/GroupScheduleInfo.module.scss';
 
 export const GroupPeriodsBanner: FC = () => {
   const { speakText } = useSpeechSynthesis();
@@ -22,11 +22,11 @@ export const GroupPeriodsBanner: FC = () => {
   };
 
   return (
-    <Div className={styles["groupPeriodsInfo"]}>
-      <ContentPasteOffIcon fontSize='large' color='action' />
+    <Div className={styles['groupPeriodsInfo']}>
+      <ContentPasteOffIcon fontSize="large" color="action" />
       <Paragpraph
         onMouseEnter={handleSpeakText}
-        className={styles["groupPeriodsParagraph"]}
+        className={styles['groupPeriodsParagraph']}
       >
         Немає даних
       </Paragpraph>

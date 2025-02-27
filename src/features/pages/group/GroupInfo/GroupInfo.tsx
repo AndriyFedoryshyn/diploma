@@ -1,15 +1,15 @@
-import { type FC } from "react";
+import { type FC } from 'react';
 
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
 
-import { Div, AlertBanner, Button, Heading, Paragpraph } from "@/index";
+import { Div, AlertBanner, Button, Heading, Paragpraph } from '@/index';
 
-import Link from "next/link";
+import Link from 'next/link';
 
-import TelegramIcon from "@mui/icons-material/Telegram";
+import TelegramIcon from '@mui/icons-material/Telegram';
 
-import styles from "@/shared/styles/pages/Group.module.scss";
+import styles from '@/shared/styles/pages/Group.module.scss';
 
 interface GroupInfo {
   firstPart: string | undefined;
@@ -29,37 +29,37 @@ export const GroupInfo: FC<GroupInfo> = ({ firstPart, secondPart }) => {
   };
 
   return (
-    <Div className={styles["groupInfo"]}>
+    <Div className={styles['groupInfo']}>
       <Heading
         onMouseEnter={handleSpeakText}
-        level='h1'
-        className={styles["groupMainHeading"]}
+        level="h1"
+        className={styles['groupMainHeading']}
       >
-        Графік відключень електроенергії у Львівській області (сьогодні):{" "}
+        Графік відключень електроенергії у Львівській області (сьогодні):{' '}
         {firstPart} група ({secondPart} підгрупа)
       </Heading>
-      <Button role='button' type='button' className={styles["groupMainButton"]}>
-        <TelegramIcon fontSize='large' />
+      <Button role="button" type="button" className={styles['groupMainButton']}>
+        <TelegramIcon fontSize="large" />
         <Link
           onMouseEnter={handleSpeakText}
-          target={"_blank"}
-          href={"https://t.me/+3KmvmkL0g39hYTgy"}
-          className={styles["alertBannerMoreLink"]}
+          target={'_blank'}
+          href={'https://t.me/+3KmvmkL0g39hYTgy'}
+          className={styles['alertBannerMoreLink']}
           tabIndex={0}
-          aria-label='Дізнатися актуальну інформацію тут'
+          aria-label="Дізнатися актуальну інформацію тут"
         >
           Підключити сповіщення
         </Link>
       </Button>
       <Paragpraph
         onMouseEnter={handleSpeakText}
-        className={styles["groupMainParagraph"]}
+        className={styles['groupMainParagraph']}
       >
         У вас
         <strong>
-          {" "}
+          {' '}
           {firstPart} група ({secondPart} підгрупа)
-        </strong>{" "}
+        </strong>{' '}
         - після підключення сповіщень орієнтуйтесь на неї!
       </Paragpraph>
       <AlertBanner />

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 type LoadingT = boolean;
 type ErrorT = string | null;

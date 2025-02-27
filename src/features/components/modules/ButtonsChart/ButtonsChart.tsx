@@ -1,21 +1,21 @@
-import { type FC } from "react";
+import { type FC } from 'react';
 
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
 
-import { Div, Heading, ChartList } from "@/index";
+import { Div, Heading, ChartList } from '@/index';
 
-import { chartButtons } from "@/shared/static/chartButtons";
+import { chartButtons } from '@/shared/static/chartButtons';
 
-import { FOCUS_COLOR } from "./ChartList";
+import { FOCUS_COLOR } from './ChartList';
 
-import styles from "./ButtonsChart.module.scss";
+import styles from './ButtonsChart.module.scss';
 
 const chartListClassNames = {
-  list: styles["chartList"],
-  listItem: styles["chartListItem"],
-  button: styles["chartListItemButton"],
-  numberOfGroup: styles["chartListItemNumberOfGroup"],
+  list: styles['chartList'],
+  listItem: styles['chartListItem'],
+  button: styles['chartListItemButton'],
+  numberOfGroup: styles['chartListItemNumberOfGroup'],
 };
 
 export const ButtonChart: FC = () => {
@@ -30,15 +30,15 @@ export const ButtonChart: FC = () => {
   };
 
   return (
-    <Div className={styles["buttonsChartBlock"]}>
+    <Div className={styles['buttonsChartBlock']}>
       <Heading
         onMouseEnter={handleMouseEnter}
-        level='h2'
-        className={styles["chartHeading"]}
-        id='chartHeading'
+        level="h2"
+        className={styles['chartHeading']}
+        id="chartHeading"
         tabIndex={0}
         onBlur={(e) =>
-          (e.currentTarget.style.outline = "2px solid transparent")
+          (e.currentTarget.style.outline = '2px solid transparent')
         }
         onFocus={(e) =>
           (e.currentTarget.style.outline = `2px solid ${FOCUS_COLOR}`)
@@ -48,7 +48,7 @@ export const ButtonChart: FC = () => {
       </Heading>
 
       <ChartList
-        aria-labelledby='chartHeading'
+        aria-labelledby="chartHeading"
         classNames={chartListClassNames}
         list={chartButtons}
       />

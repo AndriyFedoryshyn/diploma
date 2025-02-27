@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useRef, useEffect, type FC } from "react";
+import { useRef, useEffect, type FC } from 'react';
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
-import { Heading, Div } from "@/index";
+import { Heading, Div } from '@/index';
 
-import { AlertRefT } from "@/shared/types/AlertBannerType";
+import { AlertRefT } from '@/shared/types/AlertBannerType';
 
-import styles from "./AlertBanner.module.scss";
+import styles from './AlertBanner.module.scss';
 
 export const AlertBanner: FC = () => {
   const alertRef = useRef<AlertRefT>(null);
@@ -34,15 +34,15 @@ export const AlertBanner: FC = () => {
     const target = event.target as HTMLElement;
     const text = target.innerText.trim();
 
-    if (event.key === "Enter" || event.key === " ") {
+    if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       speakText(text);
-      if (target.tagName === "A") {
+      if (target.tagName === 'A') {
         (target as HTMLAnchorElement).click();
       }
     }
 
-    if (event.key === "Escape") {
+    if (event.key === 'Escape') {
       alertRef.current?.blur();
     }
   };
@@ -60,44 +60,44 @@ export const AlertBanner: FC = () => {
 
   return (
     <Div
-      className={styles["alertBanner"]}
+      className={styles['alertBanner']}
       ref={alertRef}
-      role='alert'
+      role="alert"
       tabIndex={-1}
-      aria-live='assertive'
-      aria-labelledby='alertHeading'
-      aria-describedby='alertDescription'
+      aria-live="assertive"
+      aria-labelledby="alertHeading"
+      aria-describedby="alertDescription"
       onKeyDown={handleKeyDown}
     >
       <Image
-        className={styles["alertBannerIcon"]}
-        src={"/icons/alert_icon.svg"}
-        alt='Іконка знаку оклику'
+        className={styles['alertBannerIcon']}
+        src={'/icons/alert_icon.svg'}
+        alt="Іконка знаку оклику"
         priority
-        aria-hidden='true'
+        aria-hidden="true"
         width={8}
         height={32}
         onMouseEnter={handleImageMouseEnter}
       />
 
       <Heading
-        id='alertHeading'
-        level='h2'
-        className={styles["alertBannerHeading"]}
+        id="alertHeading"
+        level="h2"
+        className={styles['alertBannerHeading']}
         onMouseEnter={handleMouseEnter}
         tabIndex={0}
         onKeyDown={handleKeyDown}
       >
         УВАГА! Через ракетну атаку і пошкодження об&apos;єктів інфраструктури в
         області застосовано аварійні та превентивні відключення. Актуальну
-        інформацію можна{" "}
+        інформацію можна{' '}
         <Link
-          target='_blank'
-          href='https://t.me/+3KmvmkL0g39hYTgy'
-          className={styles["alertBannerMoreLink"]}
+          target="_blank"
+          href="https://t.me/+3KmvmkL0g39hYTgy"
+          className={styles['alertBannerMoreLink']}
           tabIndex={0}
           ref={linkRef}
-          aria-label='Дізнатися актуальну інформацію тут'
+          aria-label="Дізнатися актуальну інформацію тут"
           onKeyDown={handleKeyDown}
         >
           дізнатися ТУТ

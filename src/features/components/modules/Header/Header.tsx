@@ -41,7 +41,9 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
   const dispatch = useAppDispatch();
 
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
-  const { isVisibleControls, isVisibleMenu } = useAppSelector((state) => state.visibleControls);
+  const { isVisibleControls, isVisibleMenu } = useAppSelector(
+    (state) => state.visibleControls
+  );
 
   const { isResize } = useScreenResize(1024);
   const { speakText } = useSpeechSynthesis();

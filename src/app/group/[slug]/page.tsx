@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { usePathname } from "next/navigation";
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
+import { usePathname } from 'next/navigation';
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
 import {
   Div,
@@ -12,9 +12,9 @@ import {
   GroupScheduleInfo,
   Heading,
   GroupPeriodsBanner,
-} from "@/index";
+} from '@/index';
 
-import styles from "@/shared/styles/pages/Group.module.scss";
+import styles from '@/shared/styles/pages/Group.module.scss';
 
 const Group = () => {
   const { speakText } = useSpeechSynthesis();
@@ -30,15 +30,15 @@ const Group = () => {
 
   const pathname = usePathname();
 
-  const slug = pathname?.split("/").pop();
+  const slug = pathname!.split('/').pop();
 
-  const firstPart = slug?.slice(0, 1);
-  const secondPart = slug?.slice(2, 3);
+  const firstPart = slug!.slice(0, 1);
+  const secondPart = slug!.slice(2, 3);
 
   return (
-    <Div className={styles["group"]}>
-      <Div className={styles["groupIntro"]}>
-        <Div className={styles["groupContainer"]}>
+    <Div className={styles['group']}>
+      <Div className={styles['groupIntro']}>
+        <Div className={styles['groupContainer']}>
           <GroupHeader />
           <GroupInfo firstPart={firstPart} secondPart={secondPart} />
         </Div>
@@ -47,11 +47,11 @@ const Group = () => {
       <GroupSchedule />
       <GroupScheduleInfo firstPart={firstPart} secondPart={secondPart} />
 
-      <Div className={styles["groupLightInfo"]}>
+      <Div className={styles['groupLightInfo']}>
         <Heading
           onMouseEnter={handleSpeakText}
-          level='h3'
-          className={styles["groupLightHeading"]}
+          level="h3"
+          className={styles['groupLightHeading']}
         >
           Відключення завтра
         </Heading>

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useFetch } from "@/shared/hooks/useFetch";
+import { useState } from 'react';
+import { useFetch } from '@/shared/hooks/useFetch';
 
 import {
   AlertBanner,
@@ -9,17 +9,17 @@ import {
   ButtonChart,
   SettlementsList,
   Header,
-} from "@/index";
+} from '@/index';
 
-import { AreasT } from "@/shared/types/AreasType";
+import { AreasT } from '@/shared/types/AreasType';
 
-import styles from "@/shared/styles/pages/Home.module.scss";
+import styles from '@/shared/styles/pages/Home.module.scss';
 
 export const HomeClient = () => {
   const { data } = useFetch<AreasT>({
-    url: "/api/locations.json",
+    url: '/api/locations.json',
   });
-  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   const settlements: AreasT = data || [];
 
@@ -30,7 +30,7 @@ export const HomeClient = () => {
   return (
     <>
       <Header onSearch={handleSearch} settlements={settlements} />
-      <Section className={styles["home"]}>
+      <Section className={styles['home']}>
         <AlertBanner />
         <ButtonChart />
         <SettlementsList data={data as AreasT} searchQuery={searchQuery} />

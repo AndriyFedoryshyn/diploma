@@ -1,4 +1,4 @@
-import { HTMLProps, ReactNode, type FC } from "react";
+import { HTMLProps, ReactNode, type FC } from 'react';
 
 interface SpanPropsI extends HTMLProps<HTMLSpanElement> {
   children: ReactNode;

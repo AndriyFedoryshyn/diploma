@@ -106,7 +106,9 @@ export const HeaderForm: FC<HeaderFormProps> = ({ onSearch, settlements }) => {
         />
       )}
 
-      {noResults && <Div className={styles['noResultsMessage']}>Нічого не знайдено</Div>}
+      {noResults && (
+        <Div className={styles['noResultsMessage']}>Нічого не знайдено</Div>
+      )}
     </Form>
   );
 };

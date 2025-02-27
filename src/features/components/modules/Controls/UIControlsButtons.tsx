@@ -1,11 +1,11 @@
-import { type FC, useCallback } from "react";
+import { type FC, useCallback } from 'react';
 
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
-import { Button, Div } from "@/index";
+import { Button, Div } from '@/index';
 
-import styles from "./UIControls.module.scss";
+import styles from './UIControls.module.scss';
 
 interface LabelT {
   label: string;
@@ -32,7 +32,7 @@ export const UIControlsButtons: FC<UIControlsButtonsPropsT> = ({
     (event: React.MouseEvent) => {
       if (isSpeechEnabled) {
         const text = (event.target as HTMLElement)
-          .getAttribute("title")
+          .getAttribute('title')
           ?.trim();
         if (text) {
           speakText(text);
@@ -44,7 +44,7 @@ export const UIControlsButtons: FC<UIControlsButtonsPropsT> = ({
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
-      if (event.key === "Enter" || event.key === " ") {
+      if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
         onButtonSelect(index);
       }
@@ -53,16 +53,16 @@ export const UIControlsButtons: FC<UIControlsButtonsPropsT> = ({
   );
 
   return (
-    <Div className={styles["controlsButtonsBlock"]}>
+    <Div className={styles['controlsButtonsBlock']}>
       {labels.map((label, index) => (
         <Button
           key={index}
           aria-label={label.title}
           aria-pressed={selectedIndex === index}
           title={label.title}
-          role='button'
-          className={`${styles["controlsButton"]} ${
-            selectedIndex === index ? styles["active"] : ""
+          role="button"
+          className={`${styles['controlsButton']} ${
+            selectedIndex === index ? styles['active'] : ''
           }`}
           tabIndex={isActive ? 0 : -1}
           onClick={() => onButtonSelect(index)}

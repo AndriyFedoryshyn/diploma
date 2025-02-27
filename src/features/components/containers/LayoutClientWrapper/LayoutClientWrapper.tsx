@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { FC, ReactNode } from "react";
+import { FC, ReactNode } from 'react';
 
-import { store } from "@/shared/store/store";
+import { store } from '@/shared/store/store';
 
-import { Provider } from "react-redux";
+import { Provider } from 'react-redux';
 
 interface LayoutClientWrapperPropsI {
   children: ReactNode;

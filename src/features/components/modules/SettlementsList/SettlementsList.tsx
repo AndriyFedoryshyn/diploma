@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { useState, type FC } from "react";
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
+import { useState, type FC } from 'react';
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
 
-import { Section, Div, Heading, Button } from "@/index";
+import { Section, Div, Heading, Button } from '@/index';
 
-import { alphabet } from "@/shared/static/alphabet";
+import { alphabet } from '@/shared/static/alphabet';
 
-import { AreasT } from "@/shared/types/AreasType";
+import { AreasT } from '@/shared/types/AreasType';
 
-import { SelectedLetterT } from "@/shared/types/SettlementsList";
+import { SelectedLetterT } from '@/shared/types/SettlementsList';
 
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
-import styles from "./SettlementsList.module.scss";
+import styles from './SettlementsList.module.scss';
 
 interface SettlementsListPropsI {
   searchQuery: string;
@@ -24,7 +24,7 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
   searchQuery,
   data,
 }) => {
-  const [selectedLetter, setSelectedLetter] = useState<SelectedLetterT>("А");
+  const [selectedLetter, setSelectedLetter] = useState<SelectedLetterT>('А');
 
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
 
@@ -50,27 +50,27 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
     .sort((a, b) => a.name.uk.localeCompare(b.name.uk));
 
   return (
-    <Section className={styles["settlementsList"]}>
-      <Div className={styles["settlementsListContainer"]}>
-        <Div className={styles["settlementsListInfo"]}>
+    <Section className={styles['settlementsList']}>
+      <Div className={styles['settlementsListContainer']}>
+        <Div className={styles['settlementsListInfo']}>
           <Heading
-            level='h2'
-            id='settlements-list'
-            className={styles["settlementsListHeading"]}
+            level="h2"
+            id="settlements-list"
+            className={styles['settlementsListHeading']}
             onMouseEnter={handleMouseEnter}
           >
             Перелік населених пунктів
           </Heading>
           <Div
-            className={styles["settlementsListAlphabet"]}
-            role='region'
-            aria-labelledby='alphabet-filter'
+            className={styles['settlementsListAlphabet']}
+            role="region"
+            aria-labelledby="alphabet-filter"
           >
             {alphabet.map((letter) => (
               <Button
-                role='button'
+                role="button"
                 key={letter.id}
-                className={styles["settlementsListAlphabetButton"]}
+                className={styles['settlementsListAlphabetButton']}
                 onClick={() => setSelectedLetter(letter.letter)}
                 aria-pressed={selectedLetter === letter.letter}
                 aria-label={`Фільтрувати за літерою ${letter.letter}`}
@@ -83,19 +83,19 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
         </Div>
 
         <ul
-          className={styles["settlementsListAreas"]}
-          role='list'
-          aria-labelledby='settlements-list'
+          className={styles['settlementsListAreas']}
+          role="list"
+          aria-labelledby="settlements-list"
         >
           <span
-            id='settlements-list'
-            className={styles["settlementsListAlphabetLetter"]}
-            aria-live='polite'
+            id="settlements-list"
+            className={styles['settlementsListAlphabetLetter']}
+            aria-live="polite"
           >
             {selectedLetter}
           </span>
           {filteredData?.map((area) => (
-            <li key={area.id} className={styles["settlementsListAreasItem"]}>
+            <li key={area.id} className={styles['settlementsListAreasItem']}>
               <span onMouseEnter={handleMouseEnter}>{area.name.uk}</span>
             </li>
           ))}

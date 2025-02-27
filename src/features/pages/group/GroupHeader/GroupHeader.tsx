@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React, { type FC } from "react";
+import React, { type FC } from 'react';
 
-import { useAppDispatch } from "@/shared/hooks/useAppDispatch";
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
 
 import {
   Div,
@@ -12,11 +12,12 @@ import {
   HeaderLocation,
   UIControls,
   ControlButton,
-} from "@/index";
+  HeaderElement,
+} from '@/index';
 
-import { toggleControlPanel } from "@/shared/store/slices/visibleControlsSlice";
+import { toggleControlPanel } from '@/shared/store/slices/visibleControlsSlice';
 
-import styles from "./GroupHeader.module.scss";
+import styles from './GroupHeader.module.scss';
 
 export const GroupHeader: FC = () => {
   const dispatch = useAppDispatch();
@@ -48,14 +49,14 @@ export const GroupHeader: FC = () => {
   };
 
   return (
-    <header className={styles["groupHeader"]}>
-      <Div className={styles["groupHeaderContainer"]}>
+    <HeaderElement className={styles['groupHeader']}>
+      <Div className={styles['groupHeaderContainer']}>
         <UIControls
           isVisibleControls={isVisibleControls}
           handleCloseControls={handleCloseControls}
         />
         <HeaderLogo />
-        <Div className={styles["groupControls"]}>
+        <Div className={styles['groupHeaderControls']}>
           <ControlButton
             handleCloseControls={handleCloseControls}
             handleMouseEnter={handleMouseEnter}
@@ -63,6 +64,6 @@ export const GroupHeader: FC = () => {
           <HeaderLocation handleFocus={handleFocus} />
         </Div>
       </Div>
-    </header>
+    </HeaderElement>
   );
 };

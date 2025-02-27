@@ -1,30 +1,30 @@
-"use client";
+'use client';
 
-import { FC, useEffect, useRef } from "react";
+import { FC, useEffect, useRef } from 'react';
 
-import { Div, Heading, Button } from "@/index";
+import { Div, Heading, Button } from '@/index';
 
-import { UIControlsButtons } from "./UIControlsButtons";
+import { UIControlsButtons } from './UIControlsButtons';
 
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";
-import CloseIcon from "@mui/icons-material/Close";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
+import CloseIcon from '@mui/icons-material/Close';
 
-import { useAppDispatch } from "@/shared/hooks/useAppDispatch";
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
-import { useScreenResize } from "@/shared/hooks/useScreenResize";
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useScreenResize } from '@/shared/hooks/useScreenResize';
 
-import { labels } from "@/shared/static/uiControls";
+import { labels } from '@/shared/static/uiControls';
 
-import { LabelT, UIThemeControls } from "./UIThemeControls";
+import { LabelT, UIThemeControls } from './UIThemeControls';
 
-import { toggleSpeech } from "@/shared/store/slices/SpeechSynthesisSlice";
-import { initializeTheme, setTheme } from "@/shared/store/slices/ThemeSlice";
+import { toggleSpeech } from '@/shared/store/slices/SpeechSynthesisSlice';
+import { initializeTheme, setTheme } from '@/shared/store/slices/ThemeSlice';
 
-import { useUIControls } from "@/shared/contexts/FontSizeContext/FontSizeContext";
+import { useUIControls } from '@/shared/contexts/FontSizeContext/FontSizeContext';
 
-import styles from "./UIControls.module.scss";
+import styles from './UIControls.module.scss';
 
 interface HeaderUIControlsPropsT {
   isVisibleControls: boolean;
@@ -32,8 +32,8 @@ interface HeaderUIControlsPropsT {
 }
 
 const themeColorsLabels: LabelT[] = [
-  { label: "A", title: "Enable grayscale mode", theme: "grayscale" },
-  { label: "A", title: "Enable dark mode", theme: "dark" },
+  { label: 'A', title: 'Enable grayscale mode', theme: 'grayscale' },
+  { label: 'A', title: 'Enable dark mode', theme: 'dark' },
 ];
 
 export const UIControls: FC<HeaderUIControlsPropsT> = ({
@@ -54,7 +54,7 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
   }, [isVisibleControls]);
 
   useEffect(() => {
-    const storedSpeechState = localStorage.getItem("isSpeechEnabled");
+    const storedSpeechState = localStorage.getItem('isSpeechEnabled');
     if (storedSpeechState !== null) {
       const isEnabled = JSON.parse(storedSpeechState);
       if (isEnabled !== isSpeechEnabled) {
@@ -64,14 +64,14 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
   }, [appDispatch, isSpeechEnabled]);
 
   useEffect(() => {
-    const storedFontSize = localStorage.getItem("fontSize");
+    const storedFontSize = localStorage.getItem('fontSize');
     if (storedFontSize) {
-      setFontSize(storedFontSize as "small" | "medium" | "large");
+      setFontSize(storedFontSize as 'small' | 'medium' | 'large');
     }
   }, [setFontSize]);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       appDispatch(initializeTheme());
     }
   }, [appDispatch]);
@@ -88,45 +88,45 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
 
     appDispatch(toggleSpeech());
 
-    localStorage.setItem("isSpeechEnabled", JSON.stringify(newState));
+    localStorage.setItem('isSpeechEnabled', JSON.stringify(newState));
 
     speakText(
       newState
-        ? "Голосове читання сайту увімкнено."
-        : "Голосове читання сайту вимкнено."
+        ? 'Голосове читання сайту увімкнено.'
+        : 'Голосове читання сайту вимкнено.'
     );
   };
 
   const handleFontSizeSelect = (index: number) => {
-    const sizes = ["small", "medium", "large"] as const;
+    const sizes = ['small', 'medium', 'large'] as const;
     const newFontSize = sizes[index];
 
     setFontSize(newFontSize);
-    localStorage.setItem("fontSize", newFontSize);
+    localStorage.setItem('fontSize', newFontSize);
   };
 
   const handleRestoreTheme = () => {
-    appDispatch(setTheme("light"));
+    appDispatch(setTheme('light'));
   };
 
   return isVisibleControls ? (
     <Div
       ref={panelRef}
       tabIndex={-1}
-      role='dialog'
-      aria-labelledby='uiControlsHeading'
-      aria-live='polite'
-      data-testid='controlsContainer'
-      className={styles["controls"]}
+      role="dialog"
+      aria-labelledby="uiControlsHeading"
+      aria-live="polite"
+      data-testid="controlsContainer"
+      className={styles['controls']}
     >
-      <Div className={styles["controlsContainer"]}>
-        <Div className={styles["controlsFontSizeBlock"]}>
+      <Div className={styles['controlsContainer']}>
+        <Div className={styles['controlsFontSizeBlock']}>
           <Heading
-            id='uiControlsHeading'
+            id="uiControlsHeading"
             tabIndex={0}
             onMouseEnter={handleMouseEnter}
-            level='h4'
-            className={styles["controlsFontSizeHeading"]}
+            level="h4"
+            className={styles['controlsFontSizeHeading']}
           >
             Розмір шрифту:
           </Heading>
@@ -134,16 +134,16 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
           <UIControlsButtons
             labels={labels}
             onButtonSelect={handleFontSizeSelect}
-            selectedIndex={["small", "medium", "large"].indexOf(fontSize)}
+            selectedIndex={['small', 'medium', 'large'].indexOf(fontSize)}
             isActive={true}
           />
         </Div>
 
-        <Div className={styles["controlsFontSizeBlock"]}>
+        <Div className={styles['controlsFontSizeBlock']}>
           <Heading
-            level='h4'
+            level="h4"
             tabIndex={0}
-            className={styles["controlsFontSizeHeading"]}
+            className={styles['controlsFontSizeHeading']}
             onMouseEnter={handleMouseEnter}
             onFocus={(event) => speakText(event.currentTarget.innerText)}
           >
@@ -153,22 +153,22 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
           <UIThemeControls isActive={true} labels={themeColorsLabels} />
         </Div>
 
-        <Div className={styles["controlsVisibleBlock"]}>
+        <Div className={styles['controlsVisibleBlock']}>
           <Button
             onMouseEnter={handleMouseEnter}
             onClick={handleRestoreTheme}
-            className={styles["controlsVisibleButton"]}
-            aria-label='Toggle site visibility'
+            className={styles['controlsVisibleButton']}
+            aria-label="Toggle site visibility"
           >
             Звичайна версія сайту <VisibilityIcon />
           </Button>
 
           <Button
-            title='Увімкнути голосове читання сайту'
-            aria-label='Увімкнути голосове читання'
-            className={styles["controlsVoiceButton"]}
-            type='button'
-            role='button'
+            title="Увімкнути голосове читання сайту"
+            aria-label="Увімкнути голосове читання"
+            className={styles['controlsVoiceButton']}
+            type="button"
+            role="button"
             onClick={handleVoiceReadingClick}
             onFocus={(e) => speakText(e.currentTarget.innerText)}
           >
@@ -178,11 +178,11 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
 
         {isResize && (
           <Button
-            title='Закрити панель управління'
-            aria-label='Закрити панель управління'
-            role='button'
-            type='button'
-            className={styles["close"]}
+            title="Закрити панель управління"
+            aria-label="Закрити панель управління"
+            role="button"
+            type="button"
+            className={styles['close']}
             onClick={handleCloseControls}
             onFocus={(e) => speakText(e.currentTarget.title)}
           >
