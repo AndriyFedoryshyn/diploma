@@ -1,13 +1,10 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-import {
-  initializeTheme,
-  setTheme,
-  ThemeT,
-} from "@/shared/store/slices/ThemeSlice";
+import { initializeTheme, setTheme } from '@/shared/store/slices/ThemeSlice';
 
-import { useAppDispatch } from "@/shared/hooks/useAppDispatch";
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { ThemeT } from '../types/ThemesType';
 
 export const useTheme = () => {
   const dispatch = useAppDispatch();
@@ -20,7 +17,7 @@ export const useTheme = () => {
 
   const toggleTheme = () => {
     const newTheme: ThemeT =
-      theme === "light" ? "dark" : theme === "dark" ? "grayscale" : "light";
+      theme === 'light' ? 'dark' : theme === 'dark' ? 'grayscale' : 'light';
     dispatch(setTheme(newTheme));
   };
 
