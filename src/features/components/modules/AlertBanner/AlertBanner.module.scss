@@ -12,11 +12,13 @@
     border: 0.125rem dashed color.$color-alert-border;
     padding: 1rem;
     border-radius: 1rem;
+    -webkit-margin-before: 3.75rem;
     margin-block-start: 3.75rem;
 
     &Icon {
         max-width: 100%;
         height: auto;
+        -o-object-fit: cover;
         object-fit: cover;
     }
 

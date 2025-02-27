@@ -74,19 +74,22 @@
 
     &InformationListItem:focus {
         outline: none;
-        border: 2px solid #007bff;
-        background-color: #f0f8ff;
+        border: 2px solid color.$color-notification-bg;
+        background-color: color.$color-background-focus;
     }
 
     &SocialListItem img:focus {
         outline: none;
-        border: 2px solid #007bff;
-        background-color: #f0f8ff;
+        border: 2px solid color.$color-notification-bg;
+        background-color: color.$color-background-focus;
     }
 
     &SocialList {
+        -webkit-padding-before: 0.625rem;
         padding-block-start: 0.625rem;
         width: 100%;
+        max-width: -webkit-fit-content;
+        max-width: -moz-fit-content;
         max-width: fit-content;
         border-top: 0.1rem solid color.$light-border;
         display: flex;
@@ -104,6 +107,7 @@
             background: transparent;
             & > img {
                 max-width: 100%;
+                -o-object-fit: cover;
                 object-fit: cover;
                 transition: transform 0.3s ease-in-out 0s;
                 &:hover {

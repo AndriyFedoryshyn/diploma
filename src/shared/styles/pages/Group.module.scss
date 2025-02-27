@@ -5,7 +5,9 @@
 .group {
     &Container {
         @include resizeContainer;
+        -webkit-padding-before: 1.25rem;
         padding-block-start: 1.25rem;
+        -webkit-padding-after: 3rem;
         padding-block-end: 3rem;
         display: flex;
         flex-flow: column nowrap;
@@ -74,6 +76,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        -webkit-padding-after: 2.75rem;
         padding-block-end: 2.75rem;
         padding-inline: 2rem;
     }
@@ -115,6 +118,7 @@
         align-items: center;
         justify-content: center;
         height: 2.5rem;
+        -webkit-margin-before: 0.4rem;
         margin-block-start: 0.4rem;
         position: relative;
     }
@@ -128,6 +132,7 @@
         position: absolute;
         bottom: 0.3125rem;
         right: 0.3125rem;
+        -webkit-animation: blink 1s infinite alternate;
         animation: blink 1s infinite alternate;
         opacity: 0;
         transition: opacity 0.5s ease-in-out;
@@ -143,6 +148,7 @@
 
     .sheduleInfo {
         width: 100%;
+        -webkit-margin-after: 5rem;
         margin-block-end: 5rem;
 
         &Container {
@@ -159,6 +165,7 @@
         display: flex;
         flex-flow: column nowrap;
         gap: 2rem;
+        -webkit-margin-after: 5rem;
         margin-block-end: 5rem;
     }
 
@@ -185,6 +192,15 @@
         .scheduleHoursList {
             grid-template-columns: repeat(6, 1fr);
         }
+    }
+}
+
+@-webkit-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.3;
     }
 }
 

@@ -11,6 +11,8 @@
     }
 
     &Heading {
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
         width: fit-content;
         font-size: size.$group-date-heading-szie;
         color: color.$color-black-heading;
@@ -18,6 +20,8 @@
     }
 
     &Paragrapg {
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
         width: fit-content;
         color: color.$color-black-heading;
         line-height: 1.29rem;
@@ -69,12 +73,14 @@
 
     &Heading {
         @include defaultHeading;
+        -webkit-margin-after: 1rem;
         margin-block-end: 1rem;
     }
 
     &Paragraph {
         @include defaultParagraph;
         max-width: 25rem;
+        -webkit-margin-after: 0.75rem;
         margin-block-end: 0.75rem;
     }
 

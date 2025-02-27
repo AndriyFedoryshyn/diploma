@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { FC } from "react";
+import { FC } from 'react';
 
-import Image from "next/image";
+import Image from 'next/image';
 
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
-import { useRouter } from "next/navigation";
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useRouter } from 'next/navigation';
 
-import { PATHS } from "@/shared/enums/paths";
+import { PATHS } from '@/shared/enums/paths';
 
-import { Div } from "@/index";
+import { Div } from '@/index';
 
-import styles from "./Header.module.scss";
+import styles from './Header.module.scss';
 
 export const HeaderLogo: FC = () => {
   const router = useRouter();
@@ -52,28 +52,28 @@ export const HeaderLogo: FC = () => {
 
   return (
     <Div
-      className={styles["headerLogo"]}
-      role='img'
-      aria-label='Логотип компанії Energy-UA'
-      data-role='Header Logo'
+      className={styles['headerLogo']}
+      role="img"
+      aria-label="Логотип компанії Energy-UA"
+      data-role="Header Logo"
       tabIndex={0}
       onClick={handleGoHomePage}
       onFocus={handleFocus}
       onBlur={(e) => e.currentTarget.classList.remove(styles.focused)}
     >
       <Image
-        className={styles["headerLogoIcon"]}
-        src='/icons/energy_logo.svg'
-        alt='Логотип компанії Energy-UA'
+        className={styles['headerLogoIcon']}
+        src="/icons/energy_logo.svg"
+        alt="Логотип компанії Energy-UA"
         width={55}
         height={55}
         onMouseEnter={handleImageMouseEnter}
         onFocus={handleImageFocus}
         tabIndex={0}
       />
-      <Div className={styles["headerLogoHeadings"]}>
+      <Div className={styles['headerLogoHeadings']}>
         <h4
-          className={styles["headerLogoHeading"]}
+          className={styles['headerLogoHeading']}
           onMouseEnter={handleMouseEnter}
           onFocus={handleFocus}
           tabIndex={0}
@@ -81,7 +81,7 @@ export const HeaderLogo: FC = () => {
           Energy-UA
         </h4>
         <h5
-          className={styles["headerLogoSubheading"]}
+          className={styles['headerLogoSubheading']}
           onMouseEnter={handleMouseEnter}
           onFocus={handleFocus}
           tabIndex={0}

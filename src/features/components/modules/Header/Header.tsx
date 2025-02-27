@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useEffect, type FC } from "react";
+import { useEffect, type FC } from 'react';
 
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
-import { useScreenResize } from "@/shared/hooks/useScreenResize";
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
-import { useAppDispatch } from "@/shared/hooks/useAppDispatch";
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
+import { useScreenResize } from '@/shared/hooks/useScreenResize';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 
 import {
   HeaderForm,
@@ -16,21 +16,21 @@ import {
   HeaderLocation,
   HeaderElement,
   ControlButton,
-} from "@/index";
+} from '@/index';
 
-import { AreasT } from "@/shared/types/AreasType";
-import { UIControls } from "../Controls/UIControls";
+import { AreasT } from '@/shared/types/AreasType';
+import { UIControls } from '../Controls/UIControls';
 
-import { SearchTermT } from "@/shared/types/HeaderType";
+import { SearchTermT } from '@/shared/types/HeaderType';
 
-import MenuIcon from "@mui/icons-material/Menu";
+import MenuIcon from '@mui/icons-material/Menu';
 
-import styles from "./Header.module.scss";
+import styles from './Header.module.scss';
 import {
   setMenuVisibility,
   toggleControlPanel,
   toggleMenu,
-} from "@/shared/store/slices/visibleControlsSlice";
+} from '@/shared/store/slices/visibleControlsSlice';
 
 interface HeaderProps {
   onSearch: (searchTerm: SearchTermT) => void;
@@ -41,9 +41,7 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
   const dispatch = useAppDispatch();
 
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
-  const { isVisibleControls, isVisibleMenu } = useAppSelector(
-    (state) => state.visibleControls
-  );
+  const { isVisibleControls, isVisibleMenu } = useAppSelector((state) => state.visibleControls);
 
   const { isResize } = useScreenResize(1024);
   const { speakText } = useSpeechSynthesis();
@@ -70,7 +68,7 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
   };
 
   useEffect(() => {
-    const savedState = localStorage.getItem("burgerMenu");
+    const savedState = localStorage.getItem('burgerMenu');
     if (savedState !== null) {
       dispatch(setMenuVisibility(JSON.parse(savedState)));
     }
@@ -81,12 +79,12 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
   };
 
   return (
-    <HeaderElement className={styles["header"]} role='banner'>
-      <Div className={styles["headerContainer"]}>
-        <Div className={styles["headerContainerRow"]}>
+    <HeaderElement className={styles['header']} role="banner">
+      <Div className={styles['headerContainer']}>
+        <Div className={styles['headerContainerRow']}>
           <HeaderLogo />
           {!isResize && (
-            <Div className={styles["headerLocationThemeBlock"]}>
+            <Div className={styles['headerLocationThemeBlock']}>
               <ControlButton
                 handleCloseControls={handleCloseControls}
                 handleMouseEnter={handleMouseEnter}
@@ -110,13 +108,13 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
         {isResize && (
           <Button
             onClick={() => dispatch(toggleMenu())}
-            aria-label='Меню'
+            aria-label="Меню"
             aria-expanded={isVisibleMenu}
-            className={styles["menuButton"]}
+            className={styles['menuButton']}
             tabIndex={0}
-            title='Кнопка відкриття меню'
+            title="Кнопка відкриття меню"
           >
-            <MenuIcon fontSize='large' aria-hidden='true' />
+            <MenuIcon fontSize="large" aria-hidden="true" />
           </Button>
         )}
       </Div>
@@ -126,10 +124,10 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
         handleCloseBurgerMenu={() => dispatch(toggleMenu())}
       />
 
-      <Div className={styles["headerMainHeadingContainer"]}>
+      <Div className={styles['headerMainHeadingContainer']}>
         <h1
-          className={styles["headerMainHeading"]}
-          aria-live='polite'
+          className={styles['headerMainHeading']}
+          aria-live="polite"
           tabIndex={0}
           onMouseEnter={handleMouseEnter}
           onFocus={handleFocus}

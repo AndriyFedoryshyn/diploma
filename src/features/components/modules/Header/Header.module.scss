@@ -21,6 +21,7 @@
         width: 100%;
         display: flex;
         justify-content: center;
+        -webkit-padding-before: 1.5625rem;
         padding-block-start: 1.5625rem;
 
         &Row {
@@ -51,6 +52,7 @@
 
     &LogoIcon {
         max-width: 100%;
+        -o-object-fit: cover;
         object-fit: cover;
 
         &:focus {
@@ -97,6 +99,8 @@
     }
 
     &Location {
+        max-width: -webkit-fit-content;
+        max-width: -moz-fit-content;
         max-width: fit-content;
         background: color.$color-location-background;
         border-radius: 0.5rem;
@@ -116,6 +120,7 @@
 
     &LocationIcon {
         max-width: 100%;
+        -o-object-fit: cover;
         object-fit: cover;
     }
 
@@ -125,6 +130,7 @@
         flex-flow: column nowrap;
         align-items: center;
         gap: 2rem;
+        -webkit-margin-before: 2rem;
         margin-block-start: 2rem;
     }
 
@@ -143,6 +149,7 @@
         display: flex;
         align-items: center;
         flex-flow: column nowrap;
+        -webkit-padding-after: 5rem;
         padding-block-end: 5rem;
         gap: 2rem;
     }
@@ -165,6 +172,26 @@
 
         background: url("/icons/search_logo.svg") no-repeat 1rem;
         transition: border 0.1s ease-in-out 0s;
+
+        &::-webkit-input-placeholder {
+            color: rgba(color.$color-black-heading, 0.7);
+            font-size: 1.25rem;
+        }
+
+        &::-moz-placeholder {
+            color: rgba(color.$color-black-heading, 0.7);
+            font-size: 1.25rem;
+        }
+
+        &:-ms-input-placeholder {
+            color: rgba(color.$color-black-heading, 0.7);
+            font-size: 1.25rem;
+        }
+
+        &::-ms-input-placeholder {
+            color: rgba(color.$color-black-heading, 0.7);
+            font-size: 1.25rem;
+        }
 
         &::placeholder {
             color: rgba(color.$color-black-heading, 0.7);
@@ -232,6 +259,7 @@
     }
 
     .menuButton {
+        -webkit-margin-start: 1.5rem;
         margin-inline-start: 1.5rem;
     }
 }
@@ -258,6 +286,22 @@
 
     .headerFormSearch {
         max-width: 80%;
+
+        &::-webkit-input-placeholder {
+            font-size: 1.2rem;
+        }
+
+        &::-moz-placeholder {
+            font-size: 1.2rem;
+        }
+
+        &:-ms-input-placeholder {
+            font-size: 1.2rem;
+        }
+
+        &::-ms-input-placeholder {
+            font-size: 1.2rem;
+        }
 
         &::placeholder {
             font-size: 1.2rem;

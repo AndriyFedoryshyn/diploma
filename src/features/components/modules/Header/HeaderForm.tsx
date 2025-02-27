@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import React, { ChangeEvent, useState, type FC } from "react";
+import React, { ChangeEvent, useState, type FC } from 'react';
 
-import { useSpeechSynthesis } from "@/shared/hooks/useSpeechSynthesis ";
-import { useAppSelector } from "@/shared/hooks/useAppSelector";
+import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
-import { NoResultsT, SearchT, SearchTermT } from "@/shared/types/HeaderType";
-import { AreaT } from "@/shared/types/AreasType";
+import { NoResultsT, SearchT, SearchTermT } from '@/shared/types/HeaderType';
+import { AreaT } from '@/shared/types/AreasType';
 
-import { List, Span, Div, Form } from "@/index";
+import { List, Span, Div, Form } from '@/index';
 
-import styles from "./Header.module.scss";
+import styles from './Header.module.scss';
 
 const filteredSuggestionsClassNames = {
-  list: styles["suggestionsDropdown"],
-  listItem: styles["suggestionsItem"],
+  list: styles['suggestionsDropdown'],
+  listItem: styles['suggestionsItem'],
 };
 
 interface HeaderFormProps {
@@ -23,7 +23,7 @@ interface HeaderFormProps {
 }
 
 export const HeaderForm: FC<HeaderFormProps> = ({ onSearch, settlements }) => {
-  const [search, setSearch] = useState<SearchT>("");
+  const [search, setSearch] = useState<SearchT>('');
   const [filteredSuggestions, setFilteredSuggestions] = useState<AreaT[]>([]);
   const [noResults, setNoResults] = useState<NoResultsT>(false);
 
@@ -46,7 +46,7 @@ export const HeaderForm: FC<HeaderFormProps> = ({ onSearch, settlements }) => {
     const query = event.target.value;
     setSearch(query);
 
-    if (query.trim() === "") {
+    if (query.trim() === '') {
       setFilteredSuggestions([]);
       setNoResults(false);
       onSearch(query);
@@ -63,24 +63,24 @@ export const HeaderForm: FC<HeaderFormProps> = ({ onSearch, settlements }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmitForm} className={styles["headerForm"]}>
+    <Form onSubmit={handleSubmitForm} className={styles['headerForm']}>
       <label
         onMouseEnter={handleMouseEnter}
-        htmlFor='searchInput'
-        className={styles["headerFormSerachLabel"]}
+        htmlFor="searchInput"
+        className={styles['headerFormSerachLabel']}
         tabIndex={0}
       >
         Введіть населений пункт для пошуку
       </label>
       <input
-        id='searchInput'
-        className={styles["headerFormSearch"]}
+        id="searchInput"
+        className={styles['headerFormSearch']}
         value={search}
         onChange={handleSearchChange}
-        type='text'
-        placeholder='Населений пункт'
-        aria-label='Населений пункт для пошуку'
-        aria-required='true'
+        type="text"
+        placeholder="Населений пункт"
+        aria-label="Населений пункт для пошуку"
+        aria-required="true"
         tabIndex={0}
       />
 
@@ -106,9 +106,7 @@ export const HeaderForm: FC<HeaderFormProps> = ({ onSearch, settlements }) => {
         />
       )}
 
-      {noResults && (
-        <Div className={styles["noResultsMessage"]}>Нічого не знайдено</Div>
-      )}
+      {noResults && <Div className={styles['noResultsMessage']}>Нічого не знайдено</Div>}
     </Form>
   );
 };

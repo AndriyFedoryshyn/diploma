@@ -1,10 +1,10 @@
-import { HTMLProps, type FC } from "react";
+import { HTMLProps, type FC } from 'react';
 
-import Image from "next/image";
+import Image from 'next/image';
 
-import { Div } from "@/index";
+import { Div } from '@/index';
 
-import styles from "./Header.module.scss";
+import styles from './Header.module.scss';
 
 interface HeaderLocationProps extends HTMLProps<HTMLElement> {
   handleMouseEnter?: (event: React.MouseEvent) => void;
@@ -19,14 +19,14 @@ export const HeaderLocation: FC<HeaderLocationProps> = ({
 }) => {
   return (
     <Div
-      className={styles["headerLocation"]}
+      className={styles['headerLocation']}
       onMouseEnter={handleImageMouseEnter}
       tabIndex={0}
     >
       <Image
-        src={"/icons/location_logo.svg"}
-        className={styles["headerLocationIcon"]}
-        alt='Логотип локації'
+        src={'/icons/location_logo.svg'}
+        className={styles['headerLocationIcon']}
+        alt="Логотип локації"
         width={15}
         height={15}
         priority
@@ -34,7 +34,7 @@ export const HeaderLocation: FC<HeaderLocationProps> = ({
       />
       <h5
         onMouseEnter={handleMouseEnter}
-        className={styles["headerLocationMark"]}
+        className={styles['headerLocationMark']}
         onFocus={handleFocus}
       >
         Львівська обл.
