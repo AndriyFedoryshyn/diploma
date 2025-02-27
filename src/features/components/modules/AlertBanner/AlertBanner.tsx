@@ -54,6 +54,13 @@ export const AlertBanner: FC = () => {
     }
   };
 
+  const handleFocus = (event: React.FocusEvent) => {
+    if (isSpeechEnabled) {
+      const altText = (event.target as HTMLElement).innerText.trim();
+      speakText(altText);
+    }
+  };
+
   useEffect(() => {
     alertRef.current?.focus();
   }, []);
@@ -63,11 +70,12 @@ export const AlertBanner: FC = () => {
       className={styles['alertBanner']}
       ref={alertRef}
       role="alert"
-      tabIndex={-1}
+      tabIndex={0}
       aria-live="assertive"
       aria-labelledby="alertHeading"
       aria-describedby="alertDescription"
       onKeyDown={handleKeyDown}
+      onFocus={handleFocus}
     >
       <Image
         className={styles['alertBannerIcon']}
@@ -77,6 +85,7 @@ export const AlertBanner: FC = () => {
         aria-hidden="true"
         width={8}
         height={32}
+        tabIndex={0}
         onMouseEnter={handleImageMouseEnter}
       />
 
@@ -87,6 +96,7 @@ export const AlertBanner: FC = () => {
         onMouseEnter={handleMouseEnter}
         tabIndex={0}
         onKeyDown={handleKeyDown}
+        onFocus={handleFocus}
       >
         УВАГА! Через ракетну атаку і пошкодження об&apos;єктів інфраструктури в
         області застосовано аварійні та превентивні відключення. Актуальну
@@ -99,6 +109,7 @@ export const AlertBanner: FC = () => {
           ref={linkRef}
           aria-label="Дізнатися актуальну інформацію тут"
           onKeyDown={handleKeyDown}
+          onFocus={handleFocus}
         >
           дізнатися ТУТ
         </Link>

@@ -4,6 +4,7 @@
 
 .controls {
     width: 100%;
+    max-width: 95%;
     position: absolute;
     top: 7rem;
     border-radius: 0.5rem;
@@ -19,6 +20,7 @@
         background: transparent;
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 1rem;
         font-weight: 500;
         font-size: 1rem;
@@ -35,7 +37,6 @@
     }
 
     & .controlsFontSizeBlock {
-        width: 50%;
         display: flex;
         align-items: center;
         gap: 1rem;
@@ -47,7 +48,6 @@
     }
 
     & .controlsButtonsBlock {
-        width: 100%;
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -91,26 +91,24 @@
         background: transparent;
     }
 
-    & .visibleButton {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        font-weight: 500;
-        font-size: 1.1rem;
-        background: transparent;
-        transition: transform 0.3s ease-in-out 0s;
-
-        &:hover {
-            transform: scale(1.1);
-        }
-    }
-
     &VisibleBlock {
         display: flex;
         gap: 1rem;
     }
 }
 
+@media (max-width: 68.75rem) {
+    .controls {
+        &Container {
+            max-width: 100%;
+        }
+
+        & .close {
+            top: 0;
+            right: 0;
+        }
+    }
+}
 @media (max-width: 64rem) {
     .controlsFontSizeBlock {
         max-width: 13rem !important;

@@ -1,22 +1,20 @@
+'use client';
+
 import { FC, useCallback, useMemo } from 'react';
+
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
 import { setTheme } from '../../../../shared/store/slices/ThemeSlice';
 
 import { Button, Div } from '@/index';
 
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { ColorLabelI } from '@/shared/types/UIControlsType';
 
 import styles from './UIControls.module.scss';
 
-export interface LabelT {
-  label: string;
-  title: string;
-  theme: 'light' | 'grayscale' | 'dark';
-}
-
 interface UIThemeControlsPropsT {
-  labels: LabelT[];
+  labels: ColorLabelI[];
   isActive: boolean;
 }
 
@@ -42,7 +40,7 @@ export const UIThemeControls: FC<UIThemeControlsPropsT> = ({
     <Div className={styles['controlsButtonsBlock']} aria-live="polite">
       {labels.map((label, index) => (
         <Button
-          key={label.theme}
+          key={index}
           aria-label={label.title}
           aria-pressed={selectedIndex === index}
           title={label.title}

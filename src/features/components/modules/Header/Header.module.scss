@@ -8,21 +8,19 @@
     display: flex;
     justify-content: center;
     flex-flow: column nowrap;
-    gap: 5rem;
     background: url("/images/header_background.png") no-repeat center center;
     background-size: 100% 100%;
     background-position: top center;
-    padding-inline: 1.5rem;
     height: 100%;
 
     &Container {
-        position: relative;
         align-items: flex-start;
         width: 100%;
         display: flex;
         justify-content: center;
         -webkit-padding-before: 1.5625rem;
         padding-block-start: 1.5625rem;
+        padding-inline: 1.5rem;
 
         &Row {
             @include resizeContainer;
@@ -37,17 +35,9 @@
         display: flex;
         gap: 1rem;
         cursor: pointer;
-        transition: transform 0.3s ease-in-out 0s;
 
-        &:focus {
-            outline: none;
-            border: 2px solid color.$color-notification-bg;
-            border-radius: 0.5rem;
-        }
-
-        &:hover {
-            transform: scale(1.1);
-        }
+        @include elementFocus;
+        @include scaleElement;
     }
 
     &LogoIcon {
@@ -55,11 +45,7 @@
         -o-object-fit: cover;
         object-fit: cover;
 
-        &:focus {
-            outline: none;
-            border: 2px solid color.$color-notification-bg;
-            border-radius: 50%;
-        }
+        @include elementFocus;
     }
 
     &LogoHeadings {
@@ -74,22 +60,14 @@
         color: color.$color-black-heading;
         min-height: 1.4rem;
 
-        &:focus {
-            outline: none;
-            border: 2px solid color.$color-notification-bg;
-            border-radius: 0.5rem;
-        }
+        @include elementFocus;
     }
 
     &LogoSubheading {
         font-size: 1rem;
         color: color.$color-black-heading;
 
-        &:focus {
-            outline: none;
-            border: 2px solid color.$color-notification-bg;
-            border-radius: 0.5rem;
-        }
+        @include elementFocus;
     }
 
     &LocationThemeBlock {
@@ -130,18 +108,12 @@
         flex-flow: column nowrap;
         align-items: center;
         gap: 2rem;
-        -webkit-margin-before: 2rem;
-        margin-block-start: 2rem;
+        padding-block-start: 5rem;
     }
 
     &MainHeading {
         @include mainHeading;
-
-        &:focus {
-            outline: none;
-            border: 2px solid color.$color-notification-bg;
-            border-radius: 0.5rem;
-        }
+        @include elementFocus;
     }
 
     &Form {
@@ -158,6 +130,7 @@
         font-size: 1.25rem;
         line-height: 1.875rem;
         color: color.$color-black-heading;
+        @include elementFocus;
     }
 
     &FormSearch {
@@ -198,11 +171,7 @@
             font-size: 1.25rem;
         }
 
-        &:focus {
-            border: 3px solid color.$color-notification-bg;
-            outline-offset: 2px;
-            border-radius: 1rem;
-        }
+        @include elementFocus;
     }
 
     & .suggestionsDropdown {
@@ -244,11 +213,7 @@
         font-weight: 500;
         font-size: 1.1rem;
         background: transparent;
-        transition: transform 0.3s ease-in-out 0s;
-
-        &:hover {
-            transform: scale(1.1);
-        }
+        @include scaleElement;
     }
 }
 

@@ -1,6 +1,12 @@
-export interface LabelT {
+export interface LabelI {
   label: string;
   title: string;
 }
 
-export type LabelsT = LabelT[];
+export interface ColorLabelI {
+  label: string;
+  title: string;
+  theme: 'light' | 'dark' | 'grayscale';
+}
+
+export type LabelsT = LabelI[];

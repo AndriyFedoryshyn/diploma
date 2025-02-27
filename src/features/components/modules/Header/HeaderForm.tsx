@@ -62,6 +62,13 @@ export const HeaderForm: FC<HeaderFormProps> = ({ onSearch, settlements }) => {
     onSearch(query);
   };
 
+  const handleFocus = (event: React.FocusEvent) => {
+    if (isSpeechEnabled) {
+      const text = (event.target as HTMLElement).innerText.trim();
+      speakText(text);
+    }
+  };
+
   return (
     <Form onSubmit={handleSubmitForm} className={styles['headerForm']}>
       <label
@@ -69,6 +76,7 @@ export const HeaderForm: FC<HeaderFormProps> = ({ onSearch, settlements }) => {
         htmlFor="searchInput"
         className={styles['headerFormSerachLabel']}
         tabIndex={0}
+        onFocus={handleFocus}
       >
         Введіть населений пункт для пошуку
       </label>

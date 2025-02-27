@@ -30,12 +30,12 @@ export const HeaderLocation: FC<HeaderLocationProps> = ({
         width={15}
         height={15}
         priority
+        onFocus={handleFocus}
         onMouseEnter={handleImageMouseEnter}
       />
       <h5
         onMouseEnter={handleMouseEnter}
         className={styles['headerLocationMark']}
-        onFocus={handleFocus}
       >
         Львівська обл.
       </h5>

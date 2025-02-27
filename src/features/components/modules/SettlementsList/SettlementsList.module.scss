@@ -41,10 +41,14 @@
     }
 
     &AlphabetLetter {
+        width: fit-content;
         font-weight: 500;
         color: color.$color-black-heading;
         font-size: 3rem;
         line-height: 2.58rem;
+        cursor: pointer;
+
+        @include scaleElement;
     }
 
     &AlphabetButton {
@@ -54,11 +58,7 @@
         background: color.$color-chart-button-background;
         border-radius: 0.5rem;
 
-        transition: transform 0.3s ease-in-out 0s;
-
-        &:hover {
-            transform: scale(1.1);
-        }
+        @include scaleElement;
     }
 
     &Areas {
@@ -71,6 +71,10 @@
         color: color.$color-black-heading;
         line-height: 1.5rem;
         font-weight: 500;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
 

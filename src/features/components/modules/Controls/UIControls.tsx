@@ -15,9 +15,9 @@ import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useScreenResize } from '@/shared/hooks/useScreenResize';
 
-import { labels } from '@/shared/static/uiControls';
+import { colorsLabels, labels } from '@/shared/static/uiControls';
 
-import { LabelT, UIThemeControls } from './UIThemeControls';
+import { UIThemeControls } from './UIThemeControls';
 
 import { toggleSpeech } from '@/shared/store/slices/SpeechSynthesisSlice';
 import { initializeTheme, setTheme } from '@/shared/store/slices/ThemeSlice';
@@ -30,11 +30,6 @@ interface HeaderUIControlsPropsT {
   isVisibleControls: boolean;
   handleCloseControls: () => void;
 }
-
-const themeColorsLabels: LabelT[] = [
-  { label: 'A', title: 'Enable grayscale mode', theme: 'grayscale' },
-  { label: 'A', title: 'Enable dark mode', theme: 'dark' },
-];
 
 export const UIControls: FC<HeaderUIControlsPropsT> = ({
   isVisibleControls,
@@ -150,7 +145,7 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
             Колір сайту:
           </Heading>
 
-          <UIThemeControls isActive={true} labels={themeColorsLabels} />
+          <UIThemeControls isActive={true} labels={colorsLabels} />
         </Div>
 
         <Div className={styles['controlsVisibleBlock']}>
