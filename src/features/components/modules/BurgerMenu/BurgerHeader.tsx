@@ -4,8 +4,9 @@ import { Div, HeaderLogo, HeaderLocation, Button } from '@/index';
 
 import CloseIcon from '@mui/icons-material/Close';
 
-import styles from './BurgerMenu.module.scss';
 import { BurgerHeaderPropsI } from '@/shared/interfaces/BurgerHeader';
+
+import styles from './BurgerMenu.module.scss';
 
 export const BurgerHeader: FC<BurgerHeaderPropsI> = ({
   closeButtonRef,
@@ -17,11 +18,13 @@ export const BurgerHeader: FC<BurgerHeaderPropsI> = ({
   return (
     <Div className={styles['burgerNav']}>
       <HeaderLogo />
+
       <Div className={styles['burgerRightBlock']}>
         <HeaderLocation
           handleFocus={handleFocus}
           handleMouseEnter={handleMouseEnter}
         />
+
         <Button
           ariaLabel="Закрити Меню"
           title="Закрити Меню"

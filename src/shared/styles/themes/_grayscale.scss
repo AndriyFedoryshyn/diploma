@@ -3,3 +3,81 @@ $color-white: #fff;
 $color-light-gray: #ddd;
 $color-dark-gray: #bbb;
 $color-link: #007bff;
+
+[data-theme="grayscale"] {
+    filter: grayscale(100%);
+    color: $color-black;
+    background-color: $color-white;
+}
+
+[data-theme="grayscale"] p,
+[data-theme="grayscale"] h1,
+[data-theme="grayscale"] h2,
+[data-theme="grayscale"] h3,
+[data-theme="grayscale"] h4,
+[data-theme="grayscale"] h5,
+[data-theme="grayscale"] h6,
+[data-theme="grayscale"] span,
+[data-theme="grayscale"] a {
+    color: $color-black;
+    font-family: Arial, sans-serif;
+}
+
+[data-theme="grayscale"] button,
+[data-theme="grayscale"] a {
+    color: $color-black;
+    background-color: $color-light-gray;
+    text-decoration: none;
+    border-radius: 0.25rem;
+}
+
+[data-theme="grayscale"] button:hover,
+[data-theme="grayscale"] a:hover {
+    background-color: $color-dark-gray;
+    cursor: pointer;
+}
+
+[data-theme="grayscale"] a {
+    color: $color-link;
+}
+
+[data-theme="grayscale"] input,
+[data-theme="grayscale"] select,
+[data-theme="grayscale"] textarea {
+    background-color: $color-white;
+    color: grayscale $color-black;
+    font-size: 1rem;
+    border-radius: 1rem;
+}
+
+[data-theme="grayscale"] h1,
+[data-theme="grayscale"] h2,
+[data-theme="grayscale"] h3,
+[data-theme="grayscale"] h4,
+[data-theme="grayscale"] h5,
+[data-theme="grayscale"] h6 {
+    color: $color-black;
+    font-weight: bold;
+}
+
+[data-theme="grayscale"] img {
+    filter: grayscale(100%) contrast(100%) brightness(100%);
+}
+
+[data-theme="grayscale"] ul,
+[data-theme="grayscale"] ol {
+    color: $color-black;
+}
+
+@media (prefers-contrast: high) {
+    [data-theme="grayscale"] {
+        filter: grayscale(0%);
+        color: $color-black;
+        background-color: $color-white;
+    }
+    [data-theme="grayscale"] button,
+    [data-theme="grayscale"] a {
+        background-color: $color-black;
+        color: $color-white;
+    }
+}

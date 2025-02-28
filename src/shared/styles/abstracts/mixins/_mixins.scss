@@ -92,3 +92,12 @@
         transform: scale(1.2);
     }
 }
+
+@mixin hoverButton {
+    transition: background 0.3s ease-in-out 0s;
+    border-radius: 0.5rem;
+
+    &:hover {
+        background: color.$color-background-focus;
+    }
+}

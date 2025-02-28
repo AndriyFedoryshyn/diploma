@@ -1,7 +1,8 @@
 @use "../base/reset/reset";
 @use "../base/colors/colors" as color;
-@use "../themes/grayscale" as grayscale;
-@use "../themes/dark" as dark;
+@use "../themes/grayscale";
+@use "../themes/dark";
+@use "../themes/cataract";
 
 [data-font="small"] {
     font-size: 0.75rem;
@@ -13,84 +14,6 @@
 
 [data-font="large"] {
     font-size: 1.25rem;
-}
-
-[data-theme="grayscale"] {
-    filter: grayscale(100%);
-    color: grayscale.$color-black;
-    background-color: grayscale.$color-white;
-}
-
-[data-theme="grayscale"] p,
-[data-theme="grayscale"] h1,
-[data-theme="grayscale"] h2,
-[data-theme="grayscale"] h3,
-[data-theme="grayscale"] h4,
-[data-theme="grayscale"] h5,
-[data-theme="grayscale"] h6,
-[data-theme="grayscale"] span,
-[data-theme="grayscale"] a {
-    color: grayscale.$color-black;
-    font-family: Arial, sans-serif;
-}
-
-[data-theme="grayscale"] button,
-[data-theme="grayscale"] a {
-    color: grayscale.$color-black;
-    background-color: grayscale.$color-light-gray;
-    text-decoration: none;
-    border-radius: 0.25rem;
-}
-
-[data-theme="grayscale"] button:hover,
-[data-theme="grayscale"] a:hover {
-    background-color: grayscale.$color-dark-gray;
-    cursor: pointer;
-}
-
-[data-theme="grayscale"] a {
-    color: grayscale.$color-link;
-}
-
-[data-theme="grayscale"] input,
-[data-theme="grayscale"] select,
-[data-theme="grayscale"] textarea {
-    background-color: grayscale.$color-white;
-    color: grayscale grayscale.$color-black;
-    font-size: 1rem;
-    border-radius: 1rem;
-}
-
-[data-theme="grayscale"] h1,
-[data-theme="grayscale"] h2,
-[data-theme="grayscale"] h3,
-[data-theme="grayscale"] h4,
-[data-theme="grayscale"] h5,
-[data-theme="grayscale"] h6 {
-    color: grayscale.$color-black;
-    font-weight: bold;
-}
-
-[data-theme="grayscale"] img {
-    filter: grayscale(100%) contrast(100%) brightness(100%);
-}
-
-[data-theme="grayscale"] ul,
-[data-theme="grayscale"] ol {
-    color: grayscale.$color-black;
-}
-
-@media (prefers-contrast: high) {
-    [data-theme="grayscale"] {
-        filter: grayscale(0%);
-        color: grayscale.$color-black;
-        background-color: grayscale.$color-white;
-    }
-    [data-theme="grayscale"] button,
-    [data-theme="grayscale"] a {
-        background-color: grayscale.$color-black;
-        color: grayscale.$color-white;
-    }
 }
 
 button:focus {
@@ -105,106 +28,4 @@ button:focus-visible {
 
 button:focus:not(:focus-visible) {
     outline: none;
-}
-
-[data-theme="dark"],
-[data-theme="dark"] footer,
-[data-theme="dark"] header,
-[data-theme="dark"] body,
-[data-theme="dark"] section,
-[data-theme="dark"] article,
-[data-theme="dark"] aside,
-[data-theme="dark"] nav,
-[data-theme="dark"] div {
-    background-color: dark.$color-theme-dark-black;
-    color: dark.$color-theme-dark-white;
-}
-
-[data-theme="dark"] p,
-[data-theme="dark"] h1,
-[data-theme="dark"] h2,
-[data-theme="dark"] h3,
-[data-theme="dark"] h4,
-[data-theme="dark"] h5,
-[data-theme="dark"] h6,
-[data-theme="dark"] span,
-[data-theme="dark"] a,
-[data-theme="dark"] li,
-[data-theme="dark"] label,
-[data-theme="dark"] th,
-[data-theme="dark"] td {
-    color: dark.$color-theme-dark-white;
-    font-family: Arial, sans-serif;
-}
-
-[data-theme="dark"] button,
-[data-theme="dark"] a {
-    color: dark.$color-theme-dark-white;
-    background-color: dark.$color-theme-dark-gray;
-    text-decoration: none;
-    border-radius: 0.25rem;
-}
-
-[data-theme="dark"] button:hover,
-[data-theme="dark"] a:hover {
-    background-color: dark.$color-theme-dark-gray;
-    cursor: pointer;
-}
-
-[data-theme="dark"] a {
-    color: dark.$color-theme-dark-link;
-}
-
-[data-theme="dark"] input,
-[data-theme="dark"] select,
-[data-theme="dark"] textarea {
-    background-color: dark.$color-theme-dark-gray-secondary;
-    color: dark.$color-theme-dark-white;
-    border: 1px solid dark.$color-theme-dark-white;
-    border-radius: 1rem;
-    font-size: 1rem;
-}
-
-[data-theme="dark"] input::placeholder {
-    color: dark.$color-theme-dark-white;
-}
-
-[data-theme="dark"] h1,
-[data-theme="dark"] h2,
-[data-theme="dark"] h3,
-[data-theme="dark"] h4,
-[data-theme="dark"] h5,
-[data-theme="dark"] h6 {
-    color: dark.$color-theme-dark-white !important;
-    font-weight: bold;
-}
-
-[data-theme="dark"] ul,
-[data-theme="dark"] ol {
-    color: dark.$color-theme-dark-white;
-}
-
-[data-theme="dark"] li > button,
-[data-theme="dark"] li > a > button {
-    background: dark.$color-theme-dark-black !important;
-    color: dark.$color-theme-dark-white !important;
-    border: 2px solid dark.$color-theme-dark-white;
-}
-
-@media (prefers-contrast: high) {
-    [data-theme="dark"] {
-        filter: none;
-        color: dark.$color-theme-dark-white;
-        background-color: dark.$color-theme-dark-black;
-    }
-    [data-theme="dark"] button,
-    [data-theme="dark"] a {
-        background-color: dark.$color-theme-dark-white;
-        color: dark.$color-theme-dark-black;
-    }
-}
-
-[data-theme="dark"] body,
-[data-theme="dark"] html {
-    filter: grayscale(100%);
 }

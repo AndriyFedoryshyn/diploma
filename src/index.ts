@@ -26,6 +26,7 @@ export { UIControlsFontSize } from '@/features/components/modules/Controls/UICon
 export { UIControlsThemes } from '@/features/components/modules/Controls/UIControlsThemes/UIControlsThemes';
 export { BurgerHeader } from '@/features/components/modules/BurgerMenu/BurgerHeader';
 export { BurgerNav } from '@/features/components/modules/BurgerMenu/BurgerNav';
+export { HeaderPopup } from '@/features/components/modules/Header/HeaderPopup';
 
 export { Button } from '@/features/components/ui/Button/Button';
 export { Div } from '@/features/components/ui/Div/Div';

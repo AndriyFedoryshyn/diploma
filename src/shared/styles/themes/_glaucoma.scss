@@ -1,0 +1,49 @@
+// Загальні кольори для теми для людей з глаукомою
+$primary-color: #0066cc; // Яскравий синій для важливих елементів
+$secondary-color: #ff9900; // Контрастний оранжевий для акцентів
+
+// Кольори фону
+$background-color: #ffffff; // Білий фон для високої контрастності
+$card-background-color: #f7f7f7; // Світло-сірий фон для карток або блоків
+
+// Кольори для тексту
+$text-color: #000000; // Чорний текст для максимального контрасту
+$heading-color: #333333; // Темно-сірий для заголовків
+$subtext-color: #555555; // Світло-сірий для менш важливих елементів тексту
+$muted-text-color: #777777; // Текст з низьким контрастом
+
+// Кольори для кнопок
+$button-primary-bg: $primary-color; // Яскравий синій для основних кнопок
+$button-primary-text: #ffffff; // Білий текст на кнопках
+$button-secondary-bg: $secondary-color; // Оранжевий для вторинних кнопок
+$button-secondary-text: #ffffff; // Білий текст на вторинних кнопках
+$button-hover-bg: darken($primary-color, 10%); // Темніший відтінок для hover на основних кнопках
+$button-hover-text: #ffffff; // Білий текст при hover
+
+// Кольори для посилань
+$link-color: $primary-color; // Колір посилань
+$link-hover-color: darken($primary-color, 15%); // Темніший відтінок для hover на посиланнях
+
+// Колір меж і кордонів
+$border-color: #dcdcdc; // Світло-сірий колір меж
+$border-radius: 8px; // Заокруглені кути для плавного вигляду
+
+// Шрифти
+$base-font-family: "Helvetica", sans-serif; // Простий шрифт без засічок
+$base-font-size: 18px; // Базовий розмір шрифта для кращої видимості
+$heading-font-size: 26px; // Розмір шрифта для заголовків
+$subheading-font-size: 22px; // Розмір шрифта для підзаголовків
+$line-height: 1.6; // Висота рядка для покращення читабельності
+
+// Контрастні відтінки для кращої видимості
+$high-contrast-color: #000000; // Чорний для високо контрастних елементів
+$low-contrast-color: #888888; // Світло-сірий для менш важливих елементів
+
+// Стилі для фокусування
+$focus-color: $secondary-color; // Колір для фокусування елементів
+$focus-outline: 3px solid $focus-color; // Стиль обведення для фокусування
+
+// Інші стилі
+$card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Легке тінювання для карток
+$input-border-color: #cccccc; // Колір меж для інпутів
+$input-focus-border-color: $primary-color; // Колір меж при фокусі на інпуті

@@ -1,6 +1,6 @@
 import { FC, HTMLProps } from 'react';
 
-import { Button, Heading } from '@/index';
+import { Button } from '@/index';
 
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
@@ -20,12 +20,10 @@ export const ControlButton: FC<UIControlButtonPropsI> = ({
       onClick={handleCloseControls}
       className={styles['visibleButton']}
       aria-label="Увімкнути/вимкнути панель доступності"
+      onMouseEnter={handleMouseEnter}
     >
-      <Heading className="" level="h5" onMouseEnter={handleMouseEnter}>
-        Людям з порушенням зору:
-      </Heading>
+      Людям з порушенням зору:
       <VisibilityIcon />
     </Button>
   );
 };
-

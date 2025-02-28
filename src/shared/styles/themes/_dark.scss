@@ -3,3 +3,105 @@ $color-theme-dark-white: #ffffff;
 $color-theme-dark-gray: #555555;
 $color-theme-dark-link: #bb86fc;
 $color-theme-dark-gray-secondary: #222222;
+
+[data-theme="dark"],
+[data-theme="dark"] footer,
+[data-theme="dark"] header,
+[data-theme="dark"] body,
+[data-theme="dark"] section,
+[data-theme="dark"] article,
+[data-theme="dark"] aside,
+[data-theme="dark"] nav,
+[data-theme="dark"] div {
+    background-color: $color-theme-dark-black;
+    color: $color-theme-dark-white;
+}
+
+[data-theme="dark"] p,
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] span,
+[data-theme="dark"] a,
+[data-theme="dark"] li,
+[data-theme="dark"] label,
+[data-theme="dark"] th,
+[data-theme="dark"] td {
+    color: $color-theme-dark-white;
+    font-family: Arial, sans-serif;
+}
+
+[data-theme="dark"] button,
+[data-theme="dark"] a {
+    color: $color-theme-dark-white;
+    background-color: $color-theme-dark-gray;
+    text-decoration: none;
+    border-radius: 0.25rem;
+}
+
+[data-theme="dark"] button:hover,
+[data-theme="dark"] a:hover {
+    background-color: $color-theme-dark-gray;
+    cursor: pointer;
+}
+
+[data-theme="dark"] a {
+    color: $color-theme-dark-link;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+    background-color: $color-theme-dark-gray-secondary;
+    color: $color-theme-dark-white;
+    border: 1px solid $color-theme-dark-white;
+    border-radius: 1rem;
+    font-size: 1rem;
+}
+
+[data-theme="dark"] input::placeholder {
+    color: $color-theme-dark-white;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+    color: $color-theme-dark-white !important;
+    font-weight: bold;
+}
+
+[data-theme="dark"] ul,
+[data-theme="dark"] ol {
+    color: $color-theme-dark-white;
+}
+
+[data-theme="dark"] li > button,
+[data-theme="dark"] li > a > button {
+    background: $color-theme-dark-black !important;
+    color: $color-theme-dark-white !important;
+    border: 2px solid $color-theme-dark-white;
+}
+
+@media (prefers-contrast: high) {
+    [data-theme="dark"] {
+        filter: none;
+        color: $color-theme-dark-white;
+        background-color: $color-theme-dark-black;
+    }
+    [data-theme="dark"] button,
+    [data-theme="dark"] a {
+        background-color: $color-theme-dark-white;
+        color: $color-theme-dark-black;
+    }
+}
+
+[data-theme="dark"] body,
+[data-theme="dark"] html {
+    filter: grayscale(100%);
+}

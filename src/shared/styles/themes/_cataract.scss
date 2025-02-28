@@ -1,0 +1,164 @@
+$primary-color: #0044cc;
+$secondary-color: #ffaa00;
+
+$background-color: #ffffff;
+$card-background-color: #f5f5f5;
+
+$text-color: #000000;
+$heading-color: #222222;
+$subtext-color: #555555;
+$muted-text-color: #888888;
+
+$button-primary-bg: $primary-color;
+$button-primary-text: #ffffff;
+$button-secondary-bg: $secondary-color;
+$button-secondary-text: #000000;
+$button-hover-bg: darken($primary-color, 10%);
+$button-hover-text: #ffffff;
+
+$link-color: $primary-color;
+$link-hover-color: darken($primary-color, 15%);
+
+$border-color: #dcdcdc;
+$border-radius: 8px;
+
+$base-font-family: "Arial", sans-serif;
+$base-font-size: 16px;
+$heading-font-size: 24px;
+$subheading-font-size: 20px;
+$line-height: 1.5;
+
+$high-contrast-color: #000000;
+$low-contrast-color: #888888;
+
+$focus-color: $secondary-color;
+$focus-outline: 3px solid $focus-color;
+
+$card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+$input-border-color: #cccccc;
+$input-focus-border-color: $primary-color;
+
+[data-special-theme="cataract"] {
+    background-color: $background-color;
+    color: $text-color;
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $line-height;
+}
+
+[data-special-theme="cataract"] header,
+[data-special-theme="cataract"] footer,
+[data-special-theme="cataract"] nav,
+[data-special-theme="cataract"] div,
+[data-special-theme="cataract"] section {
+    background-color: $card-background-color;
+}
+
+[data-special-theme="cataract"] button {
+    background-color: $primary-color;
+    color: $background-color;
+    border-radius: $border-radius;
+    font-size: $base-font-size;
+    box-shadow: $card-shadow;
+    border: none;
+}
+
+[data-special-theme="cataract"] button:hover {
+    background-color: $button-hover-bg;
+    color: $button-hover-text;
+}
+
+[data-special-theme="cataract"] a {
+    text-decoration: underline;
+}
+
+[data-special-theme="cataract"] input,
+[data-special-theme="cataract"] select,
+[data-special-theme="cataract"] textarea {
+    background-color: $background-color;
+    color: $text-color;
+    border: 2px solid $input-border-color;
+    border-radius: $border-radius;
+    font-size: $base-font-size;
+}
+
+[data-special-theme="cataract"] input:focus,
+[data-special-theme="cataract"] select:focus,
+[data-special-theme="cataract"] textarea:focus {
+    border-color: $input-focus-border-color;
+    outline: none;
+}
+
+[data-special-theme="cataract"] p,
+[data-special-theme="cataract"] h1,
+[data-special-theme="cataract"] h2,
+[data-special-theme="cataract"] h3,
+[data-special-theme="cataract"] h4,
+[data-special-theme="cataract"] h5,
+[data-special-theme="cataract"] h6 {
+    color: $heading-color;
+    line-height: $line-height;
+}
+
+[data-special-theme="cataract"] ul,
+[data-special-theme="cataract"] ol {
+    padding-left: 20px;
+}
+
+[data-special-theme="cataract"] li {
+    font-size: $base-font-size;
+}
+
+[data-special-theme="cataract"] li > button,
+[data-special-theme="cataract"] li > a > button {
+    background-color: $secondary-color;
+    color: $button-secondary-text;
+}
+
+[data-special-theme="cataract"] button {
+    padding: 0.5rem;
+}
+
+[data-special-theme="cataract"] input::placeholder {
+    color: $muted-text-color;
+}
+
+[data-special-theme="cataract"] body,
+[data-special-theme="cataract"] html {
+    font-size: $base-font-size;
+}
+
+@media (prefers-contrast: high) {
+    [data-special-theme="cataract"] {
+        background-color: $background-color;
+        color: $high-contrast-color;
+    }
+
+    [data-special-theme="cataract"] button {
+        background-color: $primary-color;
+        color: $button-primary-text;
+    }
+
+    [data-special-theme="cataract"] button:hover {
+        background-color: darken($primary-color, 15%);
+        color: $button-hover-text;
+    }
+
+    [data-special-theme="cataract"] a {
+        color: $primary-color;
+    }
+
+    [data-special-theme="cataract"] input,
+    [data-special-theme="cataract"] select,
+    [data-special-theme="cataract"] textarea {
+        border-color: $high-contrast-color;
+        background-color: $card-background-color;
+    }
+
+    [data-special-theme="cataract"] input:focus,
+    [data-special-theme="cataract"] select:focus,
+    [data-special-theme="cataract"] textarea:focus {
+        border-color: $focus-color;
+        outline: $focus-outline;
+    }
+}

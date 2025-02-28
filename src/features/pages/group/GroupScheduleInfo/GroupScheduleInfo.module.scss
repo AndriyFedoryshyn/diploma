@@ -1,7 +1,6 @@
 @use "../../../../shared/styles/abstracts/mixins/mixins" as *;
 @use "../../../../shared/styles/base/colors/colors" as color;
 @use "../../../../shared/styles/base/globals/globals" as size;
-@use "../../../../shared/styles/themes/grayscale" as *;
 
 .groupScheduleInfoDate {
     &Container {
@@ -51,7 +50,7 @@
     &Paragraph {
         line-height: 1.6125rem;
         font-size: size.$alert-banner-size;
-        color: $color-dark-gray;
+        color: #a2aeb3;
     }
 
     &Button {
@@ -59,7 +58,7 @@
     }
 
     &Link {
-        color: $color-white;
+        color: color.$color-white;
     }
 }
 

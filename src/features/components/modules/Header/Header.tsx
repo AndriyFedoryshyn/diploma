@@ -17,9 +17,9 @@ import {
   ControlButton,
   BurgerButton,
   Nav,
+  UIControls,
+  HeaderPopup,
 } from '@/index';
-
-import { UIControls } from '../Controls/UIControls';
 
 import {
   setMenuVisibility,
@@ -86,6 +86,8 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
                 handleMouseEnter={handleMouseEnter}
                 tabIndex={0}
               />
+              <HeaderPopup />
+
               <HeaderLocation
                 handleMouseEnter={handleMouseEnter}
                 handleImageMouseEnter={handleImageMouseEnter}

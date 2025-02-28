@@ -209,6 +209,18 @@
         background: transparent;
         @include scaleElement;
     }
+
+    &PopupButton {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background: transparent;
+        font-weight: 500;
+        font-size: 1rem;
+        padding: 0.3rem;
+        @include hoverButton;
+    }
 }
 
 @media (max-width: 64rem) {
