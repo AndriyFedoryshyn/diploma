@@ -7,18 +7,13 @@ import { Section, Div, Heading, Button, List, Span } from '@/index';
 
 import { alphabet } from '@/shared/static/alphabet';
 
-import { AreasT } from '@/shared/types/AreasType';
-
 import { SelectedLetterT } from '@/shared/types/SettlementsList';
 
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
-import styles from './SettlementsList.module.scss';
+import { SettlementsListPropsI } from '@/shared/interfaces/SettlementsList';
 
-interface SettlementsListPropsI {
-  searchQuery: string;
-  data: AreasT;
-}
+import styles from './SettlementsList.module.scss';
 
 export const SettlementsList: FC<SettlementsListPropsI> = ({
   searchQuery,

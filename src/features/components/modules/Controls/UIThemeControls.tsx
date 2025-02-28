@@ -10,18 +10,9 @@ import { setTheme } from '../../../../shared/store/slices/ThemeSlice';
 
 import { Button, Div } from '@/index';
 
-import { ColorLabelI } from '@/shared/types/UIControlsType';
+import { UIThemeControlsPropsT } from '@/shared/interfaces/UIThemeControlts';
 
 import styles from './UIControls.module.scss';
-
-interface UIThemeControlsPropsT {
-  labels: ColorLabelI[];
-  isActive: boolean;
-  classNames: {
-    block: string;
-    button: string;
-  };
-}
 
 export const UIThemeControls: FC<UIThemeControlsPropsT> = ({
   labels,

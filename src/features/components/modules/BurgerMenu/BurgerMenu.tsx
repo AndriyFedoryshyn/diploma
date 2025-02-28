@@ -6,13 +6,11 @@ import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { useBodyOverflow } from '@/shared/hooks/useBodyOverflow';
 
+import { BurgerMenuPropsI } from '@/shared/interfaces/BurgerMenu';
+
 import { Div, BurgerHeader, BurgerNav } from '@/index';
 
 import styles from './BurgerMenu.module.scss';
-interface BurgerMenuPropsI {
-  isVisibleMenu: boolean;
-  handleCloseBurgerMenu: () => void;
-}
 
 export const BurgerMenu: FC<BurgerMenuPropsI> = ({
   isVisibleMenu,

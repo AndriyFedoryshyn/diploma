@@ -2,15 +2,7 @@ import { useMemo, type FC } from 'react';
 
 import { Div, Heading, UIControlsButtons } from '@/index';
 
-import { ClassNamesT, LabelsT } from '@/shared/types/UIControlsType';
-
-interface UIControlsFontSizePropsI {
-  handleMouseEnter: (event: React.MouseEvent) => void;
-  handleFontSizeSelect: (index: number) => void;
-  fontSize: string;
-  labels: LabelsT;
-  classNames: ClassNamesT;
-}
+import { UIControlsFontSizePropsI } from '@/shared/interfaces/UIControlsFontSize';
 
 export const UIControlsFontSize: FC<UIControlsFontSizePropsI> = ({
   handleMouseEnter,

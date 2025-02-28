@@ -1,20 +1,12 @@
-import { RefObject, type FC } from 'react';
+import { type FC } from 'react';
 
 import { Div, HeaderLogo, HeaderLocation, Button } from '@/index';
+
+import { BurgerHeaderPropsI } from '@/shared/interfaces/burgerHeader';
 
 import CloseIcon from '@mui/icons-material/Close';
 
 import styles from './BurgerMenu.module.scss';
-
-interface BurgerHeaderPropsI {
-  closeButtonRef: RefObject<HTMLButtonElement | null>;
-  handleCloseBurgerMenu: () => void;
-  handleMouseEnterTitle: (event: React.MouseEvent) => void;
-  handleFocus: (
-    event: React.FocusEvent<HTMLElement | HTMLDivElement | HTMLImageElement>
-  ) => void;
-  handleMouseEnter: (event: React.MouseEvent) => void;
-}
 
 export const BurgerHeader: FC<BurgerHeaderPropsI> = ({
   closeButtonRef,

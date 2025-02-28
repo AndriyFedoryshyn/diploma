@@ -2,14 +2,7 @@ import { type FC } from 'react';
 
 import { Div, Heading, UIThemeControls } from '@/index';
 
-import { ClassNamesT, ColorsI } from '@/shared/types/UIControlsType';
-
-interface UIControlsThemesPropsI {
-  colorsLabels: ColorsI;
-  handleMouseEnter: (event: React.MouseEvent) => void;
-  speakText: (text: string) => void;
-  classNames: ClassNamesT;
-}
+import { UIControlsThemesPropsI } from '@/shared/interfaces/UIControlsThemes';
 
 export const UIControlsThemes: FC<UIControlsThemesPropsI> = ({
   colorsLabels,

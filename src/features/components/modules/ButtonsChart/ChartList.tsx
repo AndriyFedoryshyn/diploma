@@ -8,17 +8,8 @@ import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
 
 import { Button, Span } from '@/index';
 
-import { ButtonChartT, ButtonsChartT } from '@/shared/types/ButtonsChartType';
-
-interface ChartListPropsI {
-  classNames: {
-    list: string;
-    listItem: string;
-    button: string;
-    numberOfGroup: string;
-  };
-  list: ButtonsChartT;
-}
+import { ButtonChartT } from '@/shared/types/ButtonsChartType';
+import { ChartListPropsI } from '@/shared/interfaces/ChartList';
 
 export const FOCUS_COLOR: string = '#007bff';
 

@@ -23,12 +23,9 @@ import {
 import { toggleSpeech } from '@/shared/store/slices/SpeechSynthesisSlice';
 import { initializeTheme, setTheme } from '@/shared/store/slices/ThemeSlice';
 
-import styles from './UIControls.module.scss';
+import { HeaderUIControlsPropsT } from '@/shared/interfaces/UIControls';
 
-interface HeaderUIControlsPropsT {
-  isVisibleControls: boolean;
-  handleCloseControls: () => void;
-}
+import styles from './UIControls.module.scss';
 
 export const UIControls: FC<HeaderUIControlsPropsT> = ({
   isVisibleControls,

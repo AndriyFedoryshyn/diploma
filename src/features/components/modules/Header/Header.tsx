@@ -19,10 +19,7 @@ import {
   Nav,
 } from '@/index';
 
-import { AreasT } from '@/shared/types/AreasType';
 import { UIControls } from '../Controls/UIControls';
-
-import { SearchTermT } from '@/shared/types/HeaderType';
 
 import {
   setMenuVisibility,
@@ -30,12 +27,9 @@ import {
   toggleMenu,
 } from '@/shared/store/slices/visibleControlsSlice';
 
-import styles from './Header.module.scss';
+import { HeaderProps } from '@/shared/interfaces/Header';
 
-interface HeaderProps {
-  onSearch: (searchTerm: SearchTermT) => void;
-  settlements: AreasT;
-}
+import styles from './Header.module.scss';
 
 export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
   const dispatch = useAppDispatch();

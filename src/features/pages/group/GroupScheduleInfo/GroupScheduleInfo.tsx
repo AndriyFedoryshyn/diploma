@@ -8,12 +8,9 @@ import {
   Section,
 } from '@/index';
 
-import styles from '@/shared/styles/pages/Group.module.scss';
+import { GroupScheduleInfoPropsI } from '@/shared/interfaces/Group';
 
-interface GroupScheduleInfoPropsI {
-  firstPart: string | undefined;
-  secondPart: string | undefined;
-}
+import styles from '@/shared/styles/pages/Group.module.scss';
 
 export const GroupScheduleInfo: FC<GroupScheduleInfoPropsI> = ({
   firstPart,

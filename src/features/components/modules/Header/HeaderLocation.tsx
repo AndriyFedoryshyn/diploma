@@ -1,16 +1,12 @@
-import { HTMLProps, type FC } from 'react';
+import { type FC } from 'react';
 
 import Image from 'next/image';
 
 import { Div } from '@/index';
 
-import styles from './Header.module.scss';
+import { HeaderLocationProps } from '@/shared/interfaces/Header';
 
-interface HeaderLocationProps extends HTMLProps<HTMLElement> {
-  handleMouseEnter?: (event: React.MouseEvent) => void;
-  handleImageMouseEnter?: (event: React.MouseEvent) => void;
-  handleFocus: (event: React.FocusEvent<HTMLHeadingElement>) => void;
-}
+import styles from './Header.module.scss';
 
 export const HeaderLocation: FC<HeaderLocationProps> = ({
   handleMouseEnter,

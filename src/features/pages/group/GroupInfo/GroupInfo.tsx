@@ -9,14 +9,11 @@ import Link from 'next/link';
 
 import TelegramIcon from '@mui/icons-material/Telegram';
 
+import { GroupInfoProps } from '@/shared/interfaces/Group';
+
 import styles from '@/shared/styles/pages/Group.module.scss';
 
-interface GroupInfo {
-  firstPart: string | undefined;
-  secondPart: string | undefined;
-}
-
-export const GroupInfo: FC<GroupInfo> = ({ firstPart, secondPart }) => {
+export const GroupInfo: FC<GroupInfoProps> = ({ firstPart, secondPart }) => {
   const { speakText } = useSpeechSynthesis();
 
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);

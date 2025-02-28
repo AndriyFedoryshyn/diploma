@@ -7,12 +7,9 @@ import { Div, Heading, Paragpraph } from '@/index';
 
 import { formatedDate } from '@/shared/utils/formateDate';
 
-import styles from './GroupScheduleInfo.module.scss';
+import { GroupScheduleInfoDatePropsI } from '@/shared/interfaces/Group';
 
-interface GroupScheduleInfoDatePropsI {
-  firstPart: string | undefined;
-  secondPart: string | undefined;
-}
+import styles from './GroupScheduleInfo.module.scss';
 
 export const GroupScheduleInfoDate: FC<GroupScheduleInfoDatePropsI> = ({
   firstPart,

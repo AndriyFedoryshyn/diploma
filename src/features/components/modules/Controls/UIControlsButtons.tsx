@@ -3,24 +3,9 @@ import { type FC, useCallback } from 'react';
 import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
+import { UIControlsButtonsPropsT } from '@/shared/interfaces/UIControlsButtons';
+
 import { Button, Div } from '@/index';
-
-interface LabelT {
-  label: string;
-  title: string;
-}
-
-interface UIControlsButtonsPropsT {
-  labels: LabelT[];
-  isActive: boolean;
-  onButtonSelect: (index: number) => void;
-  selectedIndex: number;
-  classNames: {
-    block: string;
-    button: string;
-    active: string;
-  };
-}
 
 export const UIControlsButtons: FC<UIControlsButtonsPropsT> = ({
   onButtonSelect,

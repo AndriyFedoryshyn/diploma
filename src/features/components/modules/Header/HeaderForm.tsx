@@ -5,10 +5,12 @@ import React, { ChangeEvent, useState, type FC } from 'react';
 import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
-import { NoResultsT, SearchT, SearchTermT } from '@/shared/types/HeaderType';
+import { NoResultsT, SearchT } from '@/shared/types/HeaderType';
 import { AreaT } from '@/shared/types/AreasType';
 
 import { List, Span, Div, Form } from '@/index';
+
+import { HeaderFormProps } from '@/shared/interfaces/Header';
 
 import styles from './Header.module.scss';
 
@@ -16,11 +18,6 @@ const filteredSuggestionsClassNames = {
   list: styles['suggestionsDropdown'],
   listItem: styles['suggestionsItem'],
 };
-
-interface HeaderFormProps {
-  onSearch: (searchTerm: SearchTermT) => void;
-  settlements: AreaT[];
-}
 
 export const HeaderForm: FC<HeaderFormProps> = ({ onSearch, settlements }) => {
   const [search, setSearch] = useState<SearchT>('');
