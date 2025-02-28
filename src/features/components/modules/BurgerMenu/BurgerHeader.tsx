@@ -2,11 +2,10 @@ import { type FC } from 'react';
 
 import { Div, HeaderLogo, HeaderLocation, Button } from '@/index';
 
-import { BurgerHeaderPropsI } from '@/shared/interfaces/burgerHeader';
-
 import CloseIcon from '@mui/icons-material/Close';
 
 import styles from './BurgerMenu.module.scss';
+import { BurgerHeaderPropsI } from '@/shared/interfaces/BurgerHeader';
 
 export const BurgerHeader: FC<BurgerHeaderPropsI> = ({
   closeButtonRef,
