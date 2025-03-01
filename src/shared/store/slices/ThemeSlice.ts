@@ -12,7 +12,7 @@ const initialState: ThemeStateI = {
   isLoaded: false,
 };
 
-export const themeSlice = createSlice({
+const themeSlice = createSlice({
   name: 'theme',
   initialState,
   reducers: {
@@ -35,3 +35,5 @@ export const themeSlice = createSlice({
 });
 
 export const { setTheme, initializeTheme } = themeSlice.actions;
+
+export default themeSlice.reducer;

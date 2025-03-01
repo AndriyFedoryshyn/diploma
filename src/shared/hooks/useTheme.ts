@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 
-import { initializeTheme, setTheme } from '@/shared/store/slices/ThemeSlice';
-
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
+
+import { initializeTheme, setTheme } from '@/shared/store/slices/ThemeSlice';
+
 import { ThemeT } from '../types/ThemesType';
 
 export const useTheme = () => {

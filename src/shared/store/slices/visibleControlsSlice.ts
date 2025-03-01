@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface VisbleContorlsState {
   isVisibleControls: boolean;
@@ -10,8 +10,8 @@ const initialState: VisbleContorlsState = {
   isVisibleMenu: false,
 };
 
-export const visibleControlsSlice = createSlice({
-  name: "visibleControls",
+const visibleControlsSlice = createSlice({
+  name: 'visibleControls',
   initialState,
   reducers: {
     toggleControlPanel: (state) => {
@@ -20,7 +20,7 @@ export const visibleControlsSlice = createSlice({
     toggleMenu: (state) => {
       state.isVisibleMenu = !state.isVisibleMenu;
       localStorage.setItem(
-        "visibleControls",
+        'visibleControls',
         JSON.stringify(state.isVisibleMenu)
       );
     },
@@ -32,3 +32,5 @@ export const visibleControlsSlice = createSlice({
 
 export const { toggleControlPanel, toggleMenu, setMenuVisibility } =
   visibleControlsSlice.actions;
+  
+export default visibleControlsSlice.reducer;

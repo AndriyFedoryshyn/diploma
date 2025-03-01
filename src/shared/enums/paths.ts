@@ -1,4 +1,4 @@
 export const enum PATHS {
-  HOME = "/",
-  GROUP = "/group",
+  HOME = '/',
+  GROUP = '/group',
 }

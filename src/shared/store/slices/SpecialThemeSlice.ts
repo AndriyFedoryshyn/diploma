@@ -12,7 +12,7 @@ const initialState: SpecialThemeState = {
   isLoaded: false,
 };
 
-export const specialThemeSlice = createSlice({
+const specialThemeSlice = createSlice({
   name: 'specialTheme',
   initialState,
   reducers: {
@@ -47,3 +47,5 @@ export const specialThemeSlice = createSlice({
 
 export const { initializeSpecialTheme, resetSpecialTheme, setSpecialTheme } =
   specialThemeSlice.actions;
+  
+export default specialThemeSlice.reducer;

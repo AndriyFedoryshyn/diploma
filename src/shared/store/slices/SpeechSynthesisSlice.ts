@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 interface SpeechSynthesisStateI {
   isSpeechEnabled: boolean;
@@ -8,8 +8,8 @@ const initialState: SpeechSynthesisStateI = {
   isSpeechEnabled: false,
 };
 
-export const speechSynthesisSlice = createSlice({
-  name: "speechSynthesis",
+const speechSynthesisSlice = createSlice({
+  name: 'speechSynthesis',
   initialState,
   reducers: {
     enableSpeech: (state) => {
@@ -26,3 +26,5 @@ export const speechSynthesisSlice = createSlice({
 
 export const { enableSpeech, disableSpeech, toggleSpeech } =
   speechSynthesisSlice.actions;
+
+export default speechSynthesisSlice.reducer;

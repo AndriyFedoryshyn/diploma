@@ -2,7 +2,7 @@
 
 import { useState, type FC } from 'react';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
-import { setSpecialTheme } from '@/shared/store/slices/SpecialTheme';
+import { setSpecialTheme } from '@/shared/store/slices/SpecialThemeSlice';
 
 import { Unstable_Popup as BasePopup } from '@mui/base/Unstable_Popup';
 
