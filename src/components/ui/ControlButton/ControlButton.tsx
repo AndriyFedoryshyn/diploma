@@ -2,8 +2,6 @@ import { FC, HTMLProps } from 'react';
 
 import { Button } from '@/index';
 
-import VisibilityIcon from '@mui/icons-material/Visibility';
-
 import styles from './ControlButton.module.scss';
 
 interface UIControlButtonPropsI extends HTMLProps<HTMLButtonElement> {
@@ -23,7 +21,6 @@ export const ControlButton: FC<UIControlButtonPropsI> = ({
       onMouseEnter={handleMouseEnter}
     >
       Людям з порушенням зору:
-      <VisibilityIcon />
     </Button>
   );
 };

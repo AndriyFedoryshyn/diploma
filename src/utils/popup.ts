@@ -34,7 +34,7 @@ export const Button = styled('button')(
     font-size: 0.875rem;
     line-height: 1.5;
     background-color: ${blue[500]};
-    padding: 8px 16px;
+    padding: 4px 16px;
     border-radius: 8px;
     color: white;
     transition: all 150ms ease;

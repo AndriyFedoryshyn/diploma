@@ -26,6 +26,7 @@ import { initializeTheme, setTheme } from '@/store/slices/ThemeSlice';
 import { HeaderUIControlsPropsT } from '@/interfaces/UIControls';
 
 import styles from './UIControls.module.scss';
+import { resetSpecialTheme } from '@/store/slices/SpecialThemeSlice';
 
 export const UIControls: FC<HeaderUIControlsPropsT> = ({
   isVisibleControls,
@@ -98,6 +99,7 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
 
   const handleRestoreTheme = () => {
     appDispatch(setTheme('light'));
+    appDispatch(resetSpecialTheme());
   };
 
   return isVisibleControls ? (
@@ -130,6 +132,7 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
           <Button
             onMouseEnter={handleMouseEnter}
             onClick={handleRestoreTheme}
+            tabIndex={0}
             className={styles['controlsVisibleButton']}
             aria-label="Toggle site visibility"
           >

@@ -30,6 +30,7 @@ export const GroupScheduleInfoPeriods: FC = () => {
           onMouseEnter={handleSpeakText}
           level="h4"
           className={styles['groupPeriodsHeading']}
+          tabIndex={0}
         >
           Періоди відключень на сьогодні
         </Heading>

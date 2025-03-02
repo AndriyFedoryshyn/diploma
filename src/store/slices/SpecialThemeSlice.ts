@@ -36,10 +36,10 @@ const specialThemeSlice = createSlice({
       state.isLoaded = true;
     },
     resetSpecialTheme: (state) => {
-      state.theme = 'cataract';
+      state.theme = 'light';
       if (typeof window !== 'undefined') {
-        localStorage.setItem('specialTheme', 'cataract');
-        document.documentElement.setAttribute('data-special-theme', 'cataract');
+        localStorage.setItem('specialTheme', 'light');
+        document.documentElement.setAttribute('data-special-theme', 'light');
       }
     },
   },

@@ -5,4 +5,5 @@ export type SpecialThemeT =
   | 'glaucoma'
   | 'photophobia'
   | 'coloboma'
-  | 'keratoconus';
+  | 'keratoconus'
+  | 'light';

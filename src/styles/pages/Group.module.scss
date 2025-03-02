@@ -33,6 +33,7 @@
 
     &MainHeading {
         @include mainHeading;
+        @include elementFocus;
     }
 
     &MainButton {
@@ -47,6 +48,7 @@
         font-size: size.$alert-banner-size;
         text-align: center;
         line-height: 1.6125rem;
+        @include elementFocus;
     }
 
     & .schedule {
@@ -61,12 +63,13 @@
         }
 
         &Heading {
-            width: 100%;
-            padding-block: 5rem 2.75rem;
+            width: fit-content;
             text-align: center;
             font-size: size.$second-heading;
             letter-spacing: 0.01em;
             line-height: 3.64375rem;
+            margin: 5rem auto;
+            @include elementFocus;
         }
     }
 
@@ -174,6 +177,7 @@
         margin: 0 auto;
         font-size: size.$second-heading;
         margin-block: 3rem 2.75rem;
+        @include elementFocus;
     }
 }
 
@@ -202,6 +206,11 @@
     .group {
         .scheduleHoursList {
             grid-template-columns: repeat(6, 1fr);
+        }
+
+        &MainHeading,
+        &LightHeading {
+            line-height: 3rem;
         }
     }
 }

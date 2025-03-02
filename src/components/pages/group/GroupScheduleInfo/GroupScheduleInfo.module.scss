@@ -38,6 +38,7 @@
 
     &Heading {
         @include defaultHeading;
+        @include elementFocus;
     }
 
     &Info {

@@ -87,6 +87,7 @@ export const GroupSchedule: FC = () => {
         <h2
           className={styles['scheduleHeading']}
           onMouseEnter={handleSpeakText}
+          tabIndex={0}
         >
           Відключення сьогодні
         </h2>

@@ -53,6 +53,7 @@ const Group = () => {
           onMouseEnter={handleSpeakText}
           level="h3"
           className={styles['groupLightHeading']}
+          tabIndex={0}
         >
           Відключення завтра
         </Heading>

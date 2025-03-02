@@ -17,6 +17,7 @@ import {
   BurgerMenu,
   Nav,
   BurgerButton,
+  HeaderPopup,
 } from '@/index';
 
 import {
@@ -70,6 +71,7 @@ export const GroupHeader: FC = () => {
                 handleCloseControls={handleCloseControls}
                 handleMouseEnter={handleMouseEnter}
               />
+              <HeaderPopup />
               <HeaderLocation handleFocus={handleFocus} />
             </Fragment>
           )}

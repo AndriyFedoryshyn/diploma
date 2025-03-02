@@ -31,6 +31,7 @@ export const GroupInfo: FC<GroupInfoProps> = ({ firstPart, secondPart }) => {
         onMouseEnter={handleSpeakText}
         level="h1"
         className={styles['groupMainHeading']}
+        tabIndex={0}
       >
         Графік відключень електроенергії у Львівській області (сьогодні):{' '}
         {firstPart} група ({secondPart} підгрупа)
@@ -51,6 +52,7 @@ export const GroupInfo: FC<GroupInfoProps> = ({ firstPart, secondPart }) => {
       <Paragpraph
         onMouseEnter={handleSpeakText}
         className={styles['groupMainParagraph']}
+        tabIndex={0}
       >
         У вас
         <strong>

@@ -14,10 +14,10 @@
     height: 100%;
 
     &Container {
-        align-items: flex-start;
         width: 100%;
         display: flex;
-        justify-content: center;
+        align-items: center;
+        justify-content: space-between;
 
         &Row {
             @include resizeContainer;
@@ -89,6 +89,7 @@
         justify-content: space-between;
         align-items: center;
         gap: 0.3rem;
+        @include elementFocus;
 
         &Mark {
             font-size: 1rem;
@@ -104,7 +105,6 @@
 
     &MainHeadingContainer {
         width: 100%;
-        max-width: 90rem;
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
@@ -128,8 +128,10 @@
     }
 
     &FormSerachLabel {
+        max-width: 100%;
         font-size: 1.25rem;
         line-height: 1.875rem;
+        text-align: center;
         color: color.$color-black-heading;
         @include elementFocus;
     }
@@ -220,8 +222,11 @@
         font-weight: 500;
         font-size: 1rem;
         padding: 0.3rem;
-        border-bottom: 1px solid rgba(0, 127, 255, 0.5);
         @include hoverButton;
+        @include scaleElement;
+        &:hover {
+            transform: scale(1.1);
+        }
     }
 }
 
@@ -246,6 +251,10 @@
 @media (max-width: 35.625rem) {
     .headerLocationThemeBlock {
         flex-flow: column-reverse nowrap;
+    }
+
+    .headerContainerRow {
+        padding-inline: 0;
     }
 
     .headerMainHeading {

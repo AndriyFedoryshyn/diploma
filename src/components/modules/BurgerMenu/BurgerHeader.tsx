@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 
-import { Div, HeaderLogo, HeaderLocation, Button } from '@/index';
+import { Div, HeaderLogo, HeaderLocation, Button, HeaderPopup } from '@/index';
 
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -20,6 +20,7 @@ export const BurgerHeader: FC<BurgerHeaderPropsI> = ({
       <HeaderLogo />
 
       <Div className={styles['burgerRightBlock']}>
+        <HeaderPopup />
         <HeaderLocation
           handleFocus={handleFocus}
           handleMouseEnter={handleMouseEnter}

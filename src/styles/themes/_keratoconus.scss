@@ -46,6 +46,8 @@ $input-focus-border-color: $primary-color;
 }
 
 [data-special-theme="keratoconus"] header,
+[data-special-theme="keratoconus"] body,
+[data-special-theme="keratoconus"] div,
 [data-special-theme="keratoconus"] footer,
 [data-special-theme="keratoconus"] nav,
 [data-special-theme="keratoconus"] section {
@@ -67,7 +69,6 @@ $input-focus-border-color: $primary-color;
 }
 
 [data-special-theme="keratoconus"] a {
-    color: $link-color;
     text-decoration: underline;
 }
 
