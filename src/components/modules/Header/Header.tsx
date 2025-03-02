@@ -103,7 +103,6 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
           isVisibleControls={isVisibleControls}
           handleCloseControls={handleCloseControls}
         />
-
         <BurgerButton />
       </Div>
 

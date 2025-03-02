@@ -13,11 +13,11 @@ $button-primary-bg: $primary-color;
 $button-primary-text: #ffffff;
 $button-secondary-bg: $secondary-color;
 $button-secondary-text: #ffffff;
-$button-hover-bg: darken($primary-color, 15%);
+$button-hover-bg: adjust($primary-color, 15%);
 $button-hover-text: #ffffff;
 
 $link-color: $primary-color;
-$link-hover-color: darken($primary-color, 20%);
+$link-hover-color: adjust($primary-color, 20%);
 
 $border-color: #dcdcdc;
 $border-radius: 8px;
@@ -100,10 +100,6 @@ $input-focus-border-color: $primary-color;
     line-height: $line-height;
 }
 
-// [data-special-theme="cataract"] ul,
-// [data-special-theme="cataract"] ol {
-// }
-
 [data-special-theme="cataract"] li {
     font-size: $base-font-size;
 }
@@ -139,7 +135,7 @@ $input-focus-border-color: $primary-color;
     }
 
     [data-special-theme="cataract"] button:hover {
-        background-color: darken($primary-color, 20%);
+        background-color: adjust($primary-color, 20%);
         color: $button-hover-text;
     }
 

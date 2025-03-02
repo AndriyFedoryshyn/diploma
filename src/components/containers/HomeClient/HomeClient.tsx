@@ -5,10 +5,10 @@ import { useFetch } from '@/hooks/useFetch';
 
 import {
   AlertBanner,
-  Section,
   ButtonChart,
   SettlementsList,
   Header,
+  Main,
 } from '@/index';
 
 import { AreasT } from '@/types/AreasType';
@@ -30,11 +30,11 @@ export const HomeClient = () => {
   return (
     <>
       <Header onSearch={handleSearch} settlements={settlements} />
-      <Section className={styles['home']}>
+      <Main className={styles['home']}>
         <AlertBanner />
         <ButtonChart />
         <SettlementsList data={data as AreasT} searchQuery={searchQuery} />
-      </Section>
+      </Main>
     </>
   );
 };

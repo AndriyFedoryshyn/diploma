@@ -8,16 +8,17 @@
     display: flex;
     justify-content: center;
     flex-flow: column nowrap;
+    gap: 5rem;
     background: url("/images/header_background.png") no-repeat center center;
     background-size: 100% 100%;
     background-position: top center;
     height: 100%;
 
     &Container {
-        width: 100%;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+        width: 100%;
 
         &Row {
             @include resizeContainer;
@@ -105,11 +106,11 @@
 
     &MainHeadingContainer {
         width: 100%;
+        max-width: 100%;
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
         gap: 2rem;
-        padding-block-start: 5rem;
     }
 
     &MainHeading {
@@ -128,10 +129,8 @@
     }
 
     &FormSerachLabel {
-        max-width: 100%;
         font-size: 1.25rem;
         line-height: 1.875rem;
-        text-align: center;
         color: color.$color-black-heading;
         @include elementFocus;
     }

@@ -8,4 +8,8 @@
     justify-content: center;
     background: transparent;
     margin-inline-end: 1.5625rem;
+
+    @media (max-width: 25rem) {
+        margin-inline-end: 0.8rem;
+    }
 }

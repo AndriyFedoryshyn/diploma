@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 
 import { Roboto } from 'next/font/google';
 
-import { LayoutClientWrapper, Wrapper, Footer, Main } from '@/index';
+import { LayoutClientWrapper, Wrapper, Footer } from '@/index';
 
 import { UIControlsProvider } from '@/context/FontSizeContext/FontSizeProvider';
 
@@ -33,7 +33,7 @@ export default function RootLayout({
         <LayoutClientWrapper>
           <UIControlsProvider>
             <Wrapper>
-              <Main>{children}</Main>
+              <>{children}</>
               <Footer />
             </Wrapper>
           </UIControlsProvider>

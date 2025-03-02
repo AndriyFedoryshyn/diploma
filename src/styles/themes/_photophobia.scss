@@ -13,11 +13,11 @@ $button-primary-bg: $primary-color;
 $button-primary-text: #ffffff;
 $button-secondary-bg: $secondary-color;
 $button-secondary-text: #ffffff;
-$button-hover-bg: darken($primary-color, 10%);
+$button-hover-bg: adjust($primary-color, 10%);
 $button-hover-text: #ffffff;
 
 $link-color: $primary-color;
-$link-hover-color: darken($primary-color, 15%);
+$link-hover-color: adjust($primary-color, 15%);
 
 $border-color: #cccccc;
 $border-radius: 10px;
@@ -111,10 +111,6 @@ $input-focus-border-color: $primary-color;
     line-height: $line-height;
 }
 
-// [data-special-theme="photophobia"] ul,
-// [data-special-theme="photophobia"] ol {
-// }
-
 [data-special-theme="photophobia"] li {
     font-size: $base-font-size;
 }
@@ -135,7 +131,7 @@ $input-focus-border-color: $primary-color;
     }
 
     [data-special-theme="photophobia"] button:hover {
-        background-color: darken($primary-color, 15%);
+        background-color: adjust($primary-color, 15%);
         color: $button-hover-text;
     }
 

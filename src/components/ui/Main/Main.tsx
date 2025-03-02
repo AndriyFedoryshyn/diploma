@@ -1,11 +1,10 @@
 import { FC, ReactNode } from 'react';
 
-import styles from './Main.module.scss';
-
 type MainPropsT = {
   children: ReactNode;
+  className?: string;
 };
 
-export const Main: FC<MainPropsT> = ({ children }) => {
-  return <main className={styles['main']}>{children}</main>;
+export const Main: FC<MainPropsT> = ({ children, className }) => {
+  return <main className={className}>{children}</main>;
 };

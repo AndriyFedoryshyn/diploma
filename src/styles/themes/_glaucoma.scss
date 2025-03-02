@@ -13,11 +13,11 @@ $button-primary-bg: $primary-color;
 $button-primary-text: #ffffff;
 $button-secondary-bg: $secondary-color;
 $button-secondary-text: #222222;
-$button-hover-bg: darken($primary-color, 10%);
+$button-hover-bg: adjust($primary-color, 10%);
 $button-hover-text: #ffffff;
 
 $link-color: $secondary-color;
-$link-hover-color: darken($secondary-color, 15%);
+$link-hover-color: adjust($secondary-color, 15%);
 
 $border-color: #cccccc;
 $border-radius: 8px;
@@ -106,10 +106,6 @@ $input-focus-border-color: $primary-color;
 [data-special-theme="glaucoma"] h6 {
     color: $heading-color;
 }
-
-// [data-special-theme="glaucoma"] ul,
-// [data-special-theme="glaucoma"] ol {
-// }
 
 [data-special-theme="glaucoma"] li {
     margin-bottom: 10px;
