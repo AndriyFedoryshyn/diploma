@@ -46,6 +46,8 @@ $input-focus-border-color: $primary-color;
     line-height: $line-height;
 }
 
+[data-special-theme="photophobia"] body,
+[data-special-theme="photophobia"] div,
 [data-special-theme="photophobia"] header,
 [data-special-theme="photophobia"] footer,
 [data-special-theme="photophobia"] nav,
@@ -54,12 +56,17 @@ $input-focus-border-color: $primary-color;
 }
 
 [data-special-theme="photophobia"] button {
-    background-color: $button-primary-bg;
-    color: $button-primary-text;
+    background-color: $button-primary-bg !important;
+    color: $button-primary-text !important;
     border-radius: $border-radius;
-    padding: 0.75rem 1.5rem;
     box-shadow: $card-shadow;
+    padding: 0.5rem;
     border: none;
+}
+
+[data-special-theme="photophobia"] button > a {
+    color: $background-color;
+    padding: 0.7rem;
 }
 
 [data-special-theme="photophobia"] button:hover {
@@ -83,7 +90,6 @@ $input-focus-border-color: $primary-color;
     color: $text-color;
     border: 2px solid $input-border-color;
     border-radius: $border-radius;
-    padding: 0.5rem;
     font-size: $base-font-size;
 }
 
@@ -105,10 +111,9 @@ $input-focus-border-color: $primary-color;
     line-height: $line-height;
 }
 
-[data-special-theme="photophobia"] ul,
-[data-special-theme="photophobia"] ol {
-    padding-left: 20px;
-}
+// [data-special-theme="photophobia"] ul,
+// [data-special-theme="photophobia"] ol {
+// }
 
 [data-special-theme="photophobia"] li {
     font-size: $base-font-size;

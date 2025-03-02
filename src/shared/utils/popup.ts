@@ -27,6 +27,9 @@ export const PopupBody = styled('div')(
 
 export const Button = styled('button')(
   ({ theme }) => `
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     font-weight: 600;
     font-size: 0.875rem;
     line-height: 1.5;

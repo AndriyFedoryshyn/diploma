@@ -45,23 +45,26 @@ $input-focus-border-color: $primary-color;
     font-size: $base-font-size;
     line-height: $line-height;
 }
-
+[data-special-theme="glaucoma"] body,
+[data-special-theme="glaucoma"] div,
 [data-special-theme="glaucoma"] header,
 [data-special-theme="glaucoma"] footer,
 [data-special-theme="glaucoma"] nav,
 [data-special-theme="glaucoma"] section {
     background-color: $card-background-color;
     border-radius: $border-radius;
-    box-shadow: $card-shadow;
 }
 
 [data-special-theme="glaucoma"] button {
-    background-color: $button-primary-bg;
-    color: $button-primary-text;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: $button-primary-bg !important;
+    color: $button-primary-text !important;
     font-size: $base-font-size;
     border: none;
     border-radius: $border-radius;
-    padding: 12px 24px;
     cursor: pointer;
 }
 
@@ -104,10 +107,9 @@ $input-focus-border-color: $primary-color;
     color: $heading-color;
 }
 
-[data-special-theme="glaucoma"] ul,
-[data-special-theme="glaucoma"] ol {
-    padding-left: 20px;
-}
+// [data-special-theme="glaucoma"] ul,
+// [data-special-theme="glaucoma"] ol {
+// }
 
 [data-special-theme="glaucoma"] li {
     margin-bottom: 10px;

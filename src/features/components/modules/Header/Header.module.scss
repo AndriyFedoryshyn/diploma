@@ -104,6 +104,7 @@
 
     &MainHeadingContainer {
         width: 100%;
+        max-width: 90rem;
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
@@ -219,6 +220,7 @@
         font-weight: 500;
         font-size: 1rem;
         padding: 0.3rem;
+        border-bottom: 1px solid rgba(0, 127, 255, 0.5);
         @include hoverButton;
     }
 }

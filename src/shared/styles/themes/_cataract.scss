@@ -1,13 +1,13 @@
-$primary-color: #0044cc; // Strong primary color
-$secondary-color: #e68a00; // Darker secondary color for improved contrast
+$primary-color: #0044cc;
+$secondary-color: #e68a00;
 
-$background-color: #ffffff; // Bright background for clear visibility
-$card-background-color: #f1f1f1; // Light background for cards
+$background-color: #ffffff;
+$card-background-color: #f1f1f1;
 
-$text-color: #333333; // Dark text for better contrast
-$heading-color: #222222; // Darker heading color
-$subtext-color: #555555; // Subtle but still readable subtext
-$muted-text-color: #777777; // Muted text for less important information
+$text-color: #333333;
+$heading-color: #222222;
+$subtext-color: #555555;
+$muted-text-color: #777777;
 
 $button-primary-bg: $primary-color;
 $button-primary-text: #ffffff;
@@ -17,7 +17,7 @@ $button-hover-bg: darken($primary-color, 15%);
 $button-hover-text: #ffffff;
 
 $link-color: $primary-color;
-$link-hover-color: darken($primary-color, 20%); // High contrast link hover color
+$link-hover-color: darken($primary-color, 20%);
 
 $border-color: #dcdcdc;
 $border-radius: 8px;
@@ -28,14 +28,14 @@ $heading-font-size: 24px;
 $subheading-font-size: 20px;
 $line-height: 1.5;
 
-$high-contrast-color: #000000; // High contrast text color
+$high-contrast-color: #000000;
 $low-contrast-color: #888888;
 
 $focus-color: $secondary-color;
 $focus-outline: 3px solid $focus-color;
 
 $card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-$input-border-color: #b3b3b3; // Darker border for input fields
+$input-border-color: #b3b3b3;
 $input-focus-border-color: $primary-color;
 
 [data-special-theme="cataract"] {
@@ -55,8 +55,8 @@ $input-focus-border-color: $primary-color;
 }
 
 [data-special-theme="cataract"] button {
-    background-color: $primary-color;
-    color: $background-color;
+    background-color: $primary-color !important;
+    color: $background-color !important;
     border-radius: $border-radius;
     font-size: $base-font-size;
     box-shadow: $card-shadow;
@@ -100,10 +100,9 @@ $input-focus-border-color: $primary-color;
     line-height: $line-height;
 }
 
-[data-special-theme="cataract"] ul,
-[data-special-theme="cataract"] ol {
-    padding-left: 20px;
-}
+// [data-special-theme="cataract"] ul,
+// [data-special-theme="cataract"] ol {
+// }
 
 [data-special-theme="cataract"] li {
     font-size: $base-font-size;

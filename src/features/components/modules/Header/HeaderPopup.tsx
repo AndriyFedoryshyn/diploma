@@ -1,8 +1,11 @@
 'use client';
 
-import { useState, type FC } from 'react';
+import { useEffect, useState, type FC } from 'react';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
-import { setSpecialTheme } from '@/shared/store/slices/SpecialThemeSlice';
+import {
+  initializeSpecialTheme,
+  setSpecialTheme,
+} from '@/shared/store/slices/SpecialThemeSlice';
 
 import { Unstable_Popup as BasePopup } from '@mui/base/Unstable_Popup';
 
@@ -15,6 +18,8 @@ import { popupItems } from '@/shared/static/popupItems';
 import { SpecialThemeT } from '@/shared/types/ThemesType';
 
 import { AnchorT } from '@/shared/types/HeaderType';
+
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import styles from './Header.module.scss';
 
@@ -29,6 +34,10 @@ export const HeaderPopup: FC = () => {
   const open = Boolean(anchor);
   const id = open ? 'simple-popup' : undefined;
 
+  useEffect(() => {
+    dispatch(initializeSpecialTheme());
+  }, [dispatch]);
+
   const handleThemeSelect = (theme: SpecialThemeT) => {
     dispatch(setSpecialTheme(theme));
   };
@@ -36,7 +45,7 @@ export const HeaderPopup: FC = () => {
   return (
     <Div className={styles['headerPopup']}>
       <Button aria-describedby={id} type="button" onClick={handlePopupClick}>
-        Обрати тему
+        Обрати тему <VisibilityIcon />
       </Button>
       <BasePopup id={id} open={open} anchor={anchor}>
         <PopupBody>
