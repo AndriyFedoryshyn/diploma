@@ -18,9 +18,6 @@
         width: 100%;
         display: flex;
         justify-content: center;
-        -webkit-padding-before: 1.5625rem;
-        padding-block-start: 1.5625rem;
-        padding-inline: 1.5rem;
 
         &Row {
             @include resizeContainer;
@@ -28,6 +25,9 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
+            -webkit-padding-before: 1.5625rem;
+            padding-block-start: 1.5625rem;
+            padding-inline: 1.5rem;
         }
     }
 

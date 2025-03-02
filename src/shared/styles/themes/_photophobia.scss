@@ -1,49 +1,154 @@
-// Загальні кольори для теми для людей з фотофобією
-$primary-color: #8b5e3c; // Теплий коричневий для важливих елементів
-$secondary-color: #d3a05d; // Теплий пісочний для акцентів
+$primary-color: #8b5e3c;
+$secondary-color: #d3a05d;
 
-// Кольори фону
-$background-color: #f5f5f5; // Світлий, але м'який фон, який не різко білий
-$card-background-color: #e0e0e0; // Світло-сірий фон для карток або блоків
+$background-color: #f5f5f5;
+$card-background-color: #e0e0e0;
 
-// Кольори для тексту
-$text-color: #4a4a4a; // Темно-сірий текст, який менш інтенсивний, ніж чорний
-$heading-color: #3c3c3c; // Трохи темніший для заголовків
-$subtext-color: #7a7a7a; // Світло-сірий для менш важливих елементів тексту
-$muted-text-color: #999999; // Текст з низьким контрастом для загального вигляду
+$text-color: #4a4a4a;
+$heading-color: #3c3c3c;
+$subtext-color: #7a7a7a;
+$muted-text-color: #999999;
 
-// Кольори для кнопок
-$button-primary-bg: $primary-color; // Теплий коричневий для основних кнопок
-$button-primary-text: #ffffff; // Білий текст на кнопках
-$button-secondary-bg: $secondary-color; // Пісочний для вторинних кнопок
-$button-secondary-text: #ffffff; // Білий текст на вторинних кнопках
-$button-hover-bg: darken($primary-color, 10%); // Темніший відтінок для hover на основних кнопках
-$button-hover-text: #ffffff; // Білий текст при hover
+$button-primary-bg: $primary-color;
+$button-primary-text: #ffffff;
+$button-secondary-bg: $secondary-color;
+$button-secondary-text: #ffffff;
+$button-hover-bg: darken($primary-color, 10%);
+$button-hover-text: #ffffff;
 
-// Кольори для посилань
-$link-color: $primary-color; // Колір посилань
-$link-hover-color: darken($primary-color, 15%); // Темніший відтінок для hover на посиланнях
+$link-color: $primary-color;
+$link-hover-color: darken($primary-color, 15%);
 
-// Колір меж і кордонів
-$border-color: #cccccc; // Світло-сірий колір меж, щоб уникнути різкості
-$border-radius: 10px; // Заокруглені кути для плавного вигляду
+$border-color: #cccccc;
+$border-radius: 10px;
 
-// Шрифти
-$base-font-family: "Arial", sans-serif; // Простий шрифт без засічок
-$base-font-size: 16px; // Базовий розмір шрифта для зручного читання
-$heading-font-size: 22px; // Розмір шрифта для заголовків
-$subheading-font-size: 18px; // Розмір шрифта для підзаголовків
-$line-height: 1.6; // Висота рядка для покращення читабельності
+$base-font-family: "Arial", sans-serif;
+$base-font-size: 16px;
+$heading-font-size: 22px;
+$subheading-font-size: 18px;
+$line-height: 1.6;
 
-// Контрастні відтінки для кращої видимості
-$high-contrast-color: #333333; // Темно-сірий для високо контрастних елементів
-$low-contrast-color: #666666; // Світло-сірий для менш важливих елементів
+$high-contrast-color: #333333;
+$low-contrast-color: #666666;
 
-// Стилі для фокусування
-$focus-color: $secondary-color; // Колір для фокусування елементів
-$focus-outline: 3px solid $focus-color; // Стиль обведення для фокусування
+$focus-color: $secondary-color;
+$focus-outline: 3px solid $focus-color;
 
-// Інші стилі
-$card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Легке тінювання для карток
-$input-border-color: #bbbbbb; // Колір меж для інпутів
-$input-focus-border-color: $primary-color; // Колір меж при фокусі на інпуті
+$card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+$input-border-color: #bbbbbb;
+$input-focus-border-color: $primary-color;
+
+[data-special-theme="photophobia"] {
+    background-color: $background-color;
+    color: $text-color;
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $line-height;
+}
+
+[data-special-theme="photophobia"] header,
+[data-special-theme="photophobia"] footer,
+[data-special-theme="photophobia"] nav,
+[data-special-theme="photophobia"] section {
+    background-color: $card-background-color;
+}
+
+[data-special-theme="photophobia"] button {
+    background-color: $button-primary-bg;
+    color: $button-primary-text;
+    border-radius: $border-radius;
+    padding: 0.75rem 1.5rem;
+    box-shadow: $card-shadow;
+    border: none;
+}
+
+[data-special-theme="photophobia"] button:hover {
+    background-color: $button-hover-bg;
+    color: $button-hover-text;
+}
+
+[data-special-theme="photophobia"] a {
+    color: $link-color;
+    text-decoration: underline;
+}
+
+[data-special-theme="photophobia"] a:hover {
+    color: $link-hover-color;
+}
+
+[data-special-theme="photophobia"] input,
+[data-special-theme="photophobia"] select,
+[data-special-theme="photophobia"] textarea {
+    background-color: $background-color;
+    color: $text-color;
+    border: 2px solid $input-border-color;
+    border-radius: $border-radius;
+    padding: 0.5rem;
+    font-size: $base-font-size;
+}
+
+[data-special-theme="photophobia"] input:focus,
+[data-special-theme="photophobia"] select:focus,
+[data-special-theme="photophobia"] textarea:focus {
+    border-color: $input-focus-border-color;
+    outline: none;
+}
+
+[data-special-theme="photophobia"] p,
+[data-special-theme="photophobia"] h1,
+[data-special-theme="photophobia"] h2,
+[data-special-theme="photophobia"] h3,
+[data-special-theme="photophobia"] h4,
+[data-special-theme="photophobia"] h5,
+[data-special-theme="photophobia"] h6 {
+    color: $heading-color;
+    line-height: $line-height;
+}
+
+[data-special-theme="photophobia"] ul,
+[data-special-theme="photophobia"] ol {
+    padding-left: 20px;
+}
+
+[data-special-theme="photophobia"] li {
+    font-size: $base-font-size;
+}
+
+[data-special-theme="photophobia"] input::placeholder {
+    color: $muted-text-color;
+}
+
+@media (prefers-contrast: high) {
+    [data-special-theme="photophobia"] {
+        background-color: $background-color;
+        color: $high-contrast-color;
+    }
+
+    [data-special-theme="photophobia"] button {
+        background-color: $primary-color;
+        color: $button-primary-text;
+    }
+
+    [data-special-theme="photophobia"] button:hover {
+        background-color: darken($primary-color, 15%);
+        color: $button-hover-text;
+    }
+
+    [data-special-theme="photophobia"] a {
+        color: $primary-color;
+    }
+
+    [data-special-theme="photophobia"] input,
+    [data-special-theme="photophobia"] select,
+    [data-special-theme="photophobia"] textarea {
+        border-color: $high-contrast-color;
+        background-color: $card-background-color;
+    }
+
+    [data-special-theme="photophobia"] input:focus,
+    [data-special-theme="photophobia"] select:focus,
+    [data-special-theme="photophobia"] textarea:focus {
+        border-color: $focus-color;
+        outline: $focus-outline;
+    }
+}

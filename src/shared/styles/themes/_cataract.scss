@@ -1,23 +1,23 @@
-$primary-color: #0044cc;
-$secondary-color: #ffaa00;
+$primary-color: #0044cc; // Strong primary color
+$secondary-color: #e68a00; // Darker secondary color for improved contrast
 
-$background-color: #ffffff;
-$card-background-color: #f5f5f5;
+$background-color: #ffffff; // Bright background for clear visibility
+$card-background-color: #f1f1f1; // Light background for cards
 
-$text-color: #000000;
-$heading-color: #222222;
-$subtext-color: #555555;
-$muted-text-color: #888888;
+$text-color: #333333; // Dark text for better contrast
+$heading-color: #222222; // Darker heading color
+$subtext-color: #555555; // Subtle but still readable subtext
+$muted-text-color: #777777; // Muted text for less important information
 
 $button-primary-bg: $primary-color;
 $button-primary-text: #ffffff;
 $button-secondary-bg: $secondary-color;
-$button-secondary-text: #000000;
-$button-hover-bg: darken($primary-color, 10%);
+$button-secondary-text: #ffffff;
+$button-hover-bg: darken($primary-color, 15%);
 $button-hover-text: #ffffff;
 
 $link-color: $primary-color;
-$link-hover-color: darken($primary-color, 15%);
+$link-hover-color: darken($primary-color, 20%); // High contrast link hover color
 
 $border-color: #dcdcdc;
 $border-radius: 8px;
@@ -28,14 +28,14 @@ $heading-font-size: 24px;
 $subheading-font-size: 20px;
 $line-height: 1.5;
 
-$high-contrast-color: #000000;
+$high-contrast-color: #000000; // High contrast text color
 $low-contrast-color: #888888;
 
 $focus-color: $secondary-color;
 $focus-outline: 3px solid $focus-color;
 
 $card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-$input-border-color: #cccccc;
+$input-border-color: #b3b3b3; // Darker border for input fields
 $input-focus-border-color: $primary-color;
 
 [data-special-theme="cataract"] {
@@ -140,7 +140,7 @@ $input-focus-border-color: $primary-color;
     }
 
     [data-special-theme="cataract"] button:hover {
-        background-color: darken($primary-color, 15%);
+        background-color: darken($primary-color, 20%);
         color: $button-hover-text;
     }
 

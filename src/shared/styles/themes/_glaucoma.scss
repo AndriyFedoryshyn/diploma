@@ -1,49 +1,129 @@
-// Загальні кольори для теми для людей з глаукомою
-$primary-color: #0066cc; // Яскравий синій для важливих елементів
-$secondary-color: #ff9900; // Контрастний оранжевий для акцентів
+$primary-color: #003366;
+$secondary-color: #ffcc00;
 
-// Кольори фону
-$background-color: #ffffff; // Білий фон для високої контрастності
-$card-background-color: #f7f7f7; // Світло-сірий фон для карток або блоків
+$background-color: #f2f2f2;
+$card-background-color: #e6e6e6;
 
-// Кольори для тексту
-$text-color: #000000; // Чорний текст для максимального контрасту
-$heading-color: #333333; // Темно-сірий для заголовків
-$subtext-color: #555555; // Світло-сірий для менш важливих елементів тексту
-$muted-text-color: #777777; // Текст з низьким контрастом
+$text-color: #222222;
+$heading-color: #333333;
+$subtext-color: #555555;
+$muted-text-color: #777777;
 
-// Кольори для кнопок
-$button-primary-bg: $primary-color; // Яскравий синій для основних кнопок
-$button-primary-text: #ffffff; // Білий текст на кнопках
-$button-secondary-bg: $secondary-color; // Оранжевий для вторинних кнопок
-$button-secondary-text: #ffffff; // Білий текст на вторинних кнопках
-$button-hover-bg: darken($primary-color, 10%); // Темніший відтінок для hover на основних кнопках
-$button-hover-text: #ffffff; // Білий текст при hover
+$button-primary-bg: $primary-color;
+$button-primary-text: #ffffff;
+$button-secondary-bg: $secondary-color;
+$button-secondary-text: #222222;
+$button-hover-bg: darken($primary-color, 10%);
+$button-hover-text: #ffffff;
 
-// Кольори для посилань
-$link-color: $primary-color; // Колір посилань
-$link-hover-color: darken($primary-color, 15%); // Темніший відтінок для hover на посиланнях
+$link-color: $secondary-color;
+$link-hover-color: darken($secondary-color, 15%);
 
-// Колір меж і кордонів
-$border-color: #dcdcdc; // Світло-сірий колір меж
-$border-radius: 8px; // Заокруглені кути для плавного вигляду
+$border-color: #cccccc;
+$border-radius: 8px;
 
-// Шрифти
-$base-font-family: "Helvetica", sans-serif; // Простий шрифт без засічок
-$base-font-size: 18px; // Базовий розмір шрифта для кращої видимості
-$heading-font-size: 26px; // Розмір шрифта для заголовків
-$subheading-font-size: 22px; // Розмір шрифта для підзаголовків
-$line-height: 1.6; // Висота рядка для покращення читабельності
+$base-font-family: "Helvetica", sans-serif;
+$base-font-size: 18px;
+$heading-font-size: 26px;
+$subheading-font-size: 22px;
+$line-height: 1.6;
 
-// Контрастні відтінки для кращої видимості
-$high-contrast-color: #000000; // Чорний для високо контрастних елементів
-$low-contrast-color: #888888; // Світло-сірий для менш важливих елементів
+$high-contrast-color: #000000;
+$low-contrast-color: #888888;
 
-// Стилі для фокусування
-$focus-color: $secondary-color; // Колір для фокусування елементів
-$focus-outline: 3px solid $focus-color; // Стиль обведення для фокусування
+$focus-color: $secondary-color;
+$focus-outline: 3px solid $focus-color;
 
-// Інші стилі
-$card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Легке тінювання для карток
-$input-border-color: #cccccc; // Колір меж для інпутів
-$input-focus-border-color: $primary-color; // Колір меж при фокусі на інпуті
+$card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+$input-border-color: #999999;
+$input-focus-border-color: $primary-color;
+
+[data-special-theme="glaucoma"] {
+    background-color: $background-color;
+    color: $text-color;
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $line-height;
+}
+
+[data-special-theme="glaucoma"] header,
+[data-special-theme="glaucoma"] footer,
+[data-special-theme="glaucoma"] nav,
+[data-special-theme="glaucoma"] section {
+    background-color: $card-background-color;
+    border-radius: $border-radius;
+    box-shadow: $card-shadow;
+}
+
+[data-special-theme="glaucoma"] button {
+    background-color: $button-primary-bg;
+    color: $button-primary-text;
+    font-size: $base-font-size;
+    border: none;
+    border-radius: $border-radius;
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+[data-special-theme="glaucoma"] button:hover {
+    background-color: $button-hover-bg;
+    color: $button-hover-text;
+}
+
+[data-special-theme="glaucoma"] a {
+    color: $link-color;
+    text-decoration: underline;
+}
+
+[data-special-theme="glaucoma"] a:hover {
+    color: $link-hover-color;
+}
+
+[data-special-theme="glaucoma"] input,
+[data-special-theme="glaucoma"] select,
+[data-special-theme="glaucoma"] textarea {
+    border: 2px solid $input-border-color;
+    border-radius: $border-radius;
+    font-size: $base-font-size;
+}
+
+[data-special-theme="glaucoma"] input:focus,
+[data-special-theme="glaucoma"] select:focus,
+[data-special-theme="glaucoma"] textarea:focus {
+    border-color: $input-focus-border-color;
+    outline: $focus-outline;
+}
+
+[data-special-theme="glaucoma"] p,
+[data-special-theme="glaucoma"] h1,
+[data-special-theme="glaucoma"] h2,
+[data-special-theme="glaucoma"] h3,
+[data-special-theme="glaucoma"] h4,
+[data-special-theme="glaucoma"] h5,
+[data-special-theme="glaucoma"] h6 {
+    color: $heading-color;
+}
+
+[data-special-theme="glaucoma"] ul,
+[data-special-theme="glaucoma"] ol {
+    padding-left: 20px;
+}
+
+[data-special-theme="glaucoma"] li {
+    margin-bottom: 10px;
+}
+
+[data-special-theme="glaucoma"] input::placeholder {
+    color: $muted-text-color;
+}
+
+@media (prefers-contrast: high) {
+    [data-special-theme="glaucoma"] {
+        background-color: $high-contrast-color;
+        color: #ffffff;
+    }
+    [data-special-theme="glaucoma"] button {
+        background-color: $secondary-color;
+        color: #222222;
+    }
+}

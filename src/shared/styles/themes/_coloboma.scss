@@ -1,49 +1,132 @@
-// Загальні кольори для теми для людей з колобомою
-$primary-color: #0055b8;  // Інтенсивний синій для основних елементів
-$secondary-color: #ff6600; // Яскравий помаранчевий для акцентів
+$primary-color: #003b73;
+$secondary-color: #d15b00;
 
-// Кольори фону
-$background-color: #ffffff;  // Білий фон для максимального контрасту
-$card-background-color: #f0f0f0; // Світло-сірий фон для карток або блоків
+$background-color: #f4f4f4;
+$card-background-color: #e0e0e0;
 
-// Кольори для тексту
-$text-color: #000000;  // Чорний текст для найкращої видимості
-$heading-color: #222222; // Темно-сірий для заголовків
-$subtext-color: #555555; // Світло-сірий для менш важливих елементів тексту
-$muted-text-color: #888888; // Текст з низьким контрастом для менш важливих елементів
+$text-color: #212121;
+$heading-color: #1a1a1a;
+$subtext-color: #666666;
+$muted-text-color: #999999;
 
-// Кольори для кнопок
-$button-primary-bg: $primary-color;  // Синій для основних кнопок
-$button-primary-text: #ffffff;  // Білий текст на кнопках
-$button-secondary-bg: $secondary-color; // Помаранчевий для вторинних кнопок
-$button-secondary-text: #ffffff; // Білий текст на вторинних кнопках
-$button-hover-bg: darken($primary-color, 10%);  // Темніший відтінок для hover на основних кнопках
-$button-hover-text: #ffffff;  // Білий текст при hover
+$button-primary-bg: $primary-color;
+$button-primary-text: #ffffff;
+$button-secondary-bg: $secondary-color;
+$button-secondary-text: #ffffff;
+$button-hover-bg: darken($primary-color, 12%);
+$button-hover-text: #ffffff;
 
-// Кольори для посилань
-$link-color: $primary-color;  // Колір посилань
-$link-hover-color: darken($primary-color, 15%); // Темніший відтінок для hover на посиланнях
+$link-color: $primary-color;
+$link-hover-color: darken($primary-color, 20%);
 
-// Колір меж і кордонів
-$border-color: #dcdcdc;  // Світло-сірий для меж
-$border-radius: 10px;  // Заокруглені кути для елементів
+$border-color: #b0b0b0;
+$border-radius: 10px;
 
-// Шрифти
-$base-font-family: 'Arial', sans-serif;  // Простой шрифт без засічок
-$base-font-size: 18px;  // Базовий розмір шрифта для комфортного читання
-$heading-font-size: 26px; // Розмір шрифта для заголовків
-$subheading-font-size: 22px; // Розмір шрифта для підзаголовків
-$line-height: 1.7;  // Висота рядка для покращення читабельності
+$base-font-family: "Arial", sans-serif;
+$base-font-size: 18px;
+$heading-font-size: 26px;
+$subheading-font-size: 22px;
+$line-height: 1.7;
 
-// Контрастні відтінки для кращої видимості
-$high-contrast-color: #000000;  // Чорний для важливих елементів
-$low-contrast-color: #777777;   // Світло-сірий для менш важливих елементів
+$high-contrast-color: #000000;
+$low-contrast-color: #777777;
 
-// Стилі для фокусування
-$focus-color: $secondary-color;  // Яскравий помаранчевий для фокусування
-$focus-outline: 3px solid $focus-color;  // Стиль обведення для фокусування елементів
+$focus-color: $secondary-color;
+$focus-outline: 3px solid $focus-color;
 
-// Інші стилі
-$card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  // Легке тінювання для карток
-$input-border-color: #cccccc;  // Світло-сірий колір меж для інпутів
-$input-focus-border-color: $primary-color;  // Яскраво-синій колір меж при фокусі на інпуті
+$card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+$input-border-color: #c1c1c1;
+$input-focus-border-color: $primary-color;
+
+[data-special-theme="coloboma"] {
+    background-color: $background-color;
+    color: $text-color;
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $line-height;
+}
+
+[data-special-theme="coloboma"] header,
+[data-special-theme="coloboma"] footer,
+[data-special-theme="coloboma"] nav,
+[data-special-theme="coloboma"] section,
+[data-special-theme="coloboma"] div,
+[data-special-theme="coloboma"] body {
+    background-color: $card-background-color;
+}
+
+[data-special-theme="coloboma"] button,
+[data-special-theme="coloboma"] button > li {
+    background-color: $button-primary-bg;
+    color: $button-primary-text;
+    border-radius: $border-radius;
+    padding: 10px;
+    font-size: $base-font-size;
+}
+
+[data-special-theme="coloboma"] button:hover {
+    background-color: $button-hover-bg;
+    color: $background-color;
+}
+
+[data-special-theme="coloboma"] a {
+    color: $link-color;
+    text-decoration: underline;
+}
+
+[data-special-theme="coloboma"] button > a {
+    color: $background-color;
+}
+
+[data-special-theme="coloboma"] a:hover {
+    color: $link-hover-color;
+}
+
+[data-special-theme="coloboma"] input,
+[data-special-theme="coloboma"] select,
+[data-special-theme="coloboma"] textarea {
+    border: 2px solid $input-border-color;
+    font-size: $base-font-size;
+    border-radius: $border-radius;
+}
+
+[data-special-theme="coloboma"] input:focus,
+[data-special-theme="coloboma"] select:focus,
+[data-special-theme="coloboma"] textarea:focus {
+    border-color: $input-focus-border-color;
+    outline: $focus-outline;
+}
+
+[data-special-theme="coloboma"] p,
+[data-special-theme="coloboma"] h1,
+[data-special-theme="coloboma"] h2,
+[data-special-theme="coloboma"] h3,
+[data-special-theme="coloboma"] h4,
+[data-special-theme="coloboma"] h5,
+[data-special-theme="coloboma"] h6 {
+    color: $heading-color;
+}
+
+[data-special-theme="coloboma"] ul,
+[data-special-theme="coloboma"] ol {
+    margin-left: 20px;
+}
+
+[data-special-theme="coloboma"] li {
+    font-size: $base-font-size;
+}
+
+[data-special-theme="coloboma"] input::placeholder {
+    color: $muted-text-color;
+}
+
+@media (prefers-contrast: high) {
+    [data-special-theme="coloboma"] {
+        background-color: #000000;
+        color: #ffffff;
+    }
+    [data-special-theme="coloboma"] button {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}

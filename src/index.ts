@@ -1,7 +1,6 @@
 export { HomeClient } from '@/features/components/containers/HomeClient/HomeClient';
 export { LayoutClientWrapper } from '@/features/components/containers/LayoutClientWrapper/LayoutClientWrapper';
 export { Wrapper } from '@/features/components/containers/Wrapper/Wrapper';
-
 export { AlertBanner } from '@/features/components/modules/AlertBanner/AlertBanner';
 export { BurgerMenu } from '@/features/components/modules/BurgerMenu/BurgerMenu';
 export { ButtonChart } from '@/features/components/modules/ButtonsChart/ButtonsChart';

@@ -19,6 +19,7 @@ import {
   Nav,
   UIControls,
   HeaderPopup,
+  Section,
 } from '@/index';
 
 import {
@@ -111,7 +112,7 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
         handleCloseBurgerMenu={() => dispatch(toggleMenu())}
       />
 
-      <Div className={styles['headerMainHeadingContainer']}>
+      <Section className={styles['headerMainHeadingContainer']}>
         <h1
           className={styles['headerMainHeading']}
           aria-live="polite"
@@ -123,7 +124,7 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
         </h1>
 
         <HeaderForm onSearch={onSearch} settlements={settlements} />
-      </Div>
+      </Section>
     </HeaderElement>
   );
 };

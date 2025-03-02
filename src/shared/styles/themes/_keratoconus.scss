@@ -47,3 +47,120 @@ $focus-outline: 3px solid $focus-color; // Стиль обведення для 
 $card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Легке тінювання для карток
 $input-border-color: #cccccc; // Світло-сірий колір меж для інпутів
 $input-focus-border-color: $primary-color; // Яскраво-синій колір меж при фокусі на інпуті
+
+/* Основні стилі для теми для людей з кератоконусом */
+[data-special-theme="keratoconus"] {
+    background-color: $background-color;
+    color: $text-color;
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $line-height;
+}
+
+[data-special-theme="keratoconus"] header,
+[data-special-theme="keratoconus"] footer,
+[data-special-theme="keratoconus"] nav,
+[data-special-theme="keratoconus"] section {
+    background-color: $card-background-color;
+}
+
+[data-special-theme="keratoconus"] button {
+    background-color: $button-primary-bg;
+    color: $button-primary-text;
+    border-radius: $border-radius;
+    padding: 0.75rem 1.5rem;
+    box-shadow: $card-shadow;
+    border: none;
+}
+
+[data-special-theme="keratoconus"] button:hover {
+    background-color: $button-hover-bg;
+    color: $button-hover-text;
+}
+
+[data-special-theme="keratoconus"] a {
+    color: $link-color;
+    text-decoration: underline;
+}
+
+[data-special-theme="keratoconus"] a:hover {
+    color: $link-hover-color;
+}
+
+[data-special-theme="keratoconus"] input,
+[data-special-theme="keratoconus"] select,
+[data-special-theme="keratoconus"] textarea {
+    background-color: $background-color;
+    color: $text-color;
+    border: 2px solid $input-border-color;
+    border-radius: $border-radius;
+    padding: 0.5rem;
+    font-size: $base-font-size;
+}
+
+[data-special-theme="keratoconus"] input:focus,
+[data-special-theme="keratoconus"] select:focus,
+[data-special-theme="keratoconus"] textarea:focus {
+    border-color: $input-focus-border-color;
+    outline: none;
+}
+
+[data-special-theme="keratoconus"] p,
+[data-special-theme="keratoconus"] h1,
+[data-special-theme="keratoconus"] h2,
+[data-special-theme="keratoconus"] h3,
+[data-special-theme="keratoconus"] h4,
+[data-special-theme="keratoconus"] h5,
+[data-special-theme="keratoconus"] h6 {
+    color: $heading-color;
+    line-height: $line-height;
+}
+
+[data-special-theme="keratoconus"] ul,
+[data-special-theme="keratoconus"] ol {
+    padding-left: 20px;
+}
+
+[data-special-theme="keratoconus"] li {
+    font-size: $base-font-size;
+}
+
+[data-special-theme="keratoconus"] input::placeholder {
+    color: $muted-text-color;
+}
+
+/* Стилі для висококонтрастного режиму */
+@media (prefers-contrast: high) {
+    [data-special-theme="keratoconus"] {
+        background-color: $background-color;
+        color: $high-contrast-color;
+    }
+
+    [data-special-theme="keratoconus"] button {
+        background-color: $primary-color;
+        color: $button-primary-text;
+    }
+
+    [data-special-theme="keratoconus"] button:hover {
+        background-color: darken($primary-color, 15%);
+        color: $button-hover-text;
+    }
+
+    [data-special-theme="keratoconus"] a {
+        color: $primary-color;
+    }
+
+    [data-special-theme="keratoconus"] input,
+    [data-special-theme="keratoconus"] select,
+    [data-special-theme="keratoconus"] textarea {
+        border-color: $high-contrast-color;
+        background-color: $card-background-color;
+    }
+
+    [data-special-theme="keratoconus"] input:focus,
+    [data-special-theme="keratoconus"] select:focus,
+    [data-special-theme="keratoconus"] textarea:focus {
+        border-color: $focus-color;
+        outline: $focus-outline;
+    }
+}
