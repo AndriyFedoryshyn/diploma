@@ -19,6 +19,7 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
   data,
 }) => {
   const [selectedLetter, setSelectedLetter] = useState<SelectedLetterT>('А');
+  const [showAll, setShowAll] = useState(false);
 
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
 
@@ -45,6 +46,10 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
     }
   };
 
+  const handleShowAllAreas = () => {
+    setShowAll(true);
+  };
+
   const filteredData = data
     ? data
         .filter((area) => {
@@ -58,6 +63,8 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
         })
         .sort((a, b) => a.name.uk.localeCompare(b.name.uk))
     : [];
+
+  const displayedData = showAll ? filteredData : filteredData.slice(0, 80);
 
   return (
     <Section className={styles['settlementsList']}>
@@ -109,7 +116,7 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
             list: styles['settlementsListAreas'],
             listItem: styles['settlementsListAreasItem'],
           }}
-          renderList={filteredData}
+          renderList={displayedData}
           renderItem={(area) => (
             <Button
               tabIndex={0}
@@ -122,6 +129,17 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
             </Button>
           )}
         />
+
+        {filteredData.length > 80 && !showAll && (
+          <Button
+            tabIndex={0}
+            className={styles['showAllButton']}
+            onClick={handleShowAllAreas}
+            onMouseEnter={handleMouseEnter}
+          >
+            Показати все
+          </Button>
+        )}
       </Div>
     </Section>
   );

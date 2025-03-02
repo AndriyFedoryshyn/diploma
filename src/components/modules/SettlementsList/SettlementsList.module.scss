@@ -85,6 +85,10 @@
             }
         }
     }
+
+    & .showAllButton {
+        @include notificationButton;
+    }
 }
 
 @media (max-width: 75rem) {
