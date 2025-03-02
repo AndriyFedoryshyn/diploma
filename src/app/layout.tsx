@@ -6,9 +6,9 @@ import { Roboto } from 'next/font/google';
 
 import { LayoutClientWrapper, Wrapper, Footer, Main } from '@/index';
 
-import { UIControlsProvider } from '@/shared/contexts/FontSizeContext/FontSizeProvider';
+import { UIControlsProvider } from '@/context/FontSizeContext/FontSizeProvider';
 
-import '@/shared/styles/main/main.scss';
+import '@/styles/main/main.scss';
 
 const robotoFont = Roboto({
   subsets: ['latin'],

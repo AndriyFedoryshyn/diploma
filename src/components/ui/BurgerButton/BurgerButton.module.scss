@@ -1,0 +1,10 @@
+@use "../../../styles/abstracts/mixins/mixins" as *;
+@use "../../../styles/base/colors/colors" as color;
+@use "../../../styles/base/globals/globals" as size;
+
+.menuButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}

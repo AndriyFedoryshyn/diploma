@@ -1,8 +1,8 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
+import { useAppSelector } from '@/hooks/useAppSelector';
 
 import {
   Div,

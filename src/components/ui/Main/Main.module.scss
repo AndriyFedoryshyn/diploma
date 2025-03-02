@@ -1,0 +1,7 @@
+@use "../../../styles/abstracts/mixins/mixins" as *;
+
+.main {
+    min-height: 100%;
+    flex: 1 1 auto;
+    padding-inline: 0;
+}
