@@ -2,14 +2,13 @@
 
 import { useState, type FC } from 'react';
 import { useSpeechSynthesis } from '@/shared/hooks/useSpeechSynthesis ';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
 import { Section, Div, Heading, Button, List, Span } from '@/index';
 
 import { alphabet } from '@/shared/static/alphabet';
 
 import { SelectedLetterT } from '@/shared/types/SettlementsList';
-
-import { useAppSelector } from '@/shared/hooks/useAppSelector';
 
 import { SettlementsListPropsI } from '@/shared/interfaces/SettlementsList';
 

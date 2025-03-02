@@ -1,6 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 
-import { rootReducer } from "./rootReducer/rootReducer";
+import { rootReducer } from './rootReducer/rootReducer';
 
 export const store = configureStore({
   reducer: rootReducer,
@@ -9,7 +9,7 @@ export const store = configureStore({
       serializableCheck: false,
     });
   },
-  devTools: process.env.NODE_ENV !== "production",
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
 export type AppStateT = ReturnType<typeof store.getState>;

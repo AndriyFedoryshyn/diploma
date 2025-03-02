@@ -47,5 +47,5 @@ const specialThemeSlice = createSlice({
 
 export const { initializeSpecialTheme, resetSpecialTheme, setSpecialTheme } =
   specialThemeSlice.actions;
-  
+
 export default specialThemeSlice.reducer;
