@@ -15,7 +15,7 @@ import {
   Section,
 } from '@/index';
 
-import styles from '@/shared/styles/pages/Group.module.scss';
+import styles from '@/styles/pages/Group.module.scss';
 
 const Group = () => {
   const { speakText } = useSpeechSynthesis();
