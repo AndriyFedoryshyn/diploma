@@ -8,7 +8,6 @@
     display: flex;
     justify-content: center;
     flex-flow: column nowrap;
-    gap: 5rem;
     background: url("/images/header_background.png") no-repeat center center;
     background-size: 100% 100%;
     background-position: top center;
@@ -114,6 +113,7 @@
     }
 
     &MainHeading {
+        padding-block-start: 5rem;
         @include mainHeading;
         @include elementFocus;
     }
