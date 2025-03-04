@@ -34,7 +34,7 @@ export { List } from '@/components/ui/List/List';
 export { Main } from '@/components/ui/Main/Main';
 export { Section } from '@/components/ui/Section/Section';
 export { Span } from '@/components/ui/Span/Span';
-export { Paragpraph } from '@/components/ui/Paragraph/Paragraph';
+export { Paragraph } from '@/components/ui/Paragraph/Paragraph';
 export { ControlButton } from '@/components/ui/ControlButton/ControlButton';
 export { GroupHeader } from '@/components/pages/group/GroupHeader/GroupHeader';
 export { GroupInfo } from '@/components/pages/group/GroupInfo/GroupInfo';

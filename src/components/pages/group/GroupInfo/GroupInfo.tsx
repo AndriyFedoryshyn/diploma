@@ -3,7 +3,7 @@ import { type FC } from 'react';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 
-import { AlertBanner, Button, Heading, Paragpraph, Section } from '@/index';
+import { AlertBanner, Button, Heading, Paragraph, Section } from '@/index';
 
 import Link from 'next/link';
 
@@ -49,7 +49,7 @@ export const GroupInfo: FC<GroupInfoProps> = ({ firstPart, secondPart }) => {
           Підключити сповіщення
         </Link>
       </Button>
-      <Paragpraph
+      <Paragraph
         onMouseEnter={handleSpeakText}
         className={styles['groupMainParagraph']}
         tabIndex={0}
@@ -60,7 +60,7 @@ export const GroupInfo: FC<GroupInfoProps> = ({ firstPart, secondPart }) => {
           {firstPart} група ({secondPart} підгрупа)
         </strong>{' '}
         - після підключення сповіщень орієнтуйтесь на неї!
-      </Paragpraph>
+      </Paragraph>
       <AlertBanner />
     </Section>
   );

@@ -3,7 +3,7 @@ import { type FC } from 'react';
 import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
 
-import { Div, Heading, Paragpraph, Span } from '@/index';
+import { Div, Heading, Paragraph, Span } from '@/index';
 
 import FlashOffIcon from '@mui/icons-material/FlashOff';
 
@@ -31,12 +31,12 @@ export const GroupScheduleStatistic: FC = () => {
         >
           Позначення до графіка
         </Heading>
-        <Paragpraph
+        <Paragraph
           onMouseEnter={handleSpeakText}
           className={styles['groupScheduleStatisticParagraph']}
         >
           На графіку відповідним фоном зафарбовані певні ділянки, що означає:
-        </Paragpraph>
+        </Paragraph>
         <Div className={styles['groupScheduleStatisticInfo']}>
           <Span
             onMouseEnter={handleSpeakText}

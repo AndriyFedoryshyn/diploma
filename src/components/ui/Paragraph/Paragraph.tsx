@@ -7,7 +7,7 @@ interface ParagraphPropsI extends HTMLProps<HTMLParagraphElement> {
   onMouseEnter?: (event: React.MouseEvent) => void;
 }
 
-export const Paragpraph: FC<ParagraphPropsI> = ({
+export const Paragraph: FC<ParagraphPropsI> = ({
   className,
   children,
   tabIndex,

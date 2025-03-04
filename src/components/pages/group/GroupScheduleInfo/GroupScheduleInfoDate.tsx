@@ -3,7 +3,7 @@ import { type FC } from 'react';
 import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
 
-import { Div, Heading, Paragpraph } from '@/index';
+import { Div, Heading, Paragraph } from '@/index';
 
 import { formatedDate } from '@/utils/formateDate';
 
@@ -36,12 +36,12 @@ export const GroupScheduleInfoDate: FC<GroupScheduleInfoDatePropsI> = ({
         >
           {firstPart} група ({secondPart} підгрупа)
         </Heading>
-        <Paragpraph
+        <Paragraph
           onMouseEnter={handleSpeakText}
           className={styles['groupScheduleInfoDateParagraph']}
         >
           {formatedDate}
-        </Paragpraph>
+        </Paragraph>
       </Div>
     </Div>
   );

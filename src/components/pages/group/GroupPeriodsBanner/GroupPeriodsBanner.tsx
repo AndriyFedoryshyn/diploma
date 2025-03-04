@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 
-import { Div, Paragpraph } from '@/index';
+import { Div, Paragraph } from '@/index';
 
 import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -24,12 +24,12 @@ export const GroupPeriodsBanner: FC = () => {
   return (
     <Div className={styles['groupPeriodsInfo']}>
       <ContentPasteOffIcon fontSize="large" color="action" />
-      <Paragpraph
+      <Paragraph
         onMouseEnter={handleSpeakText}
         className={styles['groupPeriodsParagraph']}
       >
         Немає даних
-      </Paragpraph>
+      </Paragraph>
     </Div>
   );
 };
