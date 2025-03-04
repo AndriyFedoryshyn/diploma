@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface VisbleContorlsState {
+interface VisibleControlsState {
   isVisibleControls: boolean;
   isVisibleMenu: boolean;
 }
 
-const initialState: VisbleContorlsState = {
+const initialState: VisibleControlsState = {
   isVisibleControls: false,
   isVisibleMenu: false,
 };
@@ -32,5 +32,5 @@ const visibleControlsSlice = createSlice({
 
 export const { toggleControlPanel, toggleMenu, setMenuVisibility } =
   visibleControlsSlice.actions;
-  
+
 export default visibleControlsSlice.reducer;

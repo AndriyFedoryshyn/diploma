@@ -4,11 +4,8 @@ import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useUIControls } from '@/context/FontSizeContext/FontSizeContext';
 
-import Link from 'next/link';
+import { Div, Nav, UIControlsFontSize, UIControlsThemes } from '@/index';
 
-import { Div, List, Nav, UIControlsFontSize, UIControlsThemes } from '@/index';
-
-import { nav } from '@/static/nav';
 import { colorsLabels, labels } from '@/static/uiControls';
 
 import { ClassNamesT } from '@/types/UIControlsType';
@@ -45,19 +42,6 @@ export const BurgerNav: FC = () => {
 
   return (
     <Nav className={styles['burgerMenu']}>
-      <List
-        classNames={{
-          list: styles['burgerMenuList'],
-          listItem: styles['burgerMenuListItem'],
-        }}
-        renderList={nav}
-        renderItem={(item) => (
-          <Link href={item.href} key={item.linkId}>
-            {item.label}
-          </Link>
-        )}
-      />
-
       <Div className={styles['burgerUiControlsContainer']}>
         <UIControlsFontSize
           fontSize={fontSize}
