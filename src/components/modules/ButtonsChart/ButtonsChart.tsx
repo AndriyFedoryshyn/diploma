@@ -1,13 +1,11 @@
 import { type FC } from 'react';
 
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 import { Div, Heading, ChartList } from '@/index';
 
 import { chartButtons } from '@/static/chartButtons';
-
-import { FOCUS_COLOR } from './ChartList';
 
 import styles from './ButtonsChart.module.scss';
 
@@ -19,30 +17,18 @@ const chartListClassNames = {
 };
 
 export const ButtonChart: FC = () => {
-  const { speakText } = useSpeechSynthesis();
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
 
-  const handleMouseEnter = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
   return (
     <Div className={styles['buttonsChartBlock']}>
       <Heading
-        onMouseEnter={handleMouseEnter}
         level="h2"
         className={styles['chartHeading']}
         id="chartHeading"
         tabIndex={0}
-        onBlur={(e) =>
-          (e.currentTarget.style.outline = '2px solid transparent')
-        }
-        onFocus={(e) =>
-          (e.currentTarget.style.outline = `2px solid ${FOCUS_COLOR}`)
-        }
+        onFocus={handleFocus}
       >
         Перейти до графіка за чергою
       </Heading>

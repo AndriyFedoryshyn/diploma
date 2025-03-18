@@ -2,8 +2,8 @@
 
 import { useEffect, useState, type FC } from 'react';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 import {
   initializeSpecialTheme,
@@ -29,15 +29,9 @@ import styles from './Header.module.scss';
 export const HeaderPopup: FC = () => {
   const [anchor, setAnchor] = useState<AnchorT>(null);
   const dispatch = useAppDispatch();
-  const { speakText } = useSpeechSynthesis();
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
 
-  const handleSpeakText = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
   const handlePopupClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchor(anchor ? null : event.currentTarget);
@@ -60,7 +54,7 @@ export const HeaderPopup: FC = () => {
         aria-describedby={id}
         type="button"
         onClick={handlePopupClick}
-        onMouseEnter={handleSpeakText}
+        onFocus={handleFocus}
         tabIndex={0}
       >
         Обрати тему <VisibilityIcon />
@@ -72,8 +66,8 @@ export const HeaderPopup: FC = () => {
               type="button"
               className={styles['headerPopupButton']}
               key={item.id}
+              onFocus={handleFocus}
               onClick={() => handleThemeSelect(item.dataLabel as SpecialThemeT)}
-              onMouseEnter={handleSpeakText}
             >
               {item.label}
             </ButtonElement>

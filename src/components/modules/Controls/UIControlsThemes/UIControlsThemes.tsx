@@ -6,9 +6,8 @@ import { UIControlsThemesPropsI } from '@/interfaces/UIControlsThemes';
 
 export const UIControlsThemes: FC<UIControlsThemesPropsI> = ({
   colorsLabels,
+  handleFocus,
   classNames,
-  handleMouseEnter,
-  speakText,
 }) => {
   return (
     <Div className={classNames.block}>
@@ -16,8 +15,7 @@ export const UIControlsThemes: FC<UIControlsThemesPropsI> = ({
         level="h4"
         tabIndex={0}
         className={classNames.heading}
-        onMouseEnter={handleMouseEnter}
-        onFocus={(event) => speakText(event.currentTarget.innerText)}
+        onFocus={handleFocus}
       >
         Колір сайту:
       </Heading>

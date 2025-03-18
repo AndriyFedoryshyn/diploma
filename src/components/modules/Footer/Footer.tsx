@@ -2,8 +2,8 @@
 
 import { type FC, useCallback } from 'react';
 
-import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 import { ukraineRegions } from '@/static/regions';
 
@@ -24,25 +24,9 @@ const regionsClassNames = {
 };
 
 export const Footer: FC = () => {
-  const { speakText } = useSpeechSynthesis();
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
 
-  const handleSpeak = useCallback(
-    (text: string) => {
-      if (isSpeechEnabled) speakText(text);
-    },
-    [isSpeechEnabled, speakText]
-  );
-
-  const handleMouseEnterRegion = useCallback(
-    (event: React.MouseEvent) => {
-      if (isSpeechEnabled) {
-        const text = (event.target as HTMLElement).innerText.trim();
-        speakText(text === 'Київ' ? text : `${text} область`);
-      }
-    },
-    [isSpeechEnabled, speakText]
-  );
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent, regionName: string) => {
@@ -54,13 +38,6 @@ export const Footer: FC = () => {
     []
   );
 
-  const handleMouseEnterSpeak = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
-
   return (
     <FooterElement className={styles['footer']}>
       <Div className={styles['footerContainer']}>
@@ -68,8 +45,7 @@ export const Footer: FC = () => {
           <Heading
             level="h3"
             className={styles['regionsListHeading']}
-            onFocus={(e) => handleSpeak(e.currentTarget.innerText)}
-            onMouseEnter={handleMouseEnterSpeak}
+            onFocus={handleFocus}
           >
             Інші області
           </Heading>
@@ -84,7 +60,7 @@ export const Footer: FC = () => {
                 className={styles['regionsListButton']}
                 aria-label={`Перейти до області ${region.name}`}
                 onKeyDown={(event) => handleKeyDown(event, region.name)}
-                onMouseEnter={handleMouseEnterRegion}
+                onFocus={handleFocus}
               >
                 {region.name}
               </Button>

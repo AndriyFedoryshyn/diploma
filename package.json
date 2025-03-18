@@ -23,13 +23,13 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "next": "^15.1.7",
+    "next": "^15.2.3",
     "path": "^0.12.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",
     "recharts": "^2.15.1",
-    "sass": "^1.85.1"
+    "sass": "^1.86.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",

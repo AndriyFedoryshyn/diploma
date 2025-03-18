@@ -4,8 +4,8 @@ import React, { Fragment, type FC } from 'react';
 
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useScreenResize } from '@/hooks/useScreenResize';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 import {
   Div,
@@ -29,31 +29,21 @@ import styles from './GroupHeader.module.scss';
 
 export const GroupHeader: FC = () => {
   const dispatch = useAppDispatch();
+  const { isResize } = useScreenResize(1024);
 
   const { isVisibleControls, isVisibleMenu } = useAppSelector(
     (state) => state.visibleControls
   );
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
-  const { speakText } = useSpeechSynthesis();
 
-  const { isResize } = useScreenResize(1024);
-
-  const handleMouseEnter = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
-
-  const handleFocus = (event: React.FocusEvent<HTMLElement>) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
   const handleCloseControls = () => {
     dispatch(toggleControlPanel());
+  };
+
+  const handleCloseBurger = () => {
+    dispatch(toggleMenu());
   };
 
   return (
@@ -69,7 +59,7 @@ export const GroupHeader: FC = () => {
             <Fragment>
               <ControlButton
                 handleCloseControls={handleCloseControls}
-                handleMouseEnter={handleMouseEnter}
+                handleFocus={handleFocus}
               />
               <HeaderPopup />
               <HeaderLocation handleFocus={handleFocus} />
@@ -80,7 +70,7 @@ export const GroupHeader: FC = () => {
 
           <BurgerMenu
             isVisibleMenu={isVisibleMenu}
-            handleCloseBurgerMenu={() => dispatch(toggleMenu())}
+            handleCloseBurgerMenu={handleCloseBurger}
           />
         </Div>
       </Nav>

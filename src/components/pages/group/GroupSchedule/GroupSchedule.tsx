@@ -2,10 +2,10 @@
 
 import { type FC, useEffect, useState } from 'react';
 
-import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
-import { Div, List, Section, Span } from '@/index';
+import { Div, Heading, List, Section, Span } from '@/index';
 
 import { PastIndices, VisibleIndicators } from '@/types/GroupScheduleType';
 
@@ -19,8 +19,9 @@ export const GroupSchedule: FC = () => {
   );
   const [pastIndices, setPastIndices] = useState<PastIndices>([]);
 
-  const { speakText } = useSpeechSynthesis();
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
+
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
   const getCurrentIndex = () => {
     const currentTime = new Date();
@@ -74,23 +75,17 @@ export const GroupSchedule: FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleSpeakText = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
-
   return (
     <Section role="container" className={styles['schedule']}>
       <Div className={styles['scheduleContainer']}>
-        <h2
+        <Heading
+          level="h2"
           className={styles['scheduleHeading']}
-          onMouseEnter={handleSpeakText}
+          onFocus={handleFocus}
           tabIndex={0}
         >
           Відключення сьогодні
-        </h2>
+        </Heading>
       </Div>
       <Div className={styles['scheduleHoursContainer']}>
         <List
@@ -117,7 +112,11 @@ export const GroupSchedule: FC = () => {
                     {item.hours[1]}
                   </em>
                 </Div>
-                <Span className={styles['scheduleHoursBlock']}>
+                <Span
+                  onFocus={handleFocus}
+                  tabIndex={0}
+                  className={styles['scheduleHoursBlock']}
+                >
                   {showIndicator && (
                     <span className={styles['lightIndicator']}></span>
                   )}

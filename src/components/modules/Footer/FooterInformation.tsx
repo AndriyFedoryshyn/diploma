@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 
-import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 import { List, Div, Heading, Span, FooterSocial } from '@/index';
 
@@ -15,22 +15,15 @@ const informationListClassNames = {
 };
 
 export const FooterInformation: FC = () => {
-  const { speakText } = useSpeechSynthesis();
-
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
-
-  const handleMouseEnter = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
   return (
     <Div className={styles['footerInformation']}>
       <Heading
         id="footer-information-list"
-        onMouseEnter={handleMouseEnter}
+        onFocus={handleFocus}
+        tabIndex={0}
         level="h4"
         className={styles['footerInformationHeading']}
       >
@@ -48,7 +41,7 @@ export const FooterInformation: FC = () => {
               tabIndex={0}
               role="listitem"
               aria-label={listItem.title}
-              onMouseEnter={handleMouseEnter}
+              onFocus={handleFocus}
             >
               {listItem.title}
             </Span>

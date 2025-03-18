@@ -1,11 +1,11 @@
 import { type FC } from 'react';
 
-import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 import { Div, Heading, Paragraph } from '@/index';
 
-import { formatedDate } from '@/utils/formateDate';
+import { formateDate } from '@/utils/formateDate';
 
 import { GroupScheduleInfoDatePropsI } from '@/interfaces/Group';
 
@@ -15,32 +15,27 @@ export const GroupScheduleInfoDate: FC<GroupScheduleInfoDatePropsI> = ({
   firstPart,
   secondPart,
 }) => {
-  const { speakText } = useSpeechSynthesis();
-
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
 
-  const handleSpeakText = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
   return (
     <Div className={styles['groupScheduleInfoDate']}>
       <Div className={styles['groupScheduleInfoDateContainer']}>
         <Heading
-          onMouseEnter={handleSpeakText}
+          onFocus={handleFocus}
+          tabIndex={0}
           level="h5"
           className={styles['groupScheduleInfoDateHeading']}
         >
           {firstPart} група ({secondPart} підгрупа)
         </Heading>
         <Paragraph
-          onMouseEnter={handleSpeakText}
+          onFocus={handleFocus}
+          tabIndex={0}
           className={styles['groupScheduleInfoDateParagraph']}
         >
-          {formatedDate}
+          {formateDate}
         </Paragraph>
       </Div>
     </Div>

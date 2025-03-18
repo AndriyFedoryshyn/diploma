@@ -60,6 +60,7 @@
         font-weight: 500;
         color: color.$light-text;
         font-size: size.$alert-banner-size;
+        @include elementFocus;
     }
 
     &InformationList {
@@ -71,6 +72,7 @@
 
     &InformationListItem {
         color: color.$light-text;
+        @include elementFocus;
     }
 
     &InformationListItem:focus {

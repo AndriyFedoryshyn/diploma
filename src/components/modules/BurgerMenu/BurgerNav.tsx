@@ -1,8 +1,8 @@
 import { type FC } from 'react';
 
-import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useUIControls } from '@/context/FontSizeContext/FontSizeContext';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 import { Div, Nav, UIControlsFontSize, UIControlsThemes } from '@/index';
 
@@ -22,8 +22,9 @@ const uiControlsClassNames: ClassNamesT = {
 
 export const BurgerNav: FC = () => {
   const { fontSize, setFontSize } = useUIControls();
-  const { speakText } = useSpeechSynthesis();
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
+
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
   const handleFontSizeSelect = (index: number) => {
     const sizes = ['small', 'medium', 'large'] as const;
@@ -33,29 +34,21 @@ export const BurgerNav: FC = () => {
     localStorage.setItem('fontSize', newFontSize);
   };
 
-  const handleMouseEnter = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
-
   return (
     <Nav className={styles['burgerMenu']}>
       <Div className={styles['burgerUiControlsContainer']}>
         <UIControlsFontSize
           fontSize={fontSize}
           handleFontSizeSelect={handleFontSizeSelect}
-          handleMouseEnter={handleMouseEnter}
+          handleFocus={handleFocus}
           labels={labels}
           classNames={uiControlsClassNames}
         />
 
         <UIControlsThemes
           colorsLabels={colorsLabels}
-          handleMouseEnter={handleMouseEnter}
-          speakText={speakText}
           classNames={uiControlsClassNames}
+          handleFocus={handleFocus}
         />
       </Div>
     </Nav>

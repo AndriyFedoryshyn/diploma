@@ -13,6 +13,7 @@ import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useScreenResize } from '@/hooks/useScreenResize';
 import { useUIControls } from '@/context/FontSizeContext/FontSizeContext';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 import {
   colorsLabels,
@@ -26,6 +27,7 @@ import { initializeTheme, setTheme } from '@/store/slices/ThemeSlice';
 import { HeaderUIControlsPropsT } from '@/interfaces/UIControls';
 
 import styles from './UIControls.module.scss';
+
 import { resetSpecialTheme } from '@/store/slices/SpecialThemeSlice';
 
 export const UIControls: FC<HeaderUIControlsPropsT> = ({
@@ -38,6 +40,8 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
   const { speakText } = useSpeechSynthesis();
   const { isResize } = useScreenResize(1024);
   const panelRef = useRef<HTMLDivElement>(null);
+
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
   useEffect(() => {
     if (isVisibleControls) {
@@ -67,13 +71,6 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
       appDispatch(initializeTheme());
     }
   }, [appDispatch]);
-
-  const handleMouseEnter = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
 
   const handleVoiceReadingClick = () => {
     const newState = !isSpeechEnabled;
@@ -116,21 +113,20 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
         <UIControlsFontSize
           fontSize={fontSize}
           handleFontSizeSelect={handleFontSizeSelect}
-          handleMouseEnter={handleMouseEnter}
+          handleFocus={handleFocus}
           labels={labels}
           classNames={uiControlsClassNames}
         />
 
         <UIControlsThemes
           colorsLabels={colorsLabels}
-          handleMouseEnter={handleMouseEnter}
-          speakText={speakText}
+          handleFocus={handleFocus}
           classNames={uiControlsClassNames}
         />
 
         <Div className={styles['controlsVisibleBlock']}>
           <Button
-            onMouseEnter={handleMouseEnter}
+            onFocus={handleFocus}
             onClick={handleRestoreTheme}
             tabIndex={0}
             className={styles['controlsVisibleButton']}
@@ -146,7 +142,7 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
             type="button"
             role="button"
             onClick={handleVoiceReadingClick}
-            onFocus={(e) => speakText(e.currentTarget.innerText)}
+            onFocus={handleFocus}
           >
             <RecordVoiceOverIcon />
           </Button>
@@ -160,7 +156,7 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
             type="button"
             className={styles['close']}
             onClick={handleCloseControls}
-            onFocus={(e) => speakText(e.currentTarget.title)}
+            onFocus={handleFocus}
           >
             <CloseIcon />
           </Button>

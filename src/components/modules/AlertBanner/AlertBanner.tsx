@@ -5,8 +5,8 @@ import { useRef, useEffect, type FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 import { Heading, Div } from '@/index';
 
@@ -19,24 +19,17 @@ export const AlertBanner: FC = () => {
   const linkRef = useRef<HTMLAnchorElement>(null);
 
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
-  const { speakText } = useSpeechSynthesis();
 
-  const handleMouseEnter = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (!isSpeechEnabled) return;
 
     const target = event.target as HTMLElement;
-    const text = target.innerText.trim();
 
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      speakText(text);
+
       if (target.tagName === 'A') {
         (target as HTMLAnchorElement).click();
       }
@@ -44,20 +37,6 @@ export const AlertBanner: FC = () => {
 
     if (event.key === 'Escape') {
       alertRef.current?.blur();
-    }
-  };
-
-  const handleImageMouseEnter = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const altText = (event.target as HTMLImageElement).alt.trim();
-      speakText(altText);
-    }
-  };
-
-  const handleFocus = (event: React.FocusEvent) => {
-    if (isSpeechEnabled) {
-      const altText = (event.target as HTMLElement).innerText.trim();
-      speakText(altText);
     }
   };
 
@@ -86,14 +65,13 @@ export const AlertBanner: FC = () => {
         width={8}
         height={32}
         tabIndex={0}
-        onMouseEnter={handleImageMouseEnter}
+        onFocus={handleFocus}
       />
 
       <Heading
         id="alertHeading"
         level="h2"
         className={styles['alertBannerHeading']}
-        onMouseEnter={handleMouseEnter}
         tabIndex={0}
         onKeyDown={handleKeyDown}
         onFocus={handleFocus}

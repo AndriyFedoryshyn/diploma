@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, type FC } from 'react';
 
-import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useBodyOverflow } from '@/hooks/useBodyOverflow';
 
@@ -11,13 +10,15 @@ import { BurgerMenuPropsI } from '@/interfaces/BurgerMenu';
 import { Div, BurgerHeader, BurgerNav } from '@/index';
 
 import styles from './BurgerMenu.module.scss';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 export const BurgerMenu: FC<BurgerMenuPropsI> = ({
   isVisibleMenu,
   handleCloseBurgerMenu,
 }) => {
-  const { speakText } = useSpeechSynthesis();
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
+
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
   useBodyOverflow(isVisibleMenu);
 
@@ -28,22 +29,6 @@ export const BurgerMenu: FC<BurgerMenuPropsI> = ({
       closeButtonRef.current?.focus();
     }
   }, [isVisibleMenu]);
-
-  const handleMouseEnter = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
-
-  const handleMouseEnterTitle = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = event.currentTarget.getAttribute('aria-label') || '';
-      if (text) {
-        speakText(text);
-      }
-    }
-  };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Escape') {
@@ -71,13 +56,6 @@ export const BurgerMenu: FC<BurgerMenuPropsI> = ({
     }
   };
 
-  const handleFocus = (event: React.FocusEvent<HTMLElement>) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
-
   return (
     <>
       {isVisibleMenu && (
@@ -94,8 +72,6 @@ export const BurgerMenu: FC<BurgerMenuPropsI> = ({
               closeButtonRef={closeButtonRef}
               handleCloseBurgerMenu={handleCloseBurgerMenu}
               handleFocus={handleFocus}
-              handleMouseEnter={handleMouseEnter}
-              handleMouseEnterTitle={handleMouseEnterTitle}
             />
 
             <BurgerNav />

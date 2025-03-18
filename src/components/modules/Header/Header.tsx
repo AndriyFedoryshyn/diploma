@@ -2,10 +2,10 @@
 
 import { useEffect, type FC } from 'react';
 
-import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useScreenResize } from '@/hooks/useScreenResize';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 import {
   HeaderForm,
@@ -41,28 +41,8 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
   );
 
   const { isResize } = useScreenResize(1024);
-  const { speakText } = useSpeechSynthesis();
 
-  const handleMouseEnter = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
-
-  const handleImageMouseEnter = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const altText = (event.target as HTMLImageElement).alt.trim();
-      speakText(altText);
-    }
-  };
-
-  const handleFocus = (event: React.FocusEvent<HTMLElement>) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
   useEffect(() => {
     const savedState = localStorage.getItem('burgerMenu');
@@ -84,17 +64,12 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
             <Div className={styles['headerLocationThemeBlock']}>
               <ControlButton
                 handleCloseControls={handleCloseControls}
-                handleMouseEnter={handleMouseEnter}
                 tabIndex={0}
+                handleFocus={handleFocus}
               />
               <HeaderPopup />
 
-              <HeaderLocation
-                handleMouseEnter={handleMouseEnter}
-                handleImageMouseEnter={handleImageMouseEnter}
-                handleFocus={handleFocus}
-                tabIndex={0}
-              />
+              <HeaderLocation handleFocus={handleFocus} tabIndex={0} />
             </Div>
           )}
         </Nav>
@@ -116,7 +91,6 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
           className={styles['headerMainHeading']}
           aria-live="polite"
           tabIndex={0}
-          onMouseEnter={handleMouseEnter}
           onFocus={handleFocus}
         >
           Графік відключення електроенергії у Львівській області

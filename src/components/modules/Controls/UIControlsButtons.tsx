@@ -1,7 +1,7 @@
 import { type FC, useCallback } from 'react';
 
-import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 import { UIControlsButtonsPropsT } from '@/interfaces/UIControlsButtons';
 
@@ -14,22 +14,9 @@ export const UIControlsButtons: FC<UIControlsButtonsPropsT> = ({
   selectedIndex,
   classNames,
 }) => {
-  const { speakText } = useSpeechSynthesis();
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
 
-  const handleMouseEnterTitle = useCallback(
-    (event: React.MouseEvent) => {
-      if (isSpeechEnabled) {
-        const text = (event.target as HTMLElement)
-          .getAttribute('title')
-          ?.trim();
-        if (text) {
-          speakText(text);
-        }
-      }
-    },
-    [isSpeechEnabled, speakText]
-  );
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
@@ -56,7 +43,7 @@ export const UIControlsButtons: FC<UIControlsButtonsPropsT> = ({
           tabIndex={isActive ? 0 : -1}
           onClick={() => onButtonSelect(index)}
           onKeyDown={(event) => handleKeyDown(event, index)}
-          onMouseEnter={handleMouseEnterTitle}
+          onFocus={handleFocus}
         >
           {label.label}
         </Button>

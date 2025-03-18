@@ -12,8 +12,6 @@ export const BurgerHeader: FC<BurgerHeaderPropsI> = ({
   closeButtonRef,
   handleCloseBurgerMenu,
   handleFocus,
-  handleMouseEnter,
-  handleMouseEnterTitle,
 }) => {
   return (
     <Div className={styles['burgerNav']}>
@@ -21,10 +19,7 @@ export const BurgerHeader: FC<BurgerHeaderPropsI> = ({
 
       <Div className={styles['burgerRightBlock']}>
         <HeaderPopup />
-        <HeaderLocation
-          handleFocus={handleFocus}
-          handleMouseEnter={handleMouseEnter}
-        />
+        <HeaderLocation handleFocus={handleFocus} />
 
         <Button
           ariaLabel="Закрити Меню"
@@ -33,7 +28,6 @@ export const BurgerHeader: FC<BurgerHeaderPropsI> = ({
           type="button"
           className={styles['burgerCloseButton']}
           onClick={handleCloseBurgerMenu}
-          onMouseEnter={handleMouseEnterTitle}
           ref={closeButtonRef}
         >
           <CloseIcon fontSize="large" />

@@ -8,17 +8,9 @@ import { HeaderLocationProps } from '@/interfaces/Header';
 
 import styles from './Header.module.scss';
 
-export const HeaderLocation: FC<HeaderLocationProps> = ({
-  handleMouseEnter,
-  handleImageMouseEnter,
-  handleFocus,
-}) => {
+export const HeaderLocation: FC<HeaderLocationProps> = ({ handleFocus }) => {
   return (
-    <Div
-      className={styles['headerLocation']}
-      onMouseEnter={handleImageMouseEnter}
-      tabIndex={0}
-    >
+    <Div className={styles['headerLocation']} tabIndex={0}>
       <Image
         src={'/icons/location_logo.svg'}
         className={styles['headerLocationIcon']}
@@ -27,12 +19,8 @@ export const HeaderLocation: FC<HeaderLocationProps> = ({
         height={15}
         priority
         onFocus={handleFocus}
-        onMouseEnter={handleImageMouseEnter}
       />
-      <h5
-        onMouseEnter={handleMouseEnter}
-        className={styles['headerLocationMark']}
-      >
+      <h5 onFocus={handleFocus} className={styles['headerLocationMark']}>
         Львівська обл.
       </h5>
     </Div>

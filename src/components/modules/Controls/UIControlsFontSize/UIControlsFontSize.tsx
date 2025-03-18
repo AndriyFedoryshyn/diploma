@@ -5,8 +5,8 @@ import { Div, Heading, UIControlsButtons } from '@/index';
 import { UIControlsFontSizePropsI } from '@/interfaces/UIControlsFontSize';
 
 export const UIControlsFontSize: FC<UIControlsFontSizePropsI> = ({
-  handleMouseEnter,
   handleFontSizeSelect,
+  handleFocus,
   fontSize,
   labels,
   classNames,
@@ -24,7 +24,7 @@ export const UIControlsFontSize: FC<UIControlsFontSizePropsI> = ({
       <Heading
         id="uiControlsHeading"
         tabIndex={0}
-        onMouseEnter={handleMouseEnter}
+        onFocus={handleFocus}
         level="h4"
         className={classNames.heading}
       >

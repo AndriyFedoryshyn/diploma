@@ -1,28 +1,26 @@
 'use client';
 
 import { type FC } from 'react';
+
 import Link from 'next/link';
 
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 
 import { Button, Span } from '@/index';
 
 import { ButtonChartT } from '@/types/ButtonsChartType';
 import { ChartListPropsI } from '@/interfaces/ChartList';
+import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 export const FOCUS_COLOR: string = '#007bff';
 
 export const ChartList: FC<ChartListPropsI> = ({ classNames, list }) => {
-  const { speakText } = useSpeechSynthesis();
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
 
-  const handleMouseEnter = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
+  const { speakText } = useSpeechSynthesis();
+
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
   const handleKeyDown = (
     event: React.KeyboardEvent<HTMLButtonElement>,
@@ -46,16 +44,21 @@ export const ChartList: FC<ChartListPropsI> = ({ classNames, list }) => {
               aria-labelledby={`group-${listItem.numberOfGroup}`}
               className={classNames.button}
               onKeyDown={(event) => handleKeyDown(event, listItem.group)}
-              onMouseEnter={handleMouseEnter}
+              onFocus={handleFocus}
               tabIndex={0}
             >
               <Span
                 id={`group-${listItem.numberOfGroup}`}
                 className={classNames.numberOfGroup}
+                onFocus={handleFocus}
               >
                 {listItem.group}
               </Span>
-              <Span className={classNames.numberOfGroup} aria-hidden="true">
+              <Span
+                className={classNames.numberOfGroup}
+                onFocus={handleFocus}
+                aria-hidden="true"
+              >
                 {listItem.numberOfGroup}
               </Span>
             </Button>

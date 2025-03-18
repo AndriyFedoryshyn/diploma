@@ -1,7 +1,7 @@
 import { ClassNamesT, LabelsT } from '../types/UIControlsType';
 
 export interface UIControlsFontSizePropsI {
-  handleMouseEnter: (event: React.MouseEvent) => void;
+  handleFocus: (event: React.FocusEvent<HTMLElement>) => void;
   handleFontSizeSelect: (index: number) => void;
   fontSize: string;
   labels: LabelsT;

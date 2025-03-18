@@ -2,7 +2,6 @@
 
 import React, { ChangeEvent, useState, type FC } from 'react';
 
-import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
 
 import { NoResultsT, SearchT } from '@/types/HeaderType';
@@ -13,6 +12,7 @@ import { List, Span, Div, Form } from '@/index';
 import { HeaderFormProps } from '@/interfaces/Header';
 
 import styles from './Header.module.scss';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 const filteredSuggestionsClassNames = {
   list: styles['suggestionsDropdown'],
@@ -26,14 +26,7 @@ export const HeaderForm: FC<HeaderFormProps> = ({ onSearch, settlements }) => {
 
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
 
-  const { speakText } = useSpeechSynthesis();
-
-  const handleMouseEnter = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
   const handleSubmitForm = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -59,17 +52,9 @@ export const HeaderForm: FC<HeaderFormProps> = ({ onSearch, settlements }) => {
     onSearch(query);
   };
 
-  const handleFocus = (event: React.FocusEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
-
   return (
     <Form onSubmit={handleSubmitForm} className={styles['headerForm']}>
       <label
-        onMouseEnter={handleMouseEnter}
         htmlFor="searchInput"
         className={styles['headerFormSerachLabel']}
         tabIndex={0}

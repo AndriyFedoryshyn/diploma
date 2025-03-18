@@ -1,8 +1,7 @@
-import { ClassNamesT, ColorsI } from "../types/UIControlsType";
+import { ClassNamesT, ColorsI } from '../types/UIControlsType';
 
 export interface UIControlsThemesPropsI {
   colorsLabels: ColorsI;
-  handleMouseEnter: (event: React.MouseEvent) => void;
-  speakText: (text: string) => void;
+  handleFocus: (event: React.FocusEvent<HTMLElement>) => void;
   classNames: ClassNamesT;
 }

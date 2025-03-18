@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, type FC } from 'react';
-import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 import { Section, Div, Heading, Button, List, Span } from '@/index';
 
@@ -23,28 +23,7 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
 
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
 
-  const { speakText } = useSpeechSynthesis();
-
-  const handleMouseEnter = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(`Буква ${text}`);
-    }
-  };
-
-  const handleMousePointEnter = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
-
-  const handleFocus = (event: React.FocusEvent<HTMLElement>) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
   const handleShowAllAreas = () => {
     setShowAll(true);
@@ -74,7 +53,7 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
             level="h2"
             id="settlements-list"
             className={styles['settlementsListHeading']}
-            onMouseEnter={handleMousePointEnter}
+            onFocus={handleFocus}
           >
             Перелік населених пунктів
           </Heading>
@@ -91,7 +70,7 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
                 onClick={() => setSelectedLetter(letter.letter)}
                 aria-pressed={selectedLetter === letter.letter}
                 aria-label={`Фільтрувати за літерою ${letter.letter}`}
-                onMouseEnter={handleMouseEnter}
+                onFocus={handleFocus}
               >
                 {letter.letter}
               </Button>
@@ -121,7 +100,6 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
             <Button
               tabIndex={0}
               key={area.id}
-              onMouseEnter={handleMousePointEnter}
               onFocus={handleFocus}
               className={styles['settlementsListAreasItemFocus']}
             >
@@ -135,7 +113,7 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
             tabIndex={0}
             className={styles['showAllButton']}
             onClick={handleShowAllAreas}
-            onMouseEnter={handleMouseEnter}
+            onFocus={handleFocus}
           >
             Показати все
           </Button>

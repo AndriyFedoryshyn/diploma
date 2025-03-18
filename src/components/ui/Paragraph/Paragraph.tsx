@@ -5,6 +5,7 @@ interface ParagraphPropsI extends HTMLProps<HTMLParagraphElement> {
   className?: string;
   tabIndex?: number;
   onMouseEnter?: (event: React.MouseEvent) => void;
+  onFocus?: (event: React.FocusEvent<HTMLElement>) => void;
 }
 
 export const Paragraph: FC<ParagraphPropsI> = ({
@@ -12,9 +13,15 @@ export const Paragraph: FC<ParagraphPropsI> = ({
   children,
   tabIndex,
   onMouseEnter,
+  onFocus,
 }) => {
   return (
-    <p tabIndex={tabIndex} onMouseEnter={onMouseEnter} className={className}>
+    <p
+      tabIndex={tabIndex}
+      onFocus={onFocus}
+      onMouseEnter={onMouseEnter}
+      className={className}
+    >
       {children}
     </p>
   );

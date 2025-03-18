@@ -1,8 +1,8 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
+import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 import {
   Div,
@@ -18,17 +18,9 @@ import {
 import styles from '@/styles/pages/Group.module.scss';
 
 const Group = () => {
-  const { speakText } = useSpeechSynthesis();
-
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
 
-  const handleSpeakText = (event: React.MouseEvent) => {
-    if (isSpeechEnabled) {
-      const text = (event.target as HTMLElement).innerText.trim();
-      speakText(text);
-    }
-  };
-
+  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
   const pathname = usePathname();
 
   const slug = pathname!.split('/').pop();
@@ -50,7 +42,7 @@ const Group = () => {
 
       <Div className={styles['groupLightInfo']}>
         <Heading
-          onMouseEnter={handleSpeakText}
+          onFocus={handleFocus}
           level="h3"
           className={styles['groupLightHeading']}
           tabIndex={0}
