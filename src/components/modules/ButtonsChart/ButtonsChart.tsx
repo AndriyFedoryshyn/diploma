@@ -3,7 +3,7 @@ import { type FC } from 'react';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
-import { Div, Heading, ChartList } from '@/index';
+import { Div, ChartList } from '@/index';
 
 import { chartButtons } from '@/static/chartButtons';
 
@@ -23,15 +23,14 @@ export const ButtonChart: FC = () => {
 
   return (
     <Div className={styles['buttonsChartBlock']}>
-      <Heading
-        level="h2"
+      <h2
         className={styles['chartHeading']}
         id="chartHeading"
         tabIndex={0}
         onFocus={handleFocus}
       >
         Перейти до графіка за чергою
-      </Heading>
+      </h2>
 
       <ChartList
         aria-labelledby="chartHeading"
