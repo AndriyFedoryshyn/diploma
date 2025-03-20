@@ -25,6 +25,8 @@
                 font-weight: 500;
                 color: color.$light-text;
                 font-size: size.$alert-banner-size;
+                @include elementFocus;
+                max-width: fit-content;
             }
         }
 
@@ -60,6 +62,7 @@
         font-weight: 500;
         color: color.$light-text;
         font-size: size.$alert-banner-size;
+        max-width: fit-content;
         @include elementFocus;
     }
 

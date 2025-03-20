@@ -4,7 +4,7 @@ import { useState, type FC } from 'react';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
-import { Section, Div, Heading, Button, List, Span } from '@/index';
+import { Section, Div, Button, List } from '@/index';
 
 import { alphabet } from '@/static/alphabet';
 
@@ -49,14 +49,14 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
     <Section className={styles['settlementsList']}>
       <Div className={styles['settlementsListContainer']}>
         <Div className={styles['settlementsListInfo']}>
-          <Heading
-            level="h2"
+          <h2
             id="settlements-list"
             className={styles['settlementsListHeading']}
             onFocus={handleFocus}
+            tabIndex={0}
           >
             Перелік населених пунктів
-          </Heading>
+          </h2>
           <Div
             className={styles['settlementsListAlphabet']}
             role="region"
@@ -78,7 +78,7 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
           </Div>
         </Div>
 
-        <Span
+        <span
           id="settlements-list"
           className={styles['settlementsListAlphabetLetter']}
           aria-live="polite"
@@ -86,7 +86,7 @@ export const SettlementsList: FC<SettlementsListPropsI> = ({
           onFocus={handleFocus}
         >
           {selectedLetter}
-        </Span>
+        </span>
 
         <List
           role="list"

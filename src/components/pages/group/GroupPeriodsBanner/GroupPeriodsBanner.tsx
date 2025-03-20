@@ -19,6 +19,7 @@ export const GroupPeriodsBanner: FC = () => {
       <ContentPasteOffIcon fontSize="large" color="action" />
       <Paragraph
         onFocus={handleFocus}
+        tabIndex={0}
         className={styles['groupPeriodsParagraph']}
       >
         Немає даних

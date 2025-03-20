@@ -6,8 +6,9 @@ export const useSpeechOnFocus = (isSpeechEnabled: boolean) => {
 
   const handleElementFocus = useCallback(
     (event: React.FocusEvent<HTMLElement>) => {
+      const text = event.currentTarget.innerText.trim();
+
       if (isSpeechEnabled) {
-        const text = (event.target as HTMLElement).innerText.trim();
         speakText(text);
       }
     },

@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
-import { Heading, Div } from '@/index';
+import { Div } from '@/index';
 
 import { AlertRefT } from '@/types/AlertBannerType';
 
@@ -68,13 +68,10 @@ export const AlertBanner: FC = () => {
         onFocus={handleFocus}
       />
 
-      <Heading
+      <h2
         id="alertHeading"
-        level="h2"
         className={styles['alertBannerHeading']}
-        tabIndex={0}
         onKeyDown={handleKeyDown}
-        onFocus={handleFocus}
       >
         УВАГА! Через ракетну атаку і пошкодження об&apos;єктів інфраструктури в
         області застосовано аварійні та превентивні відключення. Актуальну
@@ -87,12 +84,11 @@ export const AlertBanner: FC = () => {
           ref={linkRef}
           aria-label="Дізнатися актуальну інформацію тут"
           onKeyDown={handleKeyDown}
-          onFocus={handleFocus}
         >
           дізнатися ТУТ
         </Link>
         .
-      </Heading>
+      </h2>
     </Div>
   );
 };

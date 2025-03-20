@@ -7,14 +7,7 @@ import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 import { ukraineRegions } from '@/static/regions';
 
-import {
-  List,
-  Div,
-  Button,
-  Heading,
-  FooterInformation,
-  FooterElement,
-} from '@/index';
+import { List, Div, Button, FooterInformation, FooterElement } from '@/index';
 
 import styles from './Footer.module.scss';
 
@@ -42,13 +35,13 @@ export const Footer: FC = () => {
     <FooterElement className={styles['footer']}>
       <Div className={styles['footerContainer']}>
         <Div className={styles['footerRegionsList']}>
-          <Heading
-            level="h3"
+          <h3
             className={styles['regionsListHeading']}
+            tabIndex={0}
             onFocus={handleFocus}
           >
             Інші області
-          </Heading>
+          </h3>
           <List
             renderList={ukraineRegions}
             classNames={regionsClassNames}

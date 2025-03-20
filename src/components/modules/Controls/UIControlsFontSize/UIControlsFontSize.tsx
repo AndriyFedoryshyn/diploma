@@ -1,6 +1,6 @@
 import { useMemo, type FC } from 'react';
 
-import { Div, Heading, UIControlsButtons } from '@/index';
+import { Div, UIControlsButtons } from '@/index';
 
 import { UIControlsFontSizePropsI } from '@/interfaces/UIControlsFontSize';
 
@@ -21,15 +21,14 @@ export const UIControlsFontSize: FC<UIControlsFontSizePropsI> = ({
 
   return (
     <Div className={classNames.block}>
-      <Heading
+      <h4
         id="uiControlsHeading"
         tabIndex={0}
         onFocus={handleFocus}
-        level="h4"
         className={classNames.heading}
       >
         Розмір шрифту:
-      </Heading>
+      </h4>
 
       <UIControlsButtons
         classNames={classNamesControlsButtons}

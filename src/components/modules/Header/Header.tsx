@@ -69,7 +69,7 @@ export const Header: FC<HeaderProps> = ({ onSearch, settlements }) => {
               />
               <HeaderPopup />
 
-              <HeaderLocation handleFocus={handleFocus} tabIndex={0} />
+              <HeaderLocation handleFocus={handleFocus} />
             </Div>
           )}
         </Nav>

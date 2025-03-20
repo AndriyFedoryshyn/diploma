@@ -68,6 +68,7 @@ export const HeaderForm: FC<HeaderFormProps> = ({ onSearch, settlements }) => {
         value={search}
         onChange={handleSearchChange}
         type="text"
+        onFocus={handleFocus}
         placeholder="Населений пункт"
         aria-label="Населений пункт для пошуку"
         aria-required="true"

@@ -16,14 +16,16 @@
         font-size: size.$group-date-heading-szie;
         color: color.$color-black-heading;
         line-height: 2.58rem;
+        @include elementFocus;
     }
 
-    &Paragrapg {
+    &Paragraph {
         width: -webkit-fit-content;
         width: -moz-fit-content;
         width: fit-content;
         color: color.$color-black-heading;
         line-height: 1.29rem;
+        @include elementFocus;
     }
 }
 
@@ -52,10 +54,12 @@
         line-height: 1.6125rem;
         font-size: size.$alert-banner-size;
         color: #a2aeb3;
+        @include elementFocus;
     }
 
     &Button {
         @include notificationButton;
+        @include elementFocus;
     }
 
     &Link {
@@ -74,6 +78,7 @@
         @include defaultHeading;
         -webkit-margin-after: 1rem;
         margin-block-end: 1rem;
+        @include elementFocus;
     }
 
     &Paragraph {
@@ -81,6 +86,7 @@
         max-width: 25rem;
         -webkit-margin-after: 0.75rem;
         margin-block-end: 0.75rem;
+        @include elementFocus;
     }
 
     &Info {
@@ -93,6 +99,7 @@
             align-items: center;
             gap: 0.3rem;
             @include defaultParagraph;
+            @include elementFocus;
 
             &::before {
                 content: "";
@@ -107,6 +114,15 @@
             align-items: center;
             gap: 0.3rem;
             @include defaultParagraph;
+            @include elementFocus;
+        }
+    }
+}
+
+@media (max-width: 35.625rem) {
+    .groupScheduleInfoDate {
+        &Heading {
+            font-size: 1.5rem;
         }
     }
 }

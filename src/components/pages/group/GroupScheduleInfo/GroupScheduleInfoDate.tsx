@@ -3,7 +3,7 @@ import { type FC } from 'react';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
-import { Div, Heading, Paragraph } from '@/index';
+import { Div, Paragraph } from '@/index';
 
 import { formateDate } from '@/utils/formateDate';
 
@@ -22,14 +22,13 @@ export const GroupScheduleInfoDate: FC<GroupScheduleInfoDatePropsI> = ({
   return (
     <Div className={styles['groupScheduleInfoDate']}>
       <Div className={styles['groupScheduleInfoDateContainer']}>
-        <Heading
+        <h5
           onFocus={handleFocus}
           tabIndex={0}
-          level="h5"
           className={styles['groupScheduleInfoDateHeading']}
         >
           {firstPart} група ({secondPart} підгрупа)
-        </Heading>
+        </h5>
         <Paragraph
           onFocus={handleFocus}
           tabIndex={0}

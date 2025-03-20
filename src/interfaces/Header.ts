@@ -15,5 +15,5 @@ export interface HeaderFormProps {
 export interface HeaderLocationProps extends HTMLProps<HTMLElement> {
   handleMouseEnter?: (event: React.MouseEvent) => void;
   handleImageMouseEnter?: (event: React.MouseEvent) => void;
-  handleFocus: (event: React.FocusEvent<HTMLHeadingElement>) => void;
+  handleFocus: (event: React.FocusEvent<HTMLElement>) => void;
 }

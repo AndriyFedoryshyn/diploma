@@ -5,7 +5,9 @@ interface SpanPropsI extends HTMLProps<HTMLSpanElement> {
   className?: string;
   onMouseEnter?: (event: React.MouseEvent) => void;
   onFocus?: (
-    event: React.FocusEvent<HTMLElement | HTMLDivElement | HTMLImageElement>
+    event: React.FocusEvent<
+      HTMLElement | HTMLDivElement | HTMLImageElement | HTMLSpanElement
+    >
   ) => void;
   onBlur?: (
     event: React.FocusEvent<HTMLElement | HTMLDivElement | HTMLImageElement>

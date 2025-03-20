@@ -5,11 +5,13 @@ interface HeadingPropsI extends HTMLProps<HTMLHeadingElement> {
   level: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   className: string;
   tabIndex?: number;
+  onFocus?: (event: React.FocusEvent<Element>) => void;
   onMouseEnter?: (event: React.MouseEvent) => void;
   onKeyDown?: (event: React.KeyboardEvent) => void;
 }
 
 export const Heading: FC<HeadingPropsI> = ({
+  onFocus,
   onMouseEnter,
   onKeyDown,
   children,
@@ -22,6 +24,7 @@ export const Heading: FC<HeadingPropsI> = ({
   return (
     <HeadingElement
       tabIndex={tabIndex}
+      onFocus={onFocus}
       onKeyDown={onKeyDown}
       onMouseEnter={onMouseEnter}
       className={className}

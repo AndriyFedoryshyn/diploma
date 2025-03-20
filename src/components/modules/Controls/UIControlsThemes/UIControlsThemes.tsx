@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 
-import { Div, Heading, UIThemeControls } from '@/index';
+import { Div, UIThemeControls } from '@/index';
 
 import { UIControlsThemesPropsI } from '@/interfaces/UIControlsThemes';
 
@@ -11,14 +11,9 @@ export const UIControlsThemes: FC<UIControlsThemesPropsI> = ({
 }) => {
   return (
     <Div className={classNames.block}>
-      <Heading
-        level="h4"
-        tabIndex={0}
-        className={classNames.heading}
-        onFocus={handleFocus}
-      >
+      <h4 onFocus={handleFocus} tabIndex={0} className={classNames.heading}>
         Колір сайту:
-      </Heading>
+      </h4>
 
       <UIThemeControls
         classNames={{

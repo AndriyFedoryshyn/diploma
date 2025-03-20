@@ -3,7 +3,7 @@ import { type FC } from 'react';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
-import { List, Div, Heading, Span, FooterSocial } from '@/index';
+import { List, Div, FooterSocial } from '@/index';
 
 import { informationList } from '@/static/informationList';
 
@@ -20,22 +20,21 @@ export const FooterInformation: FC = () => {
 
   return (
     <Div className={styles['footerInformation']}>
-      <Heading
+      <h4
         id="footer-information-list"
-        onFocus={handleFocus}
         tabIndex={0}
-        level="h4"
+        onFocus={handleFocus}
         className={styles['footerInformationHeading']}
       >
         Інформація та підтримка
-      </Heading>
+      </h4>
 
       <List
         renderList={informationList}
         classNames={informationListClassNames}
         renderItem={(listItem) => {
           return (
-            <Span
+            <span
               key={listItem.id}
               className={styles['footerInformationListItem']}
               tabIndex={0}
@@ -44,7 +43,7 @@ export const FooterInformation: FC = () => {
               onFocus={handleFocus}
             >
               {listItem.title}
-            </Span>
+            </span>
           );
         }}
       />

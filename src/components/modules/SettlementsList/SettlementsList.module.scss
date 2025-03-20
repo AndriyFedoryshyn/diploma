@@ -29,6 +29,7 @@
         font-weight: 500;
         line-height: 3.626875rem;
         font-size: size.$chart-heading-size;
+        @include elementFocus;
     }
 
     &Alphabet {
@@ -88,6 +89,7 @@
 
     & .showAllButton {
         @include notificationButton;
+        @include elementFocus;
     }
 }
 

@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-import { Button, Div, Heading, GroupPeriodsBanner } from '@/index';
+import { Button, Div, GroupPeriodsBanner } from '@/index';
 
 import styles from './GroupScheduleInfo.module.scss';
 
@@ -19,14 +19,9 @@ export const GroupScheduleInfoPeriods: FC = () => {
   return (
     <Div className={styles['groupPeriods']}>
       <Div className={styles['groupPeriodsContainer']}>
-        <Heading
-          onFocus={handleFocus}
-          level="h4"
-          className={styles['groupPeriodsHeading']}
-          tabIndex={0}
-        >
+        <h4 className={styles['groupPeriodsHeading']} tabIndex={0}>
           Періоди відключень на сьогодні
-        </Heading>
+        </h4>
         <GroupPeriodsBanner />
         <Button
           role="button"

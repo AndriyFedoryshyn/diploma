@@ -3,7 +3,7 @@ import { type FC } from 'react';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
-import { AlertBanner, Button, Heading, Paragraph, Section } from '@/index';
+import { AlertBanner, Button, Paragraph, Section } from '@/index';
 
 import Link from 'next/link';
 
@@ -20,15 +20,14 @@ export const GroupInfo: FC<GroupInfoProps> = ({ firstPart, secondPart }) => {
 
   return (
     <Section className={styles['groupInfo']}>
-      <Heading
+      <h1
         onFocus={handleFocus}
-        level="h1"
         className={styles['groupMainHeading']}
         tabIndex={0}
       >
         Графік відключень електроенергії у Львівській області (сьогодні):{' '}
         {firstPart} група ({secondPart} підгрупа)
-      </Heading>
+      </h1>
       <Button role="button" type="button" className={styles['groupMainButton']}>
         <TelegramIcon fontSize="large" />
         <Link

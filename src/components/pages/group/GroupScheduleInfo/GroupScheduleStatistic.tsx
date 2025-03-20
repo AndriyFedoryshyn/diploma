@@ -3,7 +3,7 @@ import { type FC } from 'react';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
-import { Div, Heading, Paragraph, Span } from '@/index';
+import { Div, Paragraph } from '@/index';
 
 import FlashOffIcon from '@mui/icons-material/FlashOff';
 
@@ -17,14 +17,13 @@ export const GroupScheduleStatistic: FC = () => {
   return (
     <Div className={styles['groupScheduleStatistic']}>
       <Div className={styles['groupScheduleStatisticContainer']}>
-        <Heading
-          onFocus={handleFocus}
-          level="h5"
+        <h5
           tabIndex={0}
+          onFocus={handleFocus}
           className={styles['groupScheduleStatisticHeading']}
         >
           Позначення до графіка
-        </Heading>
+        </h5>
         <Paragraph
           onFocus={handleFocus}
           tabIndex={0}
@@ -33,21 +32,21 @@ export const GroupScheduleStatistic: FC = () => {
           На графіку відповідним фоном зафарбовані певні ділянки, що означає:
         </Paragraph>
         <Div className={styles['groupScheduleStatisticInfo']}>
-          <Span
+          <span
             onFocus={handleFocus}
             tabIndex={0}
             className={styles['groupScheduleStatisticInfoOn']}
           >
             Електроенергія присутня
-          </Span>
-          <Span
+          </span>
+          <span
             onFocus={handleFocus}
             tabIndex={0}
             className={styles['groupScheduleStatisticInfoOff']}
           >
             <FlashOffIcon />
             Електроенергія відсутня
-          </Span>
+          </span>
         </Div>
       </Div>
     </Div>

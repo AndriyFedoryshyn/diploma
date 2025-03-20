@@ -66,6 +66,7 @@ export const HeaderPopup: FC = () => {
               type="button"
               className={styles['headerPopupButton']}
               key={item.id}
+              tabIndex={0}
               onFocus={handleFocus}
               onClick={() => handleThemeSelect(item.dataLabel as SpecialThemeT)}
             >

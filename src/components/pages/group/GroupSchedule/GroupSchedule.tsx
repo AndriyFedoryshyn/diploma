@@ -5,7 +5,7 @@ import { type FC, useEffect, useState } from 'react';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
-import { Div, Heading, List, Section, Span } from '@/index';
+import { Div, List, Section } from '@/index';
 
 import { PastIndices, VisibleIndicators } from '@/types/GroupScheduleType';
 
@@ -78,14 +78,9 @@ export const GroupSchedule: FC = () => {
   return (
     <Section role="container" className={styles['schedule']}>
       <Div className={styles['scheduleContainer']}>
-        <Heading
-          level="h2"
-          className={styles['scheduleHeading']}
-          onFocus={handleFocus}
-          tabIndex={0}
-        >
+        <h2 className={styles['scheduleHeading']} tabIndex={0}>
           Відключення сьогодні
-        </Heading>
+        </h2>
       </Div>
       <Div className={styles['scheduleHoursContainer']}>
         <List
@@ -112,7 +107,7 @@ export const GroupSchedule: FC = () => {
                     {item.hours[1]}
                   </em>
                 </Div>
-                <Span
+                <span
                   onFocus={handleFocus}
                   tabIndex={0}
                   className={styles['scheduleHoursBlock']}
@@ -120,7 +115,7 @@ export const GroupSchedule: FC = () => {
                   {showIndicator && (
                     <span className={styles['lightIndicator']}></span>
                   )}
-                </Span>
+                </span>
               </Div>
             );
           }}
