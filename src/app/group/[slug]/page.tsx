@@ -10,7 +10,6 @@ import {
   GroupInfo,
   GroupSchedule,
   GroupScheduleInfo,
-  Heading,
   GroupPeriodsBanner,
   Section,
 } from '@/index';
@@ -41,14 +40,13 @@ const Group = () => {
       <GroupScheduleInfo firstPart={firstPart} secondPart={secondPart} />
 
       <Div className={styles['groupLightInfo']}>
-        <Heading
+        <h3
           onFocus={handleFocus}
-          level="h3"
           className={styles['groupLightHeading']}
           tabIndex={0}
         >
           Відключення завтра
-        </Heading>
+        </h3>
         <GroupPeriodsBanner />
       </Div>
     </Section>
