@@ -80,10 +80,8 @@ export const AlertBanner: FC = () => {
           target="_blank"
           href="https://t.me/+3KmvmkL0g39hYTgy"
           className={styles['alertBannerMoreLink']}
-          tabIndex={0}
           ref={linkRef}
           aria-label="Дізнатися актуальну інформацію тут"
-          onKeyDown={handleKeyDown}
         >
           дізнатися ТУТ
         </Link>

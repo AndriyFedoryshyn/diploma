@@ -1,6 +1,7 @@
 import { type FC } from 'react';
 
 import { useAppSelector } from '@/hooks/useAppSelector';
+import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,7 +13,6 @@ import { List } from '@/index';
 import { socialItems } from '@/static/socialItems';
 
 import styles from './Footer.module.scss';
-import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
 const footerSocialListClassNames = {
   list: styles['footerSocialList'],
@@ -21,7 +21,16 @@ const footerSocialListClassNames = {
 
 export const FooterSocial: FC = () => {
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
-  const handleFocus = useSpeechOnFocus(isSpeechEnabled);
+  const { speakText } = useSpeechSynthesis();
+
+  const handleFocusImageSpeech = (
+    event: React.FocusEvent<HTMLImageElement>
+  ) => {
+    if (isSpeechEnabled) {
+      const text = (event.target as HTMLImageElement).alt.trim();
+      speakText(text);
+    }
+  };
 
   return (
     <List
@@ -43,7 +52,7 @@ export const FooterSocial: FC = () => {
             width={32}
             height={32}
             tabIndex={0}
-            onFocus={handleFocus}
+            onFocus={handleFocusImageSpeech}
             className={styles['footerSocialImage']}
           />
         </Link>
