@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, type FC } from 'react';
+import { useRef, type FC } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,36 +13,23 @@ import { Div } from '@/index';
 import { AlertRefT } from '@/types/AlertBannerType';
 
 import styles from './AlertBanner.module.scss';
+import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 
 export const AlertBanner: FC = () => {
   const alertRef = useRef<AlertRefT>(null);
-  const linkRef = useRef<HTMLAnchorElement>(null);
 
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
 
+  const { speakText } = useSpeechSynthesis();
+
   const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (!isSpeechEnabled) return;
-
-    const target = event.target as HTMLElement;
-
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-
-      if (target.tagName === 'A') {
-        (target as HTMLAnchorElement).click();
-      }
-    }
-
-    if (event.key === 'Escape') {
-      alertRef.current?.blur();
+  const onFocusImage = (event: React.FocusEvent<HTMLImageElement>) => {
+    if (isSpeechEnabled) {
+      const text = (event.target as HTMLImageElement).alt.trim();
+      speakText(text);
     }
   };
-
-  useEffect(() => {
-    alertRef.current?.focus();
-  }, []);
 
   return (
     <Div
@@ -53,8 +40,6 @@ export const AlertBanner: FC = () => {
       aria-live="assertive"
       aria-labelledby="alertHeading"
       aria-describedby="alertDescription"
-      onKeyDown={handleKeyDown}
-      onFocus={handleFocus}
     >
       <Image
         className={styles['alertBannerIcon']}
@@ -65,27 +50,26 @@ export const AlertBanner: FC = () => {
         width={8}
         height={32}
         tabIndex={0}
-        onFocus={handleFocus}
+        onFocus={onFocusImage}
       />
-
       <h2
         id="alertHeading"
+        tabIndex={0}
+        onFocus={handleFocus}
         className={styles['alertBannerHeading']}
-        onKeyDown={handleKeyDown}
       >
         УВАГА! Через ракетну атаку і пошкодження об&apos;єктів інфраструктури в
         області застосовано аварійні та превентивні відключення. Актуальну
-        інформацію можна{' '}
+        інформацію можна
         <Link
           target="_blank"
+          tabIndex={-1}
           href="https://t.me/+3KmvmkL0g39hYTgy"
           className={styles['alertBannerMoreLink']}
-          ref={linkRef}
           aria-label="Дізнатися актуальну інформацію тут"
         >
-          дізнатися ТУТ
+          дізнатися ТУТ.
         </Link>
-        .
       </h2>
     </Div>
   );

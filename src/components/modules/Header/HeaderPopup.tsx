@@ -43,7 +43,7 @@ export const HeaderPopup: FC = () => {
     event: React.FocusEvent<HTMLElement>,
     theme: SpecialThemeT
   ) => {
-    if (theme) {
+    if (theme && isSpeechEnabled) {
       const text = (event?.target as HTMLElement).innerText.trim();
       speakText(`Обрано тему ${text}`);
     }

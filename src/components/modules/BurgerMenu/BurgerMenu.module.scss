@@ -76,6 +76,11 @@
         gap: 4rem;
     }
 
+    &NavMainBlock {
+        display: flex;
+        gap: 2rem;
+    }
+
     &UiControlsHeading {
         @include controlHeading;
     }
@@ -102,6 +107,35 @@
 
         & .active {
             border: 0.2rem solid color.$color-black-heading;
+        }
+    }
+}
+
+@media (max-width: 46.875rem) {
+    .burger {
+        &RightBlock {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+}
+@media (max-width: 32.5rem) {
+    .burger {
+        &RightBlock {
+            display: none;
+        }
+
+        &UiControlsBlock {
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        &UiControlsContainer {
+            gap: 4rem;
+        }
+
+        &Container {
+            padding-inline: 1rem;
         }
     }
 }

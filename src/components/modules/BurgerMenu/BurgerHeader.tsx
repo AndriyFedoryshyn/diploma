@@ -17,10 +17,11 @@ export const BurgerHeader: FC<BurgerHeaderPropsI> = ({
     <Div className={styles['burgerNav']}>
       <HeaderLogo />
 
-      <Div className={styles['burgerRightBlock']}>
-        <HeaderPopup />
-        <HeaderLocation handleFocus={handleFocus} />
-
+      <Div className={styles['burgerNavMainBlock']}>
+        <Div className={styles['burgerRightBlock']}>
+          <HeaderPopup />
+          <HeaderLocation handleFocus={handleFocus} />
+        </Div>
         <Button
           ariaLabel="Закрити Меню"
           title="Закрити Меню"
