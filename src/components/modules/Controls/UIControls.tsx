@@ -4,14 +4,12 @@ import { FC, useEffect, useRef } from 'react';
 
 import { Div, Button, UIControlsFontSize, UIControlsThemes } from '@/index';
 
-import VisibilityIcon from '@mui/icons-material/Visibility';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 import CloseIcon from '@mui/icons-material/Close';
 
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { useScreenResize } from '@/hooks/useScreenResize';
 import { useUIControls } from '@/context/FontSizeContext/FontSizeContext';
 import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
@@ -29,6 +27,7 @@ import { HeaderUIControlsPropsT } from '@/interfaces/UIControls';
 import styles from './UIControls.module.scss';
 
 import { resetSpecialTheme } from '@/store/slices/SpecialThemeSlice';
+import { VisibleButton } from '@/components/ui/VisibleButton/VisibleButton';
 
 export const UIControls: FC<HeaderUIControlsPropsT> = ({
   isVisibleControls,
@@ -38,7 +37,6 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
   const appDispatch = useAppDispatch();
   const { speakText } = useSpeechSynthesis();
-  const { isResize } = useScreenResize(1024);
   const panelRef = useRef<HTMLDivElement>(null);
 
   const handleFocus = useSpeechOnFocus(isSpeechEnabled);
@@ -125,16 +123,12 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
         />
 
         <Div className={styles['controlsVisibleBlock']}>
-          <Button
-            onFocus={handleFocus}
-            onClick={handleRestoreTheme}
-            tabIndex={0}
+          <VisibleButton
+            handleFocus={handleFocus}
+            handleRestoreTheme={handleRestoreTheme}
             className={styles['controlsVisibleButton']}
-            aria-label="Toggle site visibility"
-          >
-            Звичайна версія сайту <VisibilityIcon />
-          </Button>
-
+            aria-label="Відновити тему"
+          />
           <Button
             title="Увімкнути голосове читання сайту"
             aria-label="Увімкнути голосове читання"
@@ -147,21 +141,17 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
             <RecordVoiceOverIcon />
           </Button>
         </Div>
-
-        {isResize && (
-          <Button
-            title="Закрити панель управління"
-            aria-label="Закрити панель управління"
-            role="button"
-            type="button"
-            className={styles['close']}
-            onClick={handleCloseControls}
-            onFocus={handleFocus}
-          >
-            <CloseIcon />
-          </Button>
-        )}
       </Div>
+
+      <Button
+        type="button"
+        title="Закрити меню"
+        onClick={handleCloseControls}
+        onFocus={handleFocus}
+        className={styles['closeControlsPanel']}
+      >
+        <CloseIcon />
+      </Button>
     </Div>
   ) : null;
 };

@@ -28,15 +28,17 @@ import styles from './Header.module.scss';
 import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 
 export const HeaderPopup: FC = () => {
-  const [anchor, setAnchor] = useState<AnchorT>(null);
+  const [anchor, setAnchor] = useState<AnchorT | undefined>(null);
   const dispatch = useAppDispatch();
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
   const { speakText } = useSpeechSynthesis();
 
   const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
-  const handlePopupClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchor(anchor ? null : event.currentTarget);
+  const handlePopupClick = (event?: React.MouseEvent<HTMLElement>) => {
+    setAnchor((prevAnchor) =>
+      prevAnchor ? null : (event?.currentTarget as AnchorT | undefined)
+    );
   };
 
   const handleSpeakThemeSelect = (
@@ -58,6 +60,7 @@ export const HeaderPopup: FC = () => {
 
   const handleThemeSelect = (theme: SpecialThemeT) => {
     dispatch(setSpecialTheme(theme));
+    setAnchor(null); // Закриваємо меню після вибору теми
   };
 
   return (

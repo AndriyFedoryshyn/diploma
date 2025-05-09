@@ -11,6 +11,10 @@ import { colorsLabels, labels } from '@/static/uiControls';
 import { ClassNamesT } from '@/types/UIControlsType';
 
 import styles from './BurgerMenu.module.scss';
+import { VisibleButton } from '@/components/ui/VisibleButton/VisibleButton';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { setTheme } from '@/store/slices/ThemeSlice';
+import { resetSpecialTheme } from '@/store/slices/SpecialThemeSlice';
 
 const uiControlsClassNames: ClassNamesT = {
   block: styles['burgerUiControlsBlock'],
@@ -26,12 +30,19 @@ export const BurgerNav: FC = () => {
 
   const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
+  const appDispatch = useAppDispatch();
+
   const handleFontSizeSelect = (index: number) => {
     const sizes = ['small', 'medium', 'large'] as const;
     const newFontSize = sizes[index];
 
     setFontSize(newFontSize);
     localStorage.setItem('fontSize', newFontSize);
+  };
+
+  const handleRestoreTheme = () => {
+    appDispatch(setTheme('light'));
+    appDispatch(resetSpecialTheme());
   };
 
   return (
@@ -49,6 +60,12 @@ export const BurgerNav: FC = () => {
           colorsLabels={colorsLabels}
           classNames={uiControlsClassNames}
           handleFocus={handleFocus}
+        />
+
+        <VisibleButton
+          handleFocus={handleFocus}
+          handleRestoreTheme={handleRestoreTheme}
+          className={styles['controlsVisibleButton']}
         />
       </Div>
     </Nav>

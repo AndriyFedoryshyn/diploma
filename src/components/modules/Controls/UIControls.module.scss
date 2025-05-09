@@ -4,15 +4,17 @@
 
 .controls {
     width: 100%;
-    max-width: 95%;
-    position: absolute;
-    top: 7rem;
+    max-width: 100%;
+    position: fixed;
+    top: 0;
     border-radius: 0.5rem;
     padding: 1.25rem;
     background: color.$dark-text;
     box-shadow: color.$controls-shadow;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    justify-content: space-between;
 
     & .controlsVisibleButton {
         width: 100%;
@@ -33,7 +35,6 @@
         align-items: center;
         justify-content: space-between;
         gap: 3rem;
-        min-height: 2rem;
     }
 
     & .controlsFontSizeBlock {
@@ -92,6 +93,16 @@
     &VisibleBlock {
         display: flex;
         gap: 1rem;
+    }
+
+    & .closeControlsPanel {
+        width: 44px;
+        height: 44px;
+        border-radius: 1rem;
+        background: rgb(216, 216, 216);
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
