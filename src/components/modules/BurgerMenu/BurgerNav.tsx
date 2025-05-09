@@ -15,6 +15,9 @@ import { VisibleButton } from '@/components/ui/VisibleButton/VisibleButton';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { setTheme } from '@/store/slices/ThemeSlice';
 import { resetSpecialTheme } from '@/store/slices/SpecialThemeSlice';
+import { VoiceButton } from '@/components/ui/VoiceButton/VoiceButton';
+import { toggleSpeech } from '@/store/slices/SpeechSynthesisSlice';
+import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
 
 const uiControlsClassNames: ClassNamesT = {
   block: styles['burgerUiControlsBlock'],
@@ -27,6 +30,7 @@ const uiControlsClassNames: ClassNamesT = {
 export const BurgerNav: FC = () => {
   const { fontSize, setFontSize } = useUIControls();
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
+  const { speakText } = useSpeechSynthesis();
 
   const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
@@ -45,6 +49,20 @@ export const BurgerNav: FC = () => {
     appDispatch(resetSpecialTheme());
   };
 
+  const handleVoiceReadingClick = () => {
+    const newState = !isSpeechEnabled;
+
+    appDispatch(toggleSpeech());
+
+    localStorage.setItem('isSpeechEnabled', JSON.stringify(newState));
+
+    speakText(
+      newState
+        ? 'Голосове читання сайту увімкнено.'
+        : 'Голосове читання сайту вимкнено.'
+    );
+  };
+
   return (
     <Nav className={styles['burgerMenu']}>
       <Div className={styles['burgerUiControlsContainer']}>
@@ -61,12 +79,21 @@ export const BurgerNav: FC = () => {
           classNames={uiControlsClassNames}
           handleFocus={handleFocus}
         />
-
-        <VisibleButton
-          handleFocus={handleFocus}
-          handleRestoreTheme={handleRestoreTheme}
-          className={styles['controlsVisibleButton']}
-        />
+        <Div className={styles['visibleContainerElements']} role="container">
+          <VisibleButton
+            handleFocus={handleFocus}
+            handleRestoreTheme={handleRestoreTheme}
+            className={styles['controlsVisibleButton']}
+          />
+          <VoiceButton
+            className={styles['controlsVisibleButton']}
+            handleFocus={handleFocus}
+            handleVoiceReadingClick={handleVoiceReadingClick}
+          >
+            {' '}
+            Голосове читання сайту
+          </VoiceButton>
+        </Div>
       </Div>
     </Nav>
   );

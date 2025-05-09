@@ -4,7 +4,6 @@ import { FC, useEffect, useRef } from 'react';
 
 import { Div, Button, UIControlsFontSize, UIControlsThemes } from '@/index';
 
-import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 import CloseIcon from '@mui/icons-material/Close';
 
 import { useAppDispatch } from '@/hooks/useAppDispatch';
@@ -28,6 +27,7 @@ import styles from './UIControls.module.scss';
 
 import { resetSpecialTheme } from '@/store/slices/SpecialThemeSlice';
 import { VisibleButton } from '@/components/ui/VisibleButton/VisibleButton';
+import { VoiceButton } from '@/components/ui/VoiceButton/VoiceButton';
 
 export const UIControls: FC<HeaderUIControlsPropsT> = ({
   isVisibleControls,
@@ -129,17 +129,12 @@ export const UIControls: FC<HeaderUIControlsPropsT> = ({
             className={styles['controlsVisibleButton']}
             aria-label="Відновити тему"
           />
-          <Button
-            title="Увімкнути голосове читання сайту"
-            aria-label="Увімкнути голосове читання"
+          <VoiceButton
+            handleFocus={handleFocus}
+            handleVoiceReadingClick={handleVoiceReadingClick}
             className={styles['controlsVoiceButton']}
-            type="button"
-            role="button"
-            onClick={handleVoiceReadingClick}
-            onFocus={handleFocus}
-          >
-            <RecordVoiceOverIcon />
-          </Button>
+            aria-label="Увімкнути голосове читання сайту"
+          />
         </Div>
       </Div>
 
