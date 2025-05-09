@@ -60,7 +60,7 @@ export const HeaderPopup: FC = () => {
 
   const handleThemeSelect = (theme: SpecialThemeT) => {
     dispatch(setSpecialTheme(theme));
-    setAnchor(null); // Закриваємо меню після вибору теми
+    setAnchor(null);
   };
 
   return (
@@ -71,6 +71,7 @@ export const HeaderPopup: FC = () => {
         onClick={handlePopupClick}
         onFocus={handleFocus}
         tabIndex={0}
+        className={styles['headerPopupButtonMajor']}
       >
         Обрати тему <VisibilityIcon />
       </Button>

@@ -1,10 +1,18 @@
+'use client';
+
 import { type FC } from 'react';
 
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useUIControls } from '@/context/FontSizeContext/FontSizeContext';
 import { useSpeechOnFocus } from '@/hooks/useSpeechOnFocus';
 
-import { Div, Nav, UIControlsFontSize, UIControlsThemes } from '@/index';
+import {
+  Div,
+  HeaderPopup,
+  Nav,
+  UIControlsFontSize,
+  UIControlsThemes,
+} from '@/index';
 
 import { colorsLabels, labels } from '@/static/uiControls';
 
@@ -18,6 +26,7 @@ import { resetSpecialTheme } from '@/store/slices/SpecialThemeSlice';
 import { VoiceButton } from '@/components/ui/VoiceButton/VoiceButton';
 import { toggleSpeech } from '@/store/slices/SpeechSynthesisSlice';
 import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis ';
+import { useScreenResize } from '@/hooks/useScreenResize';
 
 const uiControlsClassNames: ClassNamesT = {
   block: styles['burgerUiControlsBlock'],
@@ -31,6 +40,8 @@ export const BurgerNav: FC = () => {
   const { fontSize, setFontSize } = useUIControls();
   const { isSpeechEnabled } = useAppSelector((state) => state.speechSynthesis);
   const { speakText } = useSpeechSynthesis();
+
+  const { isResize } = useScreenResize(520);
 
   const handleFocus = useSpeechOnFocus(isSpeechEnabled);
 
@@ -80,6 +91,7 @@ export const BurgerNav: FC = () => {
           handleFocus={handleFocus}
         />
         <Div className={styles['visibleContainerElements']} role="container">
+          {isResize && <HeaderPopup />}
           <VisibleButton
             handleFocus={handleFocus}
             handleRestoreTheme={handleRestoreTheme}

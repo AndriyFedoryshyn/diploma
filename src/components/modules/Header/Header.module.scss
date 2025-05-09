@@ -226,6 +226,13 @@
             transform: scale(1.1);
         }
     }
+
+    &PopupButtonMajor {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        max-width: 100%;
+    }
 }
 
 @media (max-width: 64rem) {
